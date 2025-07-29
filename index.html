@@ -1,1089 +1,1185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codebat Technology Inc. - Quantum AI Drug Discovery</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-bg: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a1f26 100%);
-            --card-bg: rgba(22, 27, 34, 0.6);
-            --border-color: rgba(240, 246, 252, 0.1);
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --text-muted: #c9d1d9;
-            --accent-gradient: linear-gradient(45deg, #58a6ff, #79c0ff);
-            --accent-color: #58a6ff;
-            --accent-hover: #79c0ff;
-            --shadow-light: 0 10px 30px rgba(88, 166, 255, 0.3);
-            --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        body {
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: var(--primary-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            backdrop-filter: blur(20px);
-            background: rgba(13, 17, 23, 0.8);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-
-        .logo-word {
-            width: 120px;
-            height: 25px;
-            margin-right: 1rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 50%;
-            background: var(--accent-gradient);
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(88, 166, 255, 0.1) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #58a6ff, #79c0ff, #a5f3fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideInUp 1s ease-out;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-            margin-bottom: 2rem;
-            color: var(--text-secondary);
-            animation: slideInUp 1s ease-out 0.2s both;
-        }
-
-        .hero .description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            color: var(--text-muted);
-            animation: slideInUp 1s ease-out 0.4s both;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: slideInUp 1s ease-out 0.6s both;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--accent-gradient);
-            color: #0d1117;
-            box-shadow: var(--shadow-light);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(88, 166, 255, 0.5);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid rgba(88, 166, 255, 0.5);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(88, 166, 255, 0.1);
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        /* Particles */
-        .particles {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(88, 166, 255, 0.6);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-                opacity: 0.5;
-            }
-        }
-
-        /* Common Section Styles */
-        .section {
-            padding: 6rem 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 3rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Features Section */
-        .features {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(88, 166, 255, 0.3);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--accent-gradient);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* Gallery Section */
-        .gallery {
-            background: rgba(22, 27, 34, 0.2);
-            overflow: hidden;
-            padding-top: 10rem; /* Increase spacing to fix overlap */
-            padding-bottom: 8rem;
-        }
-
-        .gallery-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .slider-container {
-            position: relative;
-            margin-top: 20rem; /* Further increase top spacing */
-            min-height: 500px;
-            perspective: 1000px;
-        }
-
-        .slider-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slides {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-        }
-
-        .slide {
-            position: absolute;
-            width: 600px;
-            max-height: 500px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-            cursor: pointer;
-            backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-heavy);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .slide.active {
-            transform: translateX(0) scale(1) rotateY(0deg);
-            opacity: 1;
-            z-index: 10;
-            box-shadow: 0 30px 60px rgba(88, 166, 255, 0.2);
-            border-color: rgba(88, 166, 255, 0.3);
-        }
-
-        .slide.prev {
-            transform: translateX(-350px) scale(0.8) rotateY(15deg);
-            opacity: 0.6;
-            z-index: 5;
-        }
-
-        .slide.next {
-            transform: translateX(350px) scale(0.8) rotateY(-15deg);
-            opacity: 0.6;
-            z-index: 5;
-        }
-
-        .slide.hidden {
-            transform: translateX(-700px) scale(0.6) rotateY(45deg);
-            opacity: 0;
-            z-index: 1;
-        }
-
-        .slide.hidden.next-hidden {
-            transform: translateX(700px) scale(0.6) rotateY(-45deg);
-        }
-
-        .slide-image {
-            width: 100%;
-            flex: 1;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(13, 17, 23, 0.5);
-        }
-
-        .slide-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent 0%, transparent 70%, rgba(13, 17, 23, 0.3) 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .slide-image img {
-            max-width: 100%;
-            max-height: 400px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 0;
-        }
-
-        .slide:hover .slide-image img {
-            transform: scale(1.02);
-        }
-
-        .slide-info {
-            padding: 1.5rem;
-            text-align: center;
-            position: relative;
-            background: rgba(13, 17, 23, 0.9);
-            flex-shrink: 0;
-        }
-
-        .slide-info h3 {
-            color: var(--text-primary);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .slide-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Slider Navigation */
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            pointer-events: none;
-            z-index: 20;
-        }
-
-        .slider-btn {
-            width: 60px;
-            height: 60px;
-            background: rgba(88, 166, 255, 0.2);
-            border: 2px solid rgba(88, 166, 255, 0.5);
-            color: var(--accent-color);
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            pointer-events: all;
-            backdrop-filter: blur(10px);
-        }
-
-        .slider-btn:hover {
-            background: rgba(88, 166, 255, 0.3);
-            border-color: var(--accent-color);
-            transform: scale(1.1);
-            box-shadow: var(--shadow-light);
-        }
-
-        .slider-btn:active {
-            transform: scale(0.95);
-        }
-
-        .prev-btn {
-            margin-left: -80px;
-        }
-
-        .next-btn {
-            margin-right: -80px;
-        }
-
-        /* Slider Dots */
-        .slider-dots {
-            position: relative;
-            margin-top: 60px;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            z-index: 20;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(88, 166, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: var(--accent-gradient);
-            transform: scale(1.2);
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
-        }
-
-        .dot:hover {
-            background: rgba(88, 166, 255, 0.6);
-            transform: scale(1.1);
-        }
-
-        /* About & Contact Sections */
-        .about {
-            background: rgba(22, 27, 34, 0.3);
-        }
-
-        .about-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-        }
-
-        .contact {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            background: var(--card-bg);
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: rgba(88, 166, 255, 0.1);
-            border-color: rgba(88, 166, 255, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .contact-item a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .contact-item a:hover {
-            color: var(--accent-hover);
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(13, 17, 23, 0.9);
-            padding: 2rem;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--accent-gradient);
-            z-index: 1001;
-            transition: width 0.3s ease;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                height: 80vh;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .slider-container {
-                min-height: 400px;
-                margin-top: 6rem; /* Mobile spacing adjustment */
-            }
-
-            .slide {
-                width: 320px;
-                max-height: 400px;
-            }
-
-            .slide-image img {
-                max-height: 280px;
-            }
-
-            .slide.active {
-                transform: translateX(0) scale(1);
-            }
-
-            .slide.prev {
-                transform: translateX(-200px) scale(0.7);
-            }
-
-            .slide.next {
-                transform: translateX(200px) scale(0.7);
-            }
-
-            .slider-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-
-            .prev-btn {
-                margin-left: -60px;
-            }
-
-            .next-btn {
-                margin-right: -60px;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #161b22;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-gradient);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(45deg, #79c0ff, #a5f3fc);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codebat Technology Inc. - Quantum AI Drug Discovery</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-bg: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a1f26 100%);
+      --card-bg: rgba(22, 27, 34, 0.6);
+      --border-color: rgba(240, 246, 252, 0.1);
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #c9d1d9;
+      --accent-gradient: linear-gradient(45deg, #58a6ff, #79c0ff);
+      --accent-color: #58a6ff;
+      --accent-hover: #79c0ff;
+      --shadow-light: 0 10px 30px rgba(88, 166, 255, 0.3);
+      --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      backdrop-filter: blur(20px);
+      background: rgba(13, 17, 23, 0.8);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .logo-word {
+      width: 120px;
+      height: 25px;
+      margin-right: 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 50%;
+      background: var(--accent-gradient);
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(88, 166, 255, 0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #58a6ff, #79c0ff, #a5f3fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: slideInUp 1s ease-out;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+      animation: slideInUp 1s ease-out 0.2s both;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      color: var(--text-muted);
+      animation: slideInUp 1s ease-out 0.4s both;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: slideInUp 1s ease-out 0.6s both;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #0d1117;
+      box-shadow: var(--shadow-light);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(88, 166, 255, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid rgba(88, 166, 255, 0.5);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(88, 166, 255, 0.1);
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    /* Particles */
+    .particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(88, 166, 255, 0.6);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 1;
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 0.5;
+      }
+    }
+
+    /* Common Section Styles */
+    .section {
+      padding: 6rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Features Section */
+    .features {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(88, 166, 255, 0.3);
+      box-shadow: var(--shadow-heavy);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--accent-gradient);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      background: rgba(22, 27, 34, 0.2);
+      overflow: hidden;
+      padding-top: 10rem;
+      /* Increase spacing to fix overlap */
+      padding-bottom: 8rem;
+    }
+
+    .gallery-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .slider-container {
+      position: relative;
+      margin-top: 20rem;
+      /* Further increase top spacing */
+      min-height: 500px;
+      perspective: 1000px;
+    }
+
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+
+    .slide {
+      position: absolute;
+      width: 600px;
+      max-height: 500px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+      cursor: pointer;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-heavy);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide.active {
+      transform: translateX(0) scale(1) rotateY(0deg);
+      opacity: 1;
+      z-index: 10;
+      box-shadow: 0 30px 60px rgba(88, 166, 255, 0.2);
+      border-color: rgba(88, 166, 255, 0.3);
+    }
+
+    .slide.prev {
+      transform: translateX(-350px) scale(0.8) rotateY(15deg);
+      opacity: 0.6;
+      z-index: 5;
+    }
+
+    .slide.next {
+      transform: translateX(350px) scale(0.8) rotateY(-15deg);
+      opacity: 0.6;
+      z-index: 5;
+    }
+
+    .slide.hidden {
+      transform: translateX(-700px) scale(0.6) rotateY(45deg);
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .slide.hidden.next-hidden {
+      transform: translateX(700px) scale(0.6) rotateY(-45deg);
+    }
+
+    .slide-image {
+      width: 100%;
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(13, 17, 23, 0.5);
+    }
+
+    .slide-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, transparent 70%, rgba(13, 17, 23, 0.3) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .slide-image img {
+      max-width: 100%;
+      max-height: 400px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 0;
+    }
+
+    .slide:hover .slide-image img {
+      transform: scale(1.02);
+    }
+
+    .slide-info {
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      background: rgba(13, 17, 23, 0.9);
+      flex-shrink: 0;
+    }
+
+    .slide-info h3 {
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .slide-info p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Slider Navigation */
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .slider-btn {
+      width: 60px;
+      height: 60px;
+      background: rgba(88, 166, 255, 0.2);
+      border: 2px solid rgba(88, 166, 255, 0.5);
+      color: var(--accent-color);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      pointer-events: all;
+      backdrop-filter: blur(10px);
+    }
+
+    .slider-btn:hover {
+      background: rgba(88, 166, 255, 0.3);
+      border-color: var(--accent-color);
+      transform: scale(1.1);
+      box-shadow: var(--shadow-light);
+    }
+
+    .slider-btn:active {
+      transform: scale(0.95);
+    }
+
+    .prev-btn {
+      margin-left: -80px;
+    }
+
+    .next-btn {
+      margin-right: -80px;
+    }
+
+    /* Slider Dots */
+    .slider-dots {
+      position: relative;
+      margin-top: 300px;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      z-index: 20;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(88, 166, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: var(--accent-gradient);
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+    }
+
+    .dot:hover {
+      background: rgba(88, 166, 255, 0.6);
+      transform: scale(1.1);
+    }
+
+    /* About & Contact Sections */
+    .about {
+      background: rgba(22, 27, 34, 0.3);
+    }
+
+    .about-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      min-height: 400px;
+    }
+
+    .about-text-section {
+      flex: 1;
+      text-align: left;
+    }
+
+    .about-text-section .section-title {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .about-logo-section {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-logo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      box-shadow: 0 20px 60px rgba(88, 166, 255, 0.3);
+      transition: all 0.4s ease;
+      border: 3px solid rgba(88, 166, 255, 0.2);
+    }
+
+    .about-logo:hover {
+      transform: scale(1.05) rotate(5deg);
+      box-shadow: 0 30px 80px rgba(88, 166, 255, 0.5);
+      border-color: rgba(88, 166, 255, 0.4);
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    .contact {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      background: var(--card-bg);
+      border-radius: 15px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(88, 166, 255, 0.1);
+      border-color: rgba(88, 166, 255, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .contact-item a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-item a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(13, 17, 23, 0.9);
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent-gradient);
+      z-index: 1001;
+      transition: width 0.3s ease;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        height: 120vh;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .slider-container {
+        min-height: 400px;
+        margin-top: 6rem;
+        /* Mobile spacing adjustment */
+      }
+
+      .slide {
+        width: 320px;
+        max-height: 400px;
+      }
+
+      .slide-image img {
+        max-height: 280px;
+      }
+
+      .slide.active {
+        transform: translateX(0) scale(1);
+      }
+
+      .slide.prev {
+        transform: translateX(-200px) scale(0.7);
+      }
+
+      .slide.next {
+        transform: translateX(200px) scale(0.7);
+      }
+
+      .slider-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+
+      .prev-btn {
+        margin-left: -60px;
+      }
+
+      .next-btn {
+        margin-right: -60px;
+      }
+
+      .contact-info {
+          flex-direction: column;
+          gap: 1rem;
+      }
+
+      .about-container {
+          flex-direction: column;
+          gap: 2rem;
+          min-height: auto;
+          text-align: center;
+      }
+
+      .about-text-section .section-title {
+          text-align: center;
+      }
+
+      .about-text-section {
+          text-align: center;
+      }
+
+      .about-logo-section {
+          display: none;
+      }
+      }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #161b22;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-gradient);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(45deg, #79c0ff, #a5f3fc);
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-indicator" id="scrollIndicator"></div>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-indicator" id="scrollIndicator"></div>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div style="display: flex; align-items: center;">
-                <img class="logo-img" src="./assets/logo.png" alt="">
-                <img class="logo-word" src="./assets/logo-word.png" alt="">
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="flex">
+        <img class="logo-img" src="./assets/logo.png" alt="" />
+        <img class="logo-word" src="./assets/logo-word.png" alt="" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="particles" id="particles"></div>
+    <div class="hero-content">
+      <h1>Codebat Technology</h1>
+      <p class="subtitle">Quantum + AI Drug Discovery Platform</p>
+      <p class="description">
+        Pioneering the future of pharmaceutical research through quantum
+        computing and artificial intelligence. Our revolutionary PharmFlow
+        platform accelerates drug discovery from months to days.
+      </p>
+      <div class="cta-buttons">
+        <a href="#features" class="btn btn-primary">
+          <span>🚀</span> Explore PharmFlow
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <span>📧</span> Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section features" id="features">
+    <h2 class="section-title">Revolutionary Features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚛️</div>
+        <h3>Hybrid Quantum-Classical Engine</h3>
+        <p>Next-generation simulation engine combining quantum computing principles with classical high-performance
+          computing for unprecedented molecular modeling accuracy.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>AI-Driven Molecular Design</h3>
+        <p>Advanced machine learning algorithms optimize drug compounds in real-time, reducing development timelines
+          from years to months.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Real-Time Chemistry Simulation</h3>
+        <p>Live molecular dynamics with quantum corrections provide instant feedback on drug interactions and efficacy
+          predictions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Integrated ADMET Prediction</h3>
+        <p>Built-in machine learning pipeline for Absorption, Distribution, Metabolism, Excretion, and Toxicity analysis
+          to ensure drug safety.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">☁️</div>
+        <h3>Scalable Cloud Architecture</h3>
+        <p>Cloud-native platform scales automatically to handle massive computational workloads while maintaining
+          optimal performance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Enterprise Security & Compliance</h3>
+        <p>Advanced security framework ensures pharmaceutical data protection with full regulatory compliance and audit
+          trails.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery" id="gallery">
+    <div class="gallery-content">
+      <h2 class="section-title" style="margin-bottom: 15rem;">Platform Demo</h2>
+      <div class="slider-container">
+        <div class="slider-wrapper" style="margin-top: 3rem;">
+          <div class="slides" id="slides">
+            <div class="slide active" data-index="0">
+              <div class="slide-image">
+                <img src="./assets/demo/vqe1.png" alt="VQE Algorithm - Part 1" loading="lazy">
+              </div>
+              <div class="slide-info">
+                <h3>VQE Algorithm - Part 1</h3>
+                <p>Quantum molecular optimization</p>
+              </div>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="slide next" data-index="1">
+              <div class="slide-image">
+                <img src="./assets/demo/vqe2.png" alt="VQE Algorithm - Part 2" loading="lazy">
+              </div>
+              <div class="slide-info">
+                <h3>VQE Algorithm - Part 2</h3>
+                <p>Advanced quantum simulation</p>
+              </div>
+            </div>
+            <div class="slide hidden next-hidden" data-index="2">
+              <div class="slide-image">
+                <img src="./assets/demo/analysis.png" alt="Analysis Dashboard" loading="lazy">
+              </div>
+              <div class="slide-info">
+                <h3>Analysis Dashboard</h3>
+                <p>Molecular analysis interface</p>
+              </div>
+            </div>
+            <div class="slide hidden next-hidden" data-index="3">
+              <div class="slide-image">
+                <img src="./assets/demo/survival_Curves.png" alt="Clinical Survival Curves" loading="lazy">
+              </div>
+              <div class="slide-info">
+                <h3>Clinical Survival Curves</h3>
+                <p>Drug efficacy analysis</p>
+              </div>
+            </div>
+            <div class="slide hidden next-hidden" data-index="4">
+              <div class="slide-image">
+                <img src="./assets/demo/multispot_trial.png" alt="Multi-center Clinical Trial" loading="lazy">
+              </div>
+              <div class="slide-info">
+                <h3>Multi-center Clinical Trial</h3>
+                <p>Global trial site optimization</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="particles" id="particles"></div>
-        <div class="hero-content">
-            <h1>Codebat Technology</h1>
-            <p class="subtitle">Quantum + AI Drug Discovery Platform</p>
-            <p class="description">
-                Pioneering the future of pharmaceutical research through quantum
-                computing and artificial intelligence. Our revolutionary PharmFlow
-                platform accelerates drug discovery from months to days.
-            </p>
-            <div class="cta-buttons">
-                <a href="#features" class="btn btn-primary">
-                    <span>🚀</span> Explore PharmFlow
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <span>📧</span> Get in Touch
-                </a>
-            </div>
+        <div class="slider-nav">
+          <button class="slider-btn prev-btn" id="prevBtn">‹</button>
+          <button class="slider-btn next-btn" id="nextBtn">›</button>
         </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="section features" id="features">
-        <h2 class="section-title">Revolutionary Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⚛️</div>
-                <h3>Hybrid Quantum-Classical Engine</h3>
-                <p>Next-generation simulation engine combining quantum computing principles with classical high-performance computing for unprecedented molecular modeling accuracy.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🧠</div>
-                <h3>AI-Driven Molecular Design</h3>
-                <p>Advanced machine learning algorithms optimize drug compounds in real-time, reducing development timelines from years to months.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Real-Time Chemistry Simulation</h3>
-                <p>Live molecular dynamics with quantum corrections provide instant feedback on drug interactions and efficacy predictions.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Integrated ADMET Prediction</h3>
-                <p>Built-in machine learning pipeline for Absorption, Distribution, Metabolism, Excretion, and Toxicity analysis to ensure drug safety.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">☁️</div>
-                <h3>Scalable Cloud Architecture</h3>
-                <p>Cloud-native platform scales automatically to handle massive computational workloads while maintaining optimal performance.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Enterprise Security & Compliance</h3>
-                <p>Advanced security framework ensures pharmaceutical data protection with full regulatory compliance and audit trails.</p>
-            </div>
+        <div class="slider-dots" id="sliderDots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+          <span class="dot" data-index="3"></span>
+          <span class="dot" data-index="4"></span>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
-        <div class="gallery-content">
-            <h2 class="section-title">Platform Demo</h2>
-            <div class="slider-container">
-                <div class="slider-wrapper" style="margin-top: 3rem;">
-                    <div class="slides" id="slides">
-                        <div class="slide active" data-index="0">
-                            <div class="slide-image">
-                                <img src="./assets/demo/vqe1.png" alt="VQE Algorithm - Part 1" loading="lazy">
-                            </div>
-                            <div class="slide-info">
-                                <h3>VQE Algorithm - Part 1</h3>
-                                <p>Quantum molecular optimization</p>
-                            </div>
-                        </div>
-                        <div class="slide next" data-index="1">
-                            <div class="slide-image">
-                                <img src="./assets/demo/vqe2.png" alt="VQE Algorithm - Part 2" loading="lazy">
-                            </div>
-                            <div class="slide-info">
-                                <h3>VQE Algorithm - Part 2</h3>
-                                <p>Advanced quantum simulation</p>
-                            </div>
-                        </div>
-                        <div class="slide hidden next-hidden" data-index="2">
-                            <div class="slide-image">
-                                <img src="./assets/demo/analysis.png" alt="Analysis Dashboard" loading="lazy">
-                            </div>
-                            <div class="slide-info">
-                                <h3>Analysis Dashboard</h3>
-                                <p>Molecular analysis interface</p>
-                            </div>
-                        </div>
-                        <div class="slide hidden next-hidden" data-index="3">
-                            <div class="slide-image">
-                                <img src="./assets/demo/survival_Curves.png" alt="Clinical Survival Curves" loading="lazy">
-                            </div>
-                            <div class="slide-info">
-                                <h3>Clinical Survival Curves</h3>
-                                <p>Drug efficacy analysis</p>
-                            </div>
-                        </div>
-                        <div class="slide hidden next-hidden" data-index="4">
-                            <div class="slide-image">
-                                <img src="./assets/demo/multispot_trial.png" alt="Multi-center Clinical Trial" loading="lazy">
-                            </div>
-                            <div class="slide-info">
-                                <h3>Multi-center Clinical Trial</h3>
-                                <p>Global trial site optimization</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-nav">
-                    <button class="slider-btn prev-btn" id="prevBtn">‹</button>
-                    <button class="slider-btn next-btn" id="nextBtn">›</button>
-                </div>
-                <div class="slider-dots" id="sliderDots">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
-                    <span class="dot" data-index="3"></span>
-                    <span class="dot" data-index="4"></span>
-                </div>
-            </div>
+  <!-- About Section -->
+  <section class="section about" id="about">
+    <div class="about-content">
+      <div class="about-container">
+        <div class="about-text-section">
+          <h2 class="section-title">About Codebat Technology</h2>
+          <div class="about-text">
+            <p>Codebat Technology Inc. represents a paradigm shift in computational drug discovery, combining classical
+              high-performance computing with quantum-ready algorithms to accelerate pharmaceutical research and
+              development. Our flagship product, <strong>PharmFlow Drug Discovery Module</strong>, integrates molecular
+              dynamics simulations, machine learning models, and intelligent agents to provide comprehensive drug
+              discovery capabilities from target identification to lead optimization.</p>
+            <br>
+            <p>The Quantum-Ready Edition v1.0 establishes the foundation for next-generation drug discovery by
+              implementing hybrid classical-quantum algorithms, preparing for the quantum advantage in molecular
+              simulation while maintaining practical utility on current hardware. Our modular architecture ensures
+              seamless integration with existing pharmaceutical workflows while providing extensibility for future
+              quantum computing resources.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="about-content">
-            <h2 class="section-title">About Codebat Technology</h2>
-            <div class="about-text">
-                <p>Codebat Technology Inc. represents a paradigm shift in computational drug discovery, combining classical high-performance computing with quantum-ready algorithms to accelerate pharmaceutical research and development. Our flagship product, <strong>PharmFlow Drug Discovery Module</strong>, integrates molecular dynamics simulations, machine learning models, and intelligent agents to provide comprehensive drug discovery capabilities from target identification to lead optimization.</p>
-                <br>
-                <p>The Quantum-Ready Edition v1.0 establishes the foundation for next-generation drug discovery by implementing hybrid classical-quantum algorithms, preparing for the quantum advantage in molecular simulation while maintaining practical utility on current hardware. Our modular architecture ensures seamless integration with existing pharmaceutical workflows while providing extensibility for future quantum computing resources.</p>
-            </div>
+        <div class="about-logo-section">
+          <img src="./assets/logo.png" alt="Codebat Technology Logo" class="about-logo">
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <h2 class="section-title">Get in Touch</h2>
-        <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem">
-            Ready to revolutionize your drug discovery process? Let's discuss how PharmFlow can accelerate your research.
-        </p>
-        <div class="contact-info">
-            <div class="contact-item">
-                <span>📧</span>
-                <a href="mailto:support@codebat.ai">support@codebat.ai</a>
-            </div>
-            <div class="contact-item">
-                <span>🔗</span>
-                <a href="https://github.com/codebatai" target="_blank">github.com/codebatai</a>
-            </div>
-        </div>
-    </section>
+  <!-- Contact Section -->
+  <section class="section contact" id="contact">
+    <h2 class="section-title">Get in Touch</h2>
+    <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem">
+      Ready to revolutionize your drug discovery process? Let's discuss how PharmFlow can accelerate your research.
+    </p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span>📧</span>
+        <a href="mailto:support@codebat.ai">support@codebat.ai</a>
+      </div>
+      <div class="contact-item">
+        <span>🔗</span>
+        <a href="https://github.com/codebatai" target="_blank">github.com/codebatai</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Codebat Technology Inc. All rights reserved. | Quantum + AI Drug Discovery Platform</p>
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Codebat Technology Inc. All rights reserved. | Quantum + AI Drug Discovery Platform</p>
+  </footer>
 
-    <script>
-        // Utility functions
-        const $ = id => document.getElementById(id);
-        const $$ = selector => document.querySelectorAll(selector);
+  <script>
+    // Utility functions
+    const $ = id => document.getElementById(id);
+    const $$ = selector => document.querySelectorAll(selector);
 
-        // State
-        let currentSlide = 0;
-        const totalSlides = 5;
+    // State
+    let currentSlide = 0;
+    const totalSlides = 5;
 
-        // Scroll progress indicator
-        const updateScrollIndicator = () => {
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercent = (scrollTop / scrollHeight) * 100;
-            $('scrollIndicator').style.width = scrollPercent + '%';
-        };
+    // Scroll progress indicator
+    const updateScrollIndicator = () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+      $('scrollIndicator').style.width = scrollPercent + '%';
+    };
 
-        // Navbar background on scroll
-        const updateNavbar = () => {
-            const navbar = $('navbar');
-            navbar.style.background = window.scrollY > 100 ? 'rgba(13, 17, 23, 0.95)' : 'rgba(13, 17, 23, 0.8)';
-        };
+    // Navbar background on scroll
+    const updateNavbar = () => {
+      const navbar = $('navbar');
+      navbar.style.background = window.scrollY > 100 ? 'rgba(13, 17, 23, 0.95)' : 'rgba(13, 17, 23, 0.8)';
+    };
 
-        // Smooth scrolling
-        const initSmoothScrolling = () => {
-            $$('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', e => {
-                    e.preventDefault();
-                    const target = document.querySelector(anchor.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-        };
+    // Smooth scrolling
+    const initSmoothScrolling = () => {
+      $$('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.querySelector(anchor.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    };
 
-        // Create floating particles
-        const createParticles = () => {
-            const container = $('particles');
-            const fragment = document.createDocumentFragment();
-            
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.cssText = `
+    // Create floating particles
+    const createParticles = () => {
+      const container = $('particles');
+      const fragment = document.createDocumentFragment();
+
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
                     left: ${Math.random() * 100}%;
                     top: ${Math.random() * 100}%;
                     animation-delay: ${Math.random() * 6}s;
                     animation-duration: ${Math.random() * 3 + 3}s;
                 `;
-                fragment.appendChild(particle);
-            }
-            container.appendChild(fragment);
-        };
+        fragment.appendChild(particle);
+      }
+      container.appendChild(fragment);
+    };
 
-        // Feature cards animation
-        const animateOnScroll = () => {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
+    // Feature cards animation
+    const animateOnScroll = () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
 
-            $$('.feature-card').forEach((card, index) => {
-                card.style.cssText = `
+      $$('.feature-card').forEach((card, index) => {
+        card.style.cssText = `
                     opacity: 0;
                     transform: translateY(50px);
                     transition: all 0.6s ease ${index * 0.1}s;
                 `;
-                observer.observe(card);
-            });
-        };
+        observer.observe(card);
+      });
+    };
 
-        // Slider functionality
-        const updateSlider = () => {
-            const slides = $$('.slide');
-            const dots = $$('.dot');
+    // Slider functionality
+    const updateSlider = () => {
+      const slides = $$('.slide');
+      const dots = $$('.dot');
 
-            slides.forEach((slide, index) => {
-                slide.className = 'slide';
-                dots[index].classList.remove('active');
-                
-                if (index === currentSlide) {
-                    slide.classList.add('active');
-                    dots[index].classList.add('active');
-                } else if (index === (currentSlide - 1 + totalSlides) % totalSlides) {
-                    slide.classList.add('prev');
-                } else if (index === (currentSlide + 1) % totalSlides) {
-                    slide.classList.add('next');
-                } else {
-                    slide.classList.add('hidden');
-                    if (index > currentSlide || (currentSlide === totalSlides - 1 && index === 0)) {
-                        slide.classList.add('next-hidden');
-                    }
-                }
-            });
-        };
+      slides.forEach((slide, index) => {
+        slide.className = 'slide';
+        dots[index].classList.remove('active');
 
-        const nextSlide = () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlider();
-        };
+        if (index === currentSlide) {
+          slide.classList.add('active');
+          dots[index].classList.add('active');
+        } else if (index === (currentSlide - 1 + totalSlides) % totalSlides) {
+          slide.classList.add('prev');
+        } else if (index === (currentSlide + 1) % totalSlides) {
+          slide.classList.add('next');
+        } else {
+          slide.classList.add('hidden');
+          if (index > currentSlide || (currentSlide === totalSlides - 1 && index === 0)) {
+            slide.classList.add('next-hidden');
+          }
+        }
+      });
+    };
 
-        const prevSlide = () => {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        };
+    const nextSlide = () => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlider();
+    };
 
-        const goToSlide = index => {
-            currentSlide = index;
-            updateSlider();
-        };
+    const prevSlide = () => {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    };
 
-        // Initialize slider
-        const initSlider = () => {
-            $('nextBtn').addEventListener('click', nextSlide);
-            $('prevBtn').addEventListener('click', prevSlide);
+    const goToSlide = index => {
+      currentSlide = index;
+      updateSlider();
+    };
 
-            $$('.dot').forEach((dot, index) => {
-                dot.addEventListener('click', () => goToSlide(index));
-            });
+    // Initialize slider
+    const initSlider = () => {
+      $('nextBtn').addEventListener('click', nextSlide);
+      $('prevBtn').addEventListener('click', prevSlide);
 
-            // Touch support
-            let touchStartX = 0;
-            const slider = document.querySelector('.slider-container');
+      $$('.dot').forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
 
-            slider.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
+      // Touch support
+      let touchStartX = 0;
+      const slider = document.querySelector('.slider-container');
 
-            slider.addEventListener('touchend', e => {
-                const touchEndX = e.changedTouches[0].screenX;
-                const swipeDistance = touchEndX - touchStartX;
-                
-                if (Math.abs(swipeDistance) > 50) {
-                    swipeDistance > 0 ? prevSlide() : nextSlide();
-                }
-            });
+      slider.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
 
-            // Keyboard support
-            document.addEventListener('keydown', e => {
-                if (e.key === 'ArrowLeft') prevSlide();
-                if (e.key === 'ArrowRight') nextSlide();
-            });
+      slider.addEventListener('touchend', e => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const swipeDistance = touchEndX - touchStartX;
 
-            // Auto-advance
-            setInterval(nextSlide, 5000);
-        };
+        if (Math.abs(swipeDistance) > 50) {
+          swipeDistance > 0 ? prevSlide() : nextSlide();
+        }
+      });
 
-        // Mouse parallax effect
-        const initParallax = () => {
-            document.addEventListener('mousemove', e => {
-                const particles = $$('.particle');
-                const x = e.clientX / window.innerWidth;
-                const y = e.clientY / window.innerHeight;
+      // Keyboard support
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+      });
 
-                particles.forEach((particle, index) => {
-                    const speed = ((index % 5) + 1) * 0.5;
-                    const xPos = (x - 0.5) * speed;
-                    const yPos = (y - 0.5) * speed;
-                    particle.style.transform += ` translate(${xPos}px, ${yPos}px)`;
-                });
-            });
-        };
+      // Auto-advance
+      setInterval(nextSlide, 5000);
+    };
 
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add loading animation
-            document.body.style.cssText = 'opacity: 0; transition: opacity 0.5s ease;';
-            setTimeout(() => document.body.style.opacity = '1', 100);
+    // Mouse parallax effect
+    const initParallax = () => {
+      document.addEventListener('mousemove', e => {
+        const particles = $$('.particle');
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
 
-            // Initialize all features
-            initSmoothScrolling();
-            createParticles();
-            animateOnScroll();
-            initSlider();
-            initParallax();
-
-            // Event listeners
-            window.addEventListener('scroll', () => {
-                updateScrollIndicator();
-                updateNavbar();
-            });
+        particles.forEach((particle, index) => {
+          const speed = ((index % 5) + 1) * 0.5;
+          const xPos = (x - 0.5) * speed;
+          const yPos = (y - 0.5) * speed;
+          particle.style.transform += ` translate(${xPos}px, ${yPos}px)`;
         });
-    </script>
+      });
+    };
+
+    // Initialize everything
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add loading animation
+      document.body.style.cssText = 'opacity: 0; transition: opacity 0.5s ease;';
+      setTimeout(() => document.body.style.opacity = '1', 100);
+
+      // Initialize all features
+      initSmoothScrolling();
+      createParticles();
+      animateOnScroll();
+      initSlider();
+      initParallax();
+
+      // Event listeners
+      window.addEventListener('scroll', () => {
+        updateScrollIndicator();
+        updateNavbar();
+      });
+    });
+  </script>
 </body>
+
 </html>
