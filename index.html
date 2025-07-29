@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codebat Technology Inc. - Quantum AI Drug Discovery</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0d1117 0%,
+          #161b22 50%,
+          #1a1f26 100%
+        );
+        color: #e6edf3;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        backdrop-filter: blur(20px);
+        background: rgba(13, 17, 23, 0.8);
+        border-bottom: 1px solid rgba(240, 246, 252, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .flex {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .logo-word {
+        width: 120px;
+        height: 25px;
+        margin-right: 1rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: #e6edf3;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #58a6ff;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        background: linear-gradient(45deg, #58a6ff, #79c0ff);
+        transition: all 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+        left: 0;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(88, 166, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: pulse 4s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 2rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #58a6ff, #79c0ff, #a5f3fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: slideInUp 1s ease-out;
+      }
+
+      .hero .subtitle {
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        margin-bottom: 2rem;
+        color: #8b949e;
+        animation: slideInUp 1s ease-out 0.2s both;
+      }
+
+      .hero .description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+        color: #c9d1d9;
+        animation: slideInUp 1s ease-out 0.4s both;
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: slideInUp 1s ease-out 0.6s both;
+      }
+
+      .btn {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, #58a6ff, #79c0ff);
+        color: #0d1117;
+        box-shadow: 0 10px 30px rgba(88, 166, 255, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(88, 166, 255, 0.5);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: #e6edf3;
+        border: 2px solid rgba(88, 166, 255, 0.5);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(88, 166, 255, 0.1);
+        border-color: #58a6ff;
+        transform: translateY(-2px);
+      }
+
+      /* Floating particles */
+      .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(88, 166, 255, 0.6);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+          opacity: 0.5;
+        }
+      }
+
+      /* Features Section */
+      .features {
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 3rem;
+        background: linear-gradient(45deg, #58a6ff, #79c0ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .feature-card {
+        background: rgba(22, 27, 34, 0.6);
+        border: 1px solid rgba(240, 246, 252, 0.1);
+        border-radius: 20px;
+        padding: 2rem;
+        backdrop-filter: blur(20px);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(45deg, #58a6ff, #79c0ff);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(88, 166, 255, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .feature-card:hover::before {
+        opacity: 1;
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(45deg, #58a6ff, #79c0ff);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #e6edf3;
+      }
+
+      .feature-card p {
+        color: #8b949e;
+        line-height: 1.7;
+      }
+
+      /* About Section */
+      .about {
+        padding: 6rem 2rem;
+        background: rgba(22, 27, 34, 0.3);
+      }
+
+      .about-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #c9d1d9;
+        margin-bottom: 3rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 6rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        margin-top: 3rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        background: rgba(22, 27, 34, 0.6);
+        border-radius: 15px;
+        border: 1px solid rgba(240, 246, 252, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .contact-item:hover {
+        background: rgba(88, 166, 255, 0.1);
+        border-color: rgba(88, 166, 255, 0.3);
+        transform: translateY(-5px);
+      }
+
+      .contact-item a {
+        color: #58a6ff;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .contact-item a:hover {
+        color: #79c0ff;
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(13, 17, 23, 0.9);
+        padding: 2rem;
+        text-align: center;
+        border-top: 1px solid rgba(240, 246, 252, 0.1);
+        color: #8b949e;
+      }
+
+      /* Scroll indicator */
+      .scroll-indicator {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(45deg, #58a6ff, #79c0ff);
+        z-index: 1001;
+        transition: width 0.3s ease;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          height: 80vh;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #161b22;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(45deg, #58a6ff, #79c0ff);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(45deg, #79c0ff, #a5f3fc);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <div class="flex">
+          <img class="logo-img" src="./assets/logo.png" alt="" />
+          <img class="logo-word" src="./assets/logo-word.png" alt="" />
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="particles" id="particles"></div>
+      <div class="hero-content">
+        <h1>Codebat Technology</h1>
+        <p class="subtitle">Quantum + AI Drug Discovery Platform</p>
+        <p class="description">
+          Pioneering the future of pharmaceutical research through quantum
+          computing and artificial intelligence. Our revolutionary PharmFlow
+          platform accelerates drug discovery from months to days.
+        </p>
+        <div class="cta-buttons">
+          <a href="#features" class="btn btn-primary">
+            <span>🚀</span> Explore PharmFlow
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <span>📧</span> Get in Touch
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <h2 class="section-title">Revolutionary Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚛️</div>
+          <h3>Hybrid Quantum-Classical Engine</h3>
+          <p>
+            Next-generation simulation engine combining quantum computing
+            principles with classical high-performance computing for
+            unprecedented molecular modeling accuracy.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h3>AI-Driven Molecular Design</h3>
+          <p>
+            Advanced machine learning algorithms optimize drug compounds in
+            real-time, reducing development timelines from years to months.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Real-Time Chemistry Simulation</h3>
+          <p>
+            Live molecular dynamics with quantum corrections provide instant
+            feedback on drug interactions and efficacy predictions.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Integrated ADMET Prediction</h3>
+          <p>
+            Built-in machine learning pipeline for Absorption, Distribution,
+            Metabolism, Excretion, and Toxicity analysis to ensure drug safety.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">☁️</div>
+          <h3>Scalable Cloud Architecture</h3>
+          <p>
+            Cloud-native platform scales automatically to handle massive
+            computational workloads while maintaining optimal performance.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Enterprise Security & Compliance</h3>
+          <p>
+            Advanced security framework ensures pharmaceutical data protection
+            with full regulatory compliance and audit trails.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="about-content">
+        <h2 class="section-title">About Codebat Technology</h2>
+        <div class="about-text">
+          <p>
+            Codebat Technology Inc. represents a paradigm shift in computational
+            drug discovery, combining classical high-performance computing with
+            quantum-ready algorithms to accelerate pharmaceutical research and
+            development. Our flagship product,
+            <strong>PharmFlow Drug Discovery Module</strong>, integrates
+            molecular dynamics simulations, machine learning models, and
+            intelligent agents to provide comprehensive drug discovery
+            capabilities from target identification to lead optimization.
+          </p>
+          <br />
+          <p>
+            The Quantum-Ready Edition v1.0 establishes the foundation for
+            next-generation drug discovery by implementing hybrid
+            classical-quantum algorithms, preparing for the quantum advantage in
+            molecular simulation while maintaining practical utility on current
+            hardware. Our modular architecture ensures seamless integration with
+            existing pharmaceutical workflows while providing extensibility for
+            future quantum computing resources.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2 class="section-title">Get in Touch</h2>
+      <p style="color: #8b949e; font-size: 1.1rem; margin-bottom: 2rem">
+        Ready to revolutionize your drug discovery process? Let's discuss how
+        PharmFlow can accelerate your research.
+      </p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span>📧</span>
+          <a href="mailto:support@codebat.ai">support@codebat.ai</a>
+        </div>
+        <div class="contact-item">
+          <span>🔗</span>
+          <a href="https://github.com/codebatai" target="_blank"
+            >github.com/codebatai</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy; 2025 Codebat Technology Inc. All rights reserved. | Quantum + AI
+        Drug Discovery Platform
+      </p>
+    </footer>
+
+    <script>
+      // Scroll progress indicator
+      window.addEventListener("scroll", () => {
+        const scrollTop = document.documentElement.scrollTop;
+        const scrollHeight =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / scrollHeight) * 100;
+        document.getElementById("scrollIndicator").style.width =
+          scrollPercent + "%";
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Navbar background on scroll
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 100) {
+          navbar.style.background = "rgba(13, 17, 23, 0.95)";
+        } else {
+          navbar.style.background = "rgba(13, 17, 23, 0.8)";
+        }
+      });
+
+      // Create floating particles
+      function createParticles() {
+        const particlesContainer = document.getElementById("particles");
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 6 + "s";
+          particle.style.animationDuration = Math.random() * 3 + 3 + "s";
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Feature cards scroll animation
+      function animateOnScroll() {
+        const cards = document.querySelectorAll(".feature-card");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        cards.forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(50px)";
+          card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+          observer.observe(card);
+        });
+      }
+
+      // Mouse move parallax effect
+      document.addEventListener("mousemove", (e) => {
+        const particles = document.querySelectorAll(".particle");
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+
+        particles.forEach((particle, index) => {
+          const speed = ((index % 5) + 1) * 0.5;
+          const xPos = (x - 0.5) * speed;
+          const yPos = (y - 0.5) * speed;
+          particle.style.transform += ` translate(${xPos}px, ${yPos}px)`;
+        });
+      });
+
+      // Initialize animations
+      document.addEventListener("DOMContentLoaded", () => {
+        createParticles();
+        animateOnScroll();
+
+        // Add loading animation
+        document.body.style.opacity = "0";
+        document.body.style.transition = "opacity 0.5s ease";
+        setTimeout(() => {
+          document.body.style.opacity = "1";
+        }, 100);
+      });
+
+      // Button click effects
+      document.querySelectorAll(".btn").forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          const ripple = document.createElement("span");
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+
+          ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+
+          this.style.position = "relative";
+          this.style.overflow = "hidden";
+          this.appendChild(ripple);
+
+          setTimeout(() => ripple.remove(), 600);
+        });
+      });
+
+      // Add ripple animation keyframes
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
