@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resource Center | Trusted Computing Platform - Codebat Technology</title>
+  <meta name="description" content="Download technical whitepapers, view evidence package samples, read privacy policy and terms of service.">
+  <link rel="icon" type="image/png" href="./assets/logo.png">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo" aria-label="Home">
+        <img src="./assets/logo.png" alt="Codebat Logo" class="logo-img">
+        <span>Codebat</span>
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#values">Core Values</a></li>
+        <li><a href="/how">How It Works</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/product">Product</a></li>
+        <li><a href="/contact" class="btn btn-primary" style="padding: 8px 20px;">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="padding: 140px 0 80px;">
+    <div class="container" style="max-width: 860px;">
+      <h1 class="text-center">Resource Center</h1>
+      <p class="text-center text-muted" style="font-size: 18px; margin-top: 20px;">
+        Download technical documentation, view samples, and review policies
+      </p>
+    </div>
+  </section>
+
+  <!-- Download Resources -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center mb-5">Technical Documentation Downloads</h2>
+      <div class="grid-3">
+
+        <div class="card reveal-on-scroll">
+          <div style="font-size: 48px; margin-bottom: 16px;">📄</div>
+          <h3>Technical Whitepaper</h3>
+          <p style="margin-bottom: 20px;">
+            Complete technical architecture, security design, and performance evaluation report (PDF, 2.8 MB)
+          </p>
+          <a href="#" class="btn btn-primary" style="width: 100%;"
+             onclick="alert('Whitepaper will be available soon'); return false;">
+            Download Whitepaper
+          </a>
+        </div>
+
+        <div class="card reveal-on-scroll">
+          <div style="font-size: 48px; margin-bottom: 16px;">📦</div>
+          <h3>Evidence Package Sample</h3>
+          <p style="margin-bottom: 20px;">
+            Real evidence package structure and verification tool usage guide (ZIP, 1.2 MB)
+          </p>
+          <a href="#" class="btn btn-ghost" style="width: 100%;"
+             onclick="alert('Evidence package sample will be available soon'); return false;">
+            Download Sample
+          </a>
+        </div>
+
+        <div class="card reveal-on-scroll">
+          <div style="font-size: 48px; margin-bottom: 16px;">🔧</div>
+          <h3>Verification Tool</h3>
+          <p style="margin-bottom: 20px;">
+            Third-party evidence package verification tool (open-source, Linux/macOS/Windows)
+          </p>
+          <a href="https://github.com/codebatai" target="_blank" rel="noopener"
+             class="btn btn-ghost" style="width: 100%;">
+            Go to GitHub
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Policies & Terms -->
+  <section class="section" id="privacy">
+    <div class="container" style="max-width: 860px;">
+      <h2 class="text-center mb-5">Privacy Policy & Terms of Service</h2>
+
+      <!-- Privacy Policy -->
+      <div class="card reveal-on-scroll" style="margin-bottom: 32px;">
+        <h3 style="margin-bottom: 16px;">🔒 Privacy Policy</h3>
+        <p style="color: var(--muted); line-height: 1.8; margin-bottom: 16px;">
+          Last updated: January 2025
+        </p>
+
+        <h4 style="font-size: 16px; margin-top: 24px; margin-bottom: 12px;">1. Data Collection and Use</h4>
+        <p style="color: var(--muted); line-height: 1.8;">
+          We commit to <strong>not collecting, not storing, not processing</strong> your plaintext data. The platform only handles end-to-end encrypted ciphertext with no decryption capability.
+        </p>
+
+        <h4 style="font-size: 16px; margin-top: 24px; margin-bottom: 12px;">2. Information We Collect</h4>
+        <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
+          <li><strong>Metadata</strong>: Task ID, timestamps, file size (encrypted), hash values</li>
+          <li><strong>System Logs</strong>: System performance monitoring and error detection (no business data)</li>
+          <li><strong>Evidence Packages</strong>: Event record hashes, Merkle trees, signatures (WORM storage)</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 24px; margin-bottom: 12px;">3. Data Protection Measures</h4>
+        <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
+          <li>End-to-end encryption (AES-256-GCM)</li>
+          <li>microVM isolated execution</li>
+          <li>WORM evidence package storage</li>
+          <li>Access control and audit trails</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 24px; margin-bottom: 12px;">4. Third-Party Services</h4>
+        <p style="color: var(--muted); line-height: 1.8;">
+          We do not use third-party analytics or advertising services. On-premises deployments run entirely within your infrastructure with no external dependencies.
+        </p>
+
+        <h4 style="font-size: 16px; margin-top: 24px; margin-bottom: 12px;">5. Your Rights</h4>
+        <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
+          <li>Query and export evidence packages at any time</li>
+          <li>Request deletion of account and related metadata</li>
+          <li>Use verification tools to independently audit evidence chains</li>
+        </ul>
+
+        <p style="margin-top: 24px; padding: 16px; background: var(--paper); border-radius: 8px; color: var(--muted);">
+          For privacy-related questions, contact: <a href="mailto:privacy@codebat.ai" style="color: var(--teal);">privacy@codebat.ai</a>
+        </p>
+      </div>
+
+      <!-- Terms of Service -->
+      <div class="card reveal-on-scroll" id="terms">
+        <h3 style="margin-bottom: 16px;">📜 Terms of Service</h3>
+        <p style="color: var(--muted); line-height: 1.8; margin-bottom: 16px;">
+          Last updated: January 2025
+        </p>
+
+        <h4 style="font-size: 16px; margin-top: 24px; margin-bottom: 12px;">1. Service Scope</h4>
+        <p style="color: var(--muted); line-height: 1.8;">
+          Codebat Technology provides <strong>Trusted Computing Platform</strong> services, including encrypted upload, isolated execution, evidence package generation, and verification capabilities.
+        </p>
+
+        <h4 style="font-size: 16px; margin-top: 24px; margin-bottom: 12px;">2. User Responsibilities</h4>
+        <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
+          <li>Users are responsible for safeguarding encryption keys; lost keys result in unrecoverable data</li>
+          <li>Users must ensure uploaded content complies with local laws and regulations</li>
+          <li>Prohibited uses include illegal, infringing, or malicious purposes</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 24px; margin-bottom: 12px;">3. Service Availability</h4>
+        <p style="color: var(--muted); line-height: 1.8;">
+          We commit to <strong>99.5% service availability</strong> (SLA). Service interruptions due to maintenance or force majeure will be announced in advance with prompt restoration.
+        </p>
+
+        <h4 style="font-size: 16px; margin-top: 24px; margin-bottom: 12px;">4. Disclaimer</h4>
+        <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
+          <li>We are not responsible for the legality of user-uploaded content</li>
+          <li>Users bear losses from key loss or leakage</li>
+          <li>Third-party verification tools are community-maintained; we do not guarantee their accuracy</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin-top: 24px; margin-bottom: 12px;">5. Terms Changes</h4>
+        <p style="color: var(--muted); line-height: 1.8;">
+          We reserve the right to modify these terms at any time. Significant changes will be announced 30 days in advance.
+        </p>
+
+        <p style="margin-top: 24px; padding: 16px; background: var(--paper); border-radius: 8px; color: var(--muted);">
+          For terms-related questions, contact: <a href="mailto:legal@codebat.ai" style="color: var(--teal);">legal@codebat.ai</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-bar">
+    <div class="container">
+      <h2>Ready to Get Started?</h2>
+      <p>Request a PoC or contact us to learn more</p>
+      <div class="cta-buttons">
+        <a href="/contact" class="btn btn-primary">Contact Now</a>
+        <a href="/" class="btn btn-ghost" style="border-color: rgba(255,255,255,0.3); color: white;">
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Codebat Technology</h4>
+          <p style="font-size: 14px; line-height: 1.6;">
+            Trusted Computing Platform Provider<br>
+            Encrypted Upload・Isolated Execution・Verifiable Evidence
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/product">Product Overview</a></li>
+            <li><a href="/how">How It Works</a></li>
+            <li><a href="/resources">Documentation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="/resources">Download Whitepaper</a></li>
+            <li><a href="/resources#privacy">Privacy Policy</a></li>
+            <li><a href="/resources#terms">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:support@codebat.ai">support@codebat.ai</a></li>
+            <li><a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="/contact">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Codebat Technology Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
