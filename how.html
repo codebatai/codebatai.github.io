@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works | Trusted Computing Platform - Codebat Technology</title>
+  <meta name="description" content="Learn the four-step workflow: encrypted upload, isolated execution, evidence generation, result delivery.">
+  <link rel="icon" type="image/png" href="./assets/logo.png">
+  <link rel="stylesheet" href="./css/main.css">
+  <style>
+    .step-detail {
+      background: white;
+      border: 1px solid #eef2f7;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-detail h2 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--teal);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .tech-stack {
+      background: var(--paper);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .tech-stack h4 {
+      margin-bottom: 12px;
+      color: var(--ink);
+      font-size: 16px;
+    }
+
+    .tech-stack ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .tech-stack code {
+      background: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      border: 1px solid #dfe4ea;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo" aria-label="Home">
+        <img src="./assets/logo.png" alt="Codebat Logo" class="logo-img">
+        <span>Codebat</span>
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#values">Core Values</a></li>
+        <li><a href="/how" style="color: var(--teal);">How It Works</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/product">Product</a></li>
+        <li><a href="/contact" class="btn btn-primary" style="padding: 8px 20px;">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="padding: 140px 0 80px;">
+    <div class="container" style="max-width: 860px;">
+      <h1 class="text-center">How It Works in Four Steps</h1>
+      <p class="text-center text-muted" style="font-size: 18px; margin-top: 20px;">
+        From encrypted upload to result delivery, every step is carefully designed
+      </p>
+    </div>
+  </section>
+
+  <!-- Detailed Steps -->
+  <section class="section">
+    <div class="container" style="max-width: 920px;">
+
+      <!-- Step 1 -->
+      <div class="step-detail reveal-on-scroll">
+        <h2>
+          <span class="step-number">1</span>
+          Encrypted Upload, Plaintext Stays Inside
+        </h2>
+        <p style="font-size: 17px; line-height: 1.8; color: var(--muted); margin-bottom: 20px;">
+          Data is <strong>end-to-end encrypted</strong> (AES-256-GCM supported) on-premises before being sent to the platform; the platform only handles ciphertext and cannot interpret the original content.
+        </p>
+
+        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">How It Works</h3>
+        <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
+          <li>Client generates ephemeral encryption key</li>
+          <li>Encrypts data and metadata using AES-256-GCM mode</li>
+          <li>Encryption key is kept by the client or protected using asymmetric encryption</li>
+          <li>Platform only receives and stores ciphertext with no decryption capability</li>
+        </ul>
+
+        <div class="tech-stack">
+          <h4>🔧 Technical Details</h4>
+          <ul>
+            <li>Encryption algorithm: <code>AES-256-GCM</code> (authenticated encryption)</li>
+            <li>Key exchange: <code>ECDH</code> or <code>RSA-OAEP</code></li>
+            <li>Integrity protection: <code>HMAC-SHA256</code></li>
+            <li>Transport layer: <code>TLS 1.3</code></li>
+          </ul>
+        </div>
+
+        <p style="margin-top: 20px; padding: 16px; background: #f0f9ff; border-left: 4px solid var(--teal); border-radius: 8px; color: var(--ink);">
+          <strong>💡 Key Advantage:</strong> Even if the platform is compromised, attackers can only obtain ciphertext and cannot interpret the original data.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-detail reveal-on-scroll">
+        <h2>
+          <span class="step-number">2</span>
+          Isolated Execution, Anti-Surveillance Mechanisms
+        </h2>
+        <p style="font-size: 17px; line-height: 1.8; color: var(--muted); margin-bottom: 20px;">
+          Each task runs in an isolated <strong>Kata microVM</strong>, blocking sensitive operations like <code>ptrace</code>, <code>/proc</code> injection, and memory snooping; no external connections during execution.
+        </p>
+
+        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">How It Works</h3>
+        <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
+          <li>Each task launches an independent microVM (based on Kata Containers)</li>
+          <li>Enforces security policies: blocks system calls like <code>ptrace</code>, <code>process_vm_readv</code></li>
+          <li>Network isolation: default deny all egress, only allows specific internal communication</li>
+          <li>Read-only filesystem: except for work directory, all other paths are read-only</li>
+        </ul>
+
+        <div class="tech-stack">
+          <h4>🔧 Technical Details</h4>
+          <ul>
+            <li>Virtualization: <code>Kata Containers</code> + <code>QEMU/KVM</code></li>
+            <li>Security policy: <code>seccomp-bpf</code> + <code>AppArmor/SELinux</code></li>
+            <li>Network isolation: <code>iptables</code> + <code>network namespace</code></li>
+            <li>Resource limits: <code>cgroups v2</code></li>
+          </ul>
+        </div>
+
+        <p style="margin-top: 20px; padding: 16px; background: #f0f9ff; border-left: 4px solid var(--teal); border-radius: 8px; color: var(--ink);">
+          <strong>💡 Key Advantage:</strong> Even if algorithm code is backdoored, it cannot steal data from other tasks or communicate externally.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-detail reveal-on-scroll">
+        <h2>
+          <span class="step-number">3</span>
+          Automatic Evidence Generation, WORM Storage
+        </h2>
+        <p style="font-size: 17px; line-height: 1.8; color: var(--muted); margin-bottom: 20px;">
+          All events (upload, execution, output) instantly generate hash → <strong>Merkle tree</strong> → signature & timestamp, written to <strong>WORM storage</strong> and immutable.
+        </p>
+
+        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">How It Works</h3>
+        <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
+          <li>Each operation generates an event log including timestamp, operator, operation type</li>
+          <li>Event content is hashed using SHA-256</li>
+          <li>Hashes form a Merkle tree, calculating root hash</li>
+          <li>Root hash and timestamp are signed together (using platform private key)</li>
+          <li>Evidence package is written to WORM storage (S3 Object Lock or MinIO Retention)</li>
+        </ul>
+
+        <div class="tech-stack">
+          <h4>🔧 Technical Details</h4>
+          <ul>
+            <li>Hash algorithm: <code>SHA-256</code></li>
+            <li>Signature algorithm: <code>ECDSA (P-256)</code> or <code>Ed25519</code></li>
+            <li>Timestamp service: <code>RFC 3161</code> standard (optional)</li>
+            <li>WORM storage: <code>S3 Object Lock</code> or <code>MinIO Governance/Compliance Mode</code></li>
+          </ul>
+        </div>
+
+        <p style="margin-top: 20px; padding: 16px; background: #f0f9ff; border-left: 4px solid var(--teal); border-radius: 8px; color: var(--ink);">
+          <strong>💡 Key Advantage:</strong> Once written, evidence packages are immediately locked and no one (including administrators) can modify or delete them, ensuring audit trail integrity.
+        </p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-detail reveal-on-scroll">
+        <h2>
+          <span class="step-number">4</span>
+          Encrypted Result Delivery, Independent Verification
+        </h2>
+        <p style="font-size: 17px; line-height: 1.8; color: var(--muted); margin-bottom: 20px;">
+          Execution results are encrypted before return; only parties with decryption keys can view them. Evidence packages can be <strong>independently verified by third parties to reconstruct the verification chain</strong>.
+        </p>
+
+        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">How It Works</h3>
+        <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
+          <li>Computation results are encrypted inside the microVM (using the key from Step 1)</li>
+          <li>Encrypted results and evidence package are returned together to the client</li>
+          <li>Client uses private key to decrypt results</li>
+          <li>Third parties can use verification tools to verify evidence packages:
+            <ul style="margin-top: 8px;">
+              <li>Reconstruct Merkle tree, verify root hash</li>
+              <li>Verify signature and timestamp</li>
+              <li>Check WORM storage integrity</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="tech-stack">
+          <h4>🔧 Technical Details</h4>
+          <ul>
+            <li>Result encryption: same key and algorithm as Step 1</li>
+            <li>Evidence package format: <code>JSON</code> or <code>Protocol Buffers</code></li>
+            <li>Verification tool: open-source CLI tool (Python/Go)</li>
+            <li>Verification API: <code>RESTful API</code> for third-party integration</li>
+          </ul>
+        </div>
+
+        <p style="margin-top: 20px; padding: 16px; background: #f0f9ff; border-left: 4px solid var(--teal); border-radius: 8px; color: var(--ink);">
+          <strong>💡 Key Advantage:</strong> Auditors don't need to trust the platform provider and can independently verify the authenticity and integrity of all operation records.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Workflow Diagram (Simplified) -->
+  <section class="section" style="background: var(--paper);">
+    <div class="container" style="max-width: 920px;">
+      <h2 class="text-center mb-4">Complete Workflow Diagram</h2>
+      <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: var(--shadow-md); text-align: center;">
+        <svg width="100%" height="320" viewBox="0 0 800 320" style="max-width: 800px; margin: 0 auto;">
+          <!-- Step 1 -->
+          <rect x="50" y="20" width="150" height="60" rx="12" fill="#00B8A9" opacity="0.1" stroke="#00B8A9" stroke-width="2"/>
+          <text x="125" y="45" text-anchor="middle" font-size="14" font-weight="600" fill="#0b1220">1. Encrypted Upload</text>
+          <text x="125" y="65" text-anchor="middle" font-size="12" fill="#627084">AES-256-GCM</text>
+
+          <!-- Arrow -->
+          <path d="M 200 50 L 250 50" stroke="#00B8A9" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+          <!-- Step 2 -->
+          <rect x="250" y="20" width="150" height="60" rx="12" fill="#00B8A9" opacity="0.1" stroke="#00B8A9" stroke-width="2"/>
+          <text x="325" y="45" text-anchor="middle" font-size="14" font-weight="600" fill="#0b1220">2. Isolated Execution</text>
+          <text x="325" y="65" text-anchor="middle" font-size="12" fill="#627084">Kata microVM</text>
+
+          <!-- Arrow -->
+          <path d="M 400 50 L 450 50" stroke="#00B8A9" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+          <!-- Step 3 -->
+          <rect x="450" y="20" width="150" height="60" rx="12" fill="#00B8A9" opacity="0.1" stroke="#00B8A9" stroke-width="2"/>
+          <text x="525" y="45" text-anchor="middle" font-size="14" font-weight="600" fill="#0b1220">3. Evidence Generation</text>
+          <text x="525" y="65" text-anchor="middle" font-size="12" fill="#627084">WORM Storage</text>
+
+          <!-- Arrow -->
+          <path d="M 525 80 L 525 130" stroke="#00B8A9" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+          <!-- Step 4 -->
+          <rect x="450" y="130" width="150" height="60" rx="12" fill="#00B8A9" opacity="0.1" stroke="#00B8A9" stroke-width="2"/>
+          <text x="525" y="155" text-anchor="middle" font-size="14" font-weight="600" fill="#0b1220">4. Result Delivery</text>
+          <text x="525" y="175" text-anchor="middle" font-size="12" fill="#627084">Encrypted Return</text>
+
+          <!-- Bottom Note -->
+          <rect x="100" y="230" width="600" height="70" rx="8" fill="#f0f9ff" stroke="#00B8A9" stroke-width="1"/>
+          <text x="400" y="255" text-anchor="middle" font-size="14" font-weight="600" fill="#0b1220">🔐 End-to-End Security Guarantee</text>
+          <text x="400" y="280" text-anchor="middle" font-size="12" fill="#627084">Plaintext Stays Inside ｜ Execution Isolated ｜ Evidence Immutable ｜ Independently Verifiable</text>
+
+          <!-- Arrow Marker Definition -->
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#00B8A9" />
+            </marker>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-bar">
+    <div class="container">
+      <h2>Want to Experience the Workflow Firsthand?</h2>
+      <p>Request a PoC or download the technical whitepaper</p>
+      <div class="cta-buttons">
+        <a href="/contact" class="btn btn-primary">Request PoC</a>
+        <a href="/resources" class="btn btn-ghost" style="border-color: rgba(255,255,255,0.3); color: white;">
+          Download Whitepaper
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Codebat Technology</h4>
+          <p style="font-size: 14px; line-height: 1.6;">
+            Trusted Computing Platform Provider<br>
+            Encrypted Upload・Isolated Execution・Verifiable Evidence
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/product">Product Overview</a></li>
+            <li><a href="/how">How It Works</a></li>
+            <li><a href="/resources">Documentation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="/resources">Download Whitepaper</a></li>
+            <li><a href="/resources#privacy">Privacy Policy</a></li>
+            <li><a href="/resources#terms">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:support@codebat.ai">support@codebat.ai</a></li>
+            <li><a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="/contact">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Codebat Technology Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="./js/app.js"></script>
+</body>
+
+</html>

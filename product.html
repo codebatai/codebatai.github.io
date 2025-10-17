@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Overview | Trusted Computing Platform - Codebat Technology</title>
+  <meta name="description" content="Learn about the security features, technical advantages, and our commitments. End-to-end encryption, microVM isolation, immutable evidence packages.">
+  <link rel="icon" type="image/png" href="./assets/logo.png">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo" aria-label="Home">
+        <img src="./assets/logo.png" alt="Codebat Logo" class="logo-img">
+        <span>Codebat</span>
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#values">Core Values</a></li>
+        <li><a href="/how">How It Works</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/product" style="color: var(--teal);">Product</a></li>
+        <li><a href="/contact" class="btn btn-primary" style="padding: 8px 20px;">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="padding: 140px 0 80px;">
+    <div class="container" style="max-width: 860px;">
+      <h1 class="text-center">Why More Secure</h1>
+      <p class="text-center text-muted" style="font-size: 18px; margin-top: 20px;">
+        Not just technical specifications, but a commitment to data privacy and security
+      </p>
+    </div>
+  </section>
+
+  <!-- Why More Secure (Detailed) -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card reveal-on-scroll">
+          <h3>🏠 Data Stays On-Premises</h3>
+          <p>
+            <strong>Supports on-premises S3/MinIO (Object Lock)</strong>. All data storage and processing occurs within your infrastructure; plaintext never leaves, all processing is encrypted.
+          </p>
+          <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
+            <li>Compatible with S3 API on-premises object storage</li>
+            <li>Supports Object Lock (WORM) mode</li>
+            <li>Integrates with existing backup and disaster recovery processes</li>
+          </ul>
+        </div>
+
+        <div class="card reveal-on-scroll">
+          <h3>👁️ Execution Cannot Be Spied On</h3>
+          <p>
+            <strong>microVM isolation + anti-surveillance rules</strong> block sensitive behaviors like <code>ptrace</code> and <code>/proc</code> injection. Each task runs in an isolated lightweight VM with a secure and controlled execution environment.
+          </p>
+          <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
+            <li>Kata Containers microVM technology</li>
+            <li>Default deny egress (no external connections)</li>
+            <li>Customizable and auditable security rules</li>
+          </ul>
+        </div>
+
+        <div class="card reveal-on-scroll">
+          <h3>📜 Evidence Speaks, Not Claims</h3>
+          <p>
+            Every event has a timestamp and signature. <strong>Not a claim, but verifiable proof</strong>. Third parties can use verification tools to reconstruct the complete evidence chain without trusting the platform provider.
+          </p>
+          <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
+            <li>Event hash → Merkle tree → signature</li>
+            <li>WORM storage (immutable after write)</li>
+            <li>Provides independent verification tools and documentation</li>
+          </ul>
+        </div>
+
+        <div class="card reveal-on-scroll">
+          <h3>🔧 Compatible with Your Current Setup</h3>
+          <p>
+            <strong>No need to replace servers or change BIOS settings</strong>; supports CPU/GPU. Ready to use immediately, seamless integration with existing infrastructure, no vendor lock-in.
+          </p>
+          <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
+            <li>Supports mainstream x86-64 architecture</li>
+            <li>Both CPU and GPU acceleration available</li>
+            <li>Containerized deployment, easy to maintain</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Promise -->
+  <section class="section" style="background: var(--paper);">
+    <div class="container" style="max-width: 960px;">
+      <h2 class="text-center mb-5">Our Promise</h2>
+
+      <div class="grid-3">
+        <div class="card reveal-on-scroll">
+          <h3>🔒 Privacy</h3>
+          <p>
+            Default deny egress; results are delivered only to parties with decryption keys. We cannot and will not attempt to interpret your data.
+          </p>
+        </div>
+
+        <div class="card reveal-on-scroll">
+          <h3>🌐 Transparency</h3>
+          <p>
+            Supply chain signatures, approval processes, and key release procedures are all recorded. Every step is traceable, every decision has evidence.
+          </p>
+        </div>
+
+        <div class="card reveal-on-scroll">
+          <h3>✅ Auditable</h3>
+          <p>
+            Provides verification tools that allow third parties to reconstruct evidence chains. Security is not a black box, but independently verifiable facts.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Band -->
+  <div class="trust-band">
+    <div class="container">
+      <h3 class="text-center mb-4" style="color: var(--ink);">Technical Features Overview</h3>
+      <div class="trust-items" style="max-width: 960px; margin: 0 auto;">
+        <div class="trust-item">
+          <div class="trust-icon">🔐</div>
+          <p>End-to-End Encryption<br><small style="color: var(--muted); font-size: 12px;">AES-256-GCM</small></p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🛡️</div>
+          <p>Immutable Evidence<br><small style="color: var(--muted); font-size: 12px;">WORM Storage</small></p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🔬</div>
+          <p>Kata microVM Isolation<br><small style="color: var(--muted); font-size: 12px;">Strong Isolation</small></p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🏢</div>
+          <p>On-Premises Support<br><small style="color: var(--muted); font-size: 12px;">S3/MinIO</small></p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">⚡</div>
+          <p>CPU/GPU Support<br><small style="color: var(--muted); font-size: 12px;">Flexible Computing</small></p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🔍</div>
+          <p>Independently Verifiable<br><small style="color: var(--muted); font-size: 12px;">Third-Party Verification</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature Comparison -->
+  <section class="section">
+    <div class="container" style="max-width: 960px;">
+      <h2 class="text-center mb-5">Comparison with Traditional Solutions</h2>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md);">
+          <thead>
+            <tr style="background: var(--bg); color: white;">
+              <th style="padding: 16px; text-align: left; font-weight: 600;">Feature</th>
+              <th style="padding: 16px; text-align: center; font-weight: 600;">Traditional Cloud</th>
+              <th style="padding: 16px; text-align: center; font-weight: 600; background: var(--teal);">Trusted Computing Platform</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #eef2f7;">
+              <td style="padding: 16px; font-weight: 500;">Data Upload</td>
+              <td style="padding: 16px; text-align: center; color: var(--muted);">Plaintext or simple encryption</td>
+              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">End-to-end encryption</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eef2f7;">
+              <td style="padding: 16px; font-weight: 500;">Execution Isolation</td>
+              <td style="padding: 16px; text-align: center; color: var(--muted);">Container / VM</td>
+              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">microVM + Anti-surveillance</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eef2f7;">
+              <td style="padding: 16px; font-weight: 500;">Evidence Trail</td>
+              <td style="padding: 16px; text-align: center; color: var(--muted);">Logs (modifiable)</td>
+              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">WORM Evidence Package</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eef2f7;">
+              <td style="padding: 16px; font-weight: 500;">Third-Party Verification</td>
+              <td style="padding: 16px; text-align: center; color: var(--muted);">❌ Not supported</td>
+              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">✅ Independent verification</td>
+            </tr>
+            <tr>
+              <td style="padding: 16px; font-weight: 500;">On-Premises Deployment</td>
+              <td style="padding: 16px; text-align: center; color: var(--muted);">⚠️ Limited support</td>
+              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">✅ Full support</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-bar">
+    <div class="container">
+      <h2>Want to Learn Technical Details?</h2>
+      <p>Download the whitepaper or schedule a technical consultation</p>
+      <div class="cta-buttons">
+        <a href="/resources" class="btn btn-ghost" style="border-color: rgba(255,255,255,0.3); color: white;">
+          Download Whitepaper
+        </a>
+        <a href="/contact" class="btn btn-primary">
+          Schedule Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Codebat Technology</h4>
+          <p style="font-size: 14px; line-height: 1.6;">
+            Trusted Computing Platform Provider<br>
+            Encrypted Upload・Isolated Execution・Verifiable Evidence
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/product">Product Overview</a></li>
+            <li><a href="/how">How It Works</a></li>
+            <li><a href="/resources">Documentation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="/resources">Download Whitepaper</a></li>
+            <li><a href="/resources#privacy">Privacy Policy</a></li>
+            <li><a href="/resources#terms">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:support@codebat.ai">support@codebat.ai</a></li>
+            <li><a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="/contact">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Codebat Technology Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
