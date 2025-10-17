@@ -311,6 +311,79 @@ function initPageLoadAnimation() {
 }
 
 // ===========================
+// 12. 下載按鈕增強效果
+// ===========================
+function initDownloadButtons() {
+  const downloadButtons = document.querySelectorAll('.download-btn');
+
+  downloadButtons.forEach(btn => {
+    btn.addEventListener('click', async function(e) {
+      // 如果沒有有效的 href，不執行動畫
+      if (!this.href || this.href === '#') {
+        return;
+      }
+
+      // 添加下載中狀態
+      this.classList.add('downloading');
+      const originalText = this.querySelector('.download-text').textContent;
+      const iconEl = this.querySelector('.download-icon');
+      const originalIcon = iconEl.textContent;
+
+      iconEl.textContent = '⏳';
+
+      // 預載資源 (使用 fetch 檢查文件)
+      try {
+        const response = await fetch(this.href, { method: 'HEAD' });
+        if (response.ok) {
+          // 模擬短暫延遲以顯示動畫
+          await new Promise(resolve => setTimeout(resolve, 300));
+
+          // 顯示成功狀態
+          this.classList.remove('downloading');
+          this.classList.add('success');
+          iconEl.textContent = '✓';
+          this.querySelector('.download-text').textContent = 'Downloaded!';
+
+          // 2秒後恢復原狀
+          setTimeout(() => {
+            this.classList.remove('success');
+            iconEl.textContent = originalIcon;
+            this.querySelector('.download-text').textContent = originalText;
+          }, 2000);
+        } else {
+          throw new Error('File not found');
+        }
+      } catch (error) {
+        // 如果文件不存在，移除動畫狀態但允許下載繼續
+        this.classList.remove('downloading');
+        iconEl.textContent = originalIcon;
+        console.log('預載檢查失敗，但下載仍會繼續:', error.message);
+      }
+    });
+
+    // 添加鍵盤支援
+    btn.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+
+    // hover 時預載資源（提升用戶體驗）
+    btn.addEventListener('mouseenter', function() {
+      if (this.href && this.href !== '#' && !this.dataset.preloaded) {
+        // 使用 link preload 提示瀏覽器預載
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = this.href;
+        document.head.appendChild(link);
+        this.dataset.preloaded = 'true';
+      }
+    });
+  });
+}
+
+// ===========================
 // 初始化所有功能
 // ===========================
 function init() {
@@ -336,6 +409,7 @@ function initAll() {
   initKeyboardNavigation();
   initLazyLoading();
   initPageLoadAnimation();
+  initDownloadButtons();
 
   console.log('✅ 初始化完成');
 }
