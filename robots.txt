@@ -1,0 +1,13 @@
+# robots.txt for codebat.ai
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Disallow specific files
+Disallow: /DEPLOYMENT.md
+Disallow: /README.md
+Disallow: /.git/
+
+# Sitemap
+Sitemap: https://codebat.ai/sitemap.xml
