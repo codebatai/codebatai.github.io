@@ -175,6 +175,19 @@ a:hover {
   width: 100%;
 }
 
+/* Ensure button styles in nav */
+.nav-links a.btn-primary {
+  color: var(--white);
+}
+
+.nav-links a.btn-primary:hover {
+  color: var(--white);
+}
+
+.nav-links a.btn-primary::after {
+  display: none; /* Remove underline effect for buttons */
+}
+
 /* Mobile Menu Toggle */
 .menu-toggle {
   display: none;
