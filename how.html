@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How It Works | Trusted Computing Platform - Codebat Technology</title>
-  <meta name="description" content="Learn the four-step workflow: encrypted upload, isolated execution, evidence generation, result delivery.">
+  <meta name="description" content="Discover our four-step security workflow: encrypted upload, isolated execution, Evidence Package creation, and verifiable result delivery.">
   <link rel="icon" type="image/png" href="./assets/logo.png">
   <link rel="stylesheet" href="./css/main.css">
   <style>
@@ -115,29 +115,29 @@
           Encrypted Upload, Plaintext Stays Inside
         </h2>
         <p style="font-size: 17px; line-height: 1.8; color: var(--muted); margin-bottom: 20px;">
-          Data is <strong>end-to-end encrypted</strong> (AES-256-GCM supported) on-premises before being sent to the platform; the platform only handles ciphertext and cannot interpret the original content.
+          Your data is <strong>encrypted with military-grade encryption</strong> on your premises before transmission. The platform only handles encrypted data and has zero capability to decrypt or view your sensitive information.
         </p>
 
-        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">How It Works</h3>
+        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">What Happens</h3>
         <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
-          <li>Client generates ephemeral encryption key</li>
-          <li>Encrypts data and metadata using AES-256-GCM mode</li>
-          <li>Encryption key is kept by the client or protected using asymmetric encryption</li>
-          <li>Platform only receives and stores ciphertext with no decryption capability</li>
+          <li>Encryption keys are generated and controlled entirely by you</li>
+          <li>All data and metadata are encrypted before leaving your infrastructure</li>
+          <li>Keys never leave your control—protected by industry-standard cryptography</li>
+          <li>Our platform processes only encrypted data with no ability to decrypt</li>
         </ul>
 
         <div class="tech-stack">
-          <h4>🔧 Technical Details</h4>
+          <h4>🔧 Security Highlights</h4>
           <ul>
-            <li>Encryption algorithm: <code>AES-256-GCM</code> (authenticated encryption)</li>
-            <li>Key exchange: <code>ECDH</code> or <code>RSA-OAEP</code></li>
-            <li>Integrity protection: <code>HMAC-SHA256</code></li>
-            <li>Transport layer: <code>TLS 1.3</code></li>
+            <li>Military-grade encryption standards</li>
+            <li>Secure key exchange protocols</li>
+            <li>Cryptographic integrity verification</li>
+            <li>Encrypted transport channels</li>
           </ul>
         </div>
 
         <p style="margin-top: 20px; padding: 16px; background: #f0f9ff; border-left: 4px solid var(--teal); border-radius: 8px; color: var(--ink);">
-          <strong>💡 Key Advantage:</strong> Even if the platform is compromised, attackers can only obtain ciphertext and cannot interpret the original data.
+          <strong>💡 Key Benefit:</strong> Even in a worst-case breach scenario, your sensitive data remains completely protected—attackers can only access useless encrypted information.
         </p>
       </div>
 
@@ -145,32 +145,32 @@
       <div class="step-detail reveal-on-scroll">
         <h2>
           <span class="step-number">2</span>
-          Isolated Execution, Anti-Surveillance Mechanisms
+          Isolated Execution, Protected Environment
         </h2>
         <p style="font-size: 17px; line-height: 1.8; color: var(--muted); margin-bottom: 20px;">
-          Each task runs in an isolated <strong>Kata microVM</strong>, blocking sensitive operations like <code>ptrace</code>, <code>/proc</code> injection, and memory snooping; no external connections during execution.
+          Each task runs in a <strong>completely isolated execution environment</strong> with advanced security controls that prevent unauthorized monitoring, data extraction attempts, or external communications.
         </p>
 
-        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">How It Works</h3>
+        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">What Happens</h3>
         <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
-          <li>Each task launches an independent microVM (based on Kata Containers)</li>
-          <li>Enforces security policies: blocks system calls like <code>ptrace</code>, <code>process_vm_readv</code></li>
-          <li>Network isolation: default deny all egress, only allows specific internal communication</li>
-          <li>Read-only filesystem: except for work directory, all other paths are read-only</li>
+          <li>Every task gets its own isolated, secure execution environment</li>
+          <li>Advanced security policies block all unauthorized access attempts</li>
+          <li>Zero external network access—completely air-gapped during processing</li>
+          <li>System files are locked down—only authorized operations permitted</li>
         </ul>
 
         <div class="tech-stack">
-          <h4>🔧 Technical Details</h4>
+          <h4>🔧 Security Highlights</h4>
           <ul>
-            <li>Virtualization: <code>Kata Containers</code> + <code>QEMU/KVM</code></li>
-            <li>Security policy: <code>seccomp-bpf</code> + <code>AppArmor/SELinux</code></li>
-            <li>Network isolation: <code>iptables</code> + <code>network namespace</code></li>
-            <li>Resource limits: <code>cgroups v2</code></li>
+            <li>Enterprise virtualization technology</li>
+            <li>Multi-layered security enforcement</li>
+            <li>Network isolation and air-gapping</li>
+            <li>Resource and access controls</li>
           </ul>
         </div>
 
         <p style="margin-top: 20px; padding: 16px; background: #f0f9ff; border-left: 4px solid var(--teal); border-radius: 8px; color: var(--ink);">
-          <strong>💡 Key Advantage:</strong> Even if algorithm code is backdoored, it cannot steal data from other tasks or communicate externally.
+          <strong>💡 Key Benefit:</strong> Complete isolation means compromised code cannot steal data, access other tasks, or send information to external parties.
         </p>
       </div>
 
@@ -178,33 +178,33 @@
       <div class="step-detail reveal-on-scroll">
         <h2>
           <span class="step-number">3</span>
-          Automatic Evidence Generation, WORM Storage
+          Automatic Evidence Package Creation
         </h2>
         <p style="font-size: 17px; line-height: 1.8; color: var(--muted); margin-bottom: 20px;">
-          All events (upload, execution, output) instantly generate hash → <strong>Merkle tree</strong> → signature & timestamp, written to <strong>WORM storage</strong> and immutable.
+          Every operation automatically creates a cryptographically sealed <strong>Evidence Package</strong> containing tamper-proof records with digital signatures and timestamps, permanently locked in immutable storage.
         </p>
 
-        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">How It Works</h3>
+        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">What Happens</h3>
         <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
-          <li>Each operation generates an event log including timestamp, operator, operation type</li>
-          <li>Event content is hashed using SHA-256</li>
-          <li>Hashes form a Merkle tree, calculating root hash</li>
-          <li>Root hash and timestamp are signed together (using platform private key)</li>
-          <li>Evidence package is written to WORM storage (S3 Object Lock or MinIO Retention)</li>
+          <li>Every operation creates detailed event records with timestamps and operator information</li>
+          <li>Events are cryptographically hashed for integrity verification</li>
+          <li>Hashes are organized into verifiable proof structures</li>
+          <li>Everything is digitally signed with cryptographic keys</li>
+          <li>Evidence Packages are permanently locked—cannot be modified or deleted by anyone</li>
         </ul>
 
         <div class="tech-stack">
-          <h4>🔧 Technical Details</h4>
+          <h4>🔧 Security Highlights</h4>
           <ul>
-            <li>Hash algorithm: <code>SHA-256</code></li>
-            <li>Signature algorithm: <code>ECDSA (P-256)</code> or <code>Ed25519</code></li>
-            <li>Timestamp service: <code>RFC 3161</code> standard (optional)</li>
-            <li>WORM storage: <code>S3 Object Lock</code> or <code>MinIO Governance/Compliance Mode</code></li>
+            <li>Industry-standard cryptographic hashing</li>
+            <li>Digital signature technology</li>
+            <li>Trusted timestamping services</li>
+            <li>Write-once, tamper-proof storage</li>
           </ul>
         </div>
 
         <p style="margin-top: 20px; padding: 16px; background: #f0f9ff; border-left: 4px solid var(--teal); border-radius: 8px; color: var(--ink);">
-          <strong>💡 Key Advantage:</strong> Once written, evidence packages are immediately locked and no one (including administrators) can modify or delete them, ensuring audit trail integrity.
+          <strong>💡 Key Benefit:</strong> Evidence Packages are permanently sealed—not even system administrators can modify them. This gives you bulletproof audit trails that satisfy the strictest regulators.
         </p>
       </div>
 
@@ -212,38 +212,38 @@
       <div class="step-detail reveal-on-scroll">
         <h2>
           <span class="step-number">4</span>
-          Encrypted Result Delivery, Independent Verification
+          Secure Delivery with Verifiable Proof
         </h2>
         <p style="font-size: 17px; line-height: 1.8; color: var(--muted); margin-bottom: 20px;">
-          Execution results are encrypted before return; only parties with decryption keys can view them. Evidence packages can be <strong>independently verified by third parties to reconstruct the verification chain</strong>.
+          Results are encrypted before delivery and accessible only to authorized parties. Every Evidence Package can be <strong>independently verified by auditors, regulators, or third parties</strong>—no need to trust our claims.
         </p>
 
-        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">How It Works</h3>
+        <h3 style="font-size: 18px; margin-top: 24px; margin-bottom: 12px;">What Happens</h3>
         <ul style="padding-left: 20px; color: var(--muted); line-height: 1.8;">
-          <li>Computation results are encrypted inside the microVM (using the key from Step 1)</li>
-          <li>Encrypted results and evidence package are returned together to the client</li>
-          <li>Client uses private key to decrypt results</li>
-          <li>Third parties can use verification tools to verify evidence packages:
+          <li>Results are encrypted within the secure environment using your encryption keys</li>
+          <li>Encrypted results and Evidence Packages are delivered together</li>
+          <li>Only you can decrypt and view the results using your private keys</li>
+          <li>Auditors can verify Evidence Packages using our verification tools:
             <ul style="margin-top: 8px;">
-              <li>Reconstruct Merkle tree, verify root hash</li>
-              <li>Verify signature and timestamp</li>
-              <li>Check WORM storage integrity</li>
+              <li>Verify cryptographic proof structures</li>
+              <li>Confirm digital signatures and timestamps</li>
+              <li>Validate storage integrity and immutability</li>
             </ul>
           </li>
         </ul>
 
         <div class="tech-stack">
-          <h4>🔧 Technical Details</h4>
+          <h4>🔧 Security Highlights</h4>
           <ul>
-            <li>Result encryption: same key and algorithm as Step 1</li>
-            <li>Evidence package format: <code>JSON</code> or <code>Protocol Buffers</code></li>
-            <li>Verification tool: open-source CLI tool (Python/Go)</li>
-            <li>Verification API: <code>RESTful API</code> for third-party integration</li>
+            <li>Consistent encryption throughout the process</li>
+            <li>Standard-format Evidence Packages</li>
+            <li>Open-source verification tools</li>
+            <li>APIs for auditor integration</li>
           </ul>
         </div>
 
         <p style="margin-top: 20px; padding: 16px; background: #f0f9ff; border-left: 4px solid var(--teal); border-radius: 8px; color: var(--ink);">
-          <strong>💡 Key Advantage:</strong> Auditors don't need to trust the platform provider and can independently verify the authenticity and integrity of all operation records.
+          <strong>💡 Key Benefit:</strong> Auditors and regulators can verify everything independently—they don't have to take our word for it. The cryptographic proof provides mathematical certainty.
         </p>
       </div>
 
@@ -259,7 +259,7 @@
           <!-- Step 1 -->
           <rect x="50" y="20" width="150" height="60" rx="12" fill="#00B8A9" opacity="0.1" stroke="#00B8A9" stroke-width="2"/>
           <text x="125" y="45" text-anchor="middle" font-size="14" font-weight="600" fill="#0b1220">1. Encrypted Upload</text>
-          <text x="125" y="65" text-anchor="middle" font-size="12" fill="#627084">AES-256-GCM</text>
+          <text x="125" y="65" text-anchor="middle" font-size="12" fill="#627084">Military-Grade</text>
 
           <!-- Arrow -->
           <path d="M 200 50 L 250 50" stroke="#00B8A9" stroke-width="2" marker-end="url(#arrowhead)"/>
@@ -267,7 +267,7 @@
           <!-- Step 2 -->
           <rect x="250" y="20" width="150" height="60" rx="12" fill="#00B8A9" opacity="0.1" stroke="#00B8A9" stroke-width="2"/>
           <text x="325" y="45" text-anchor="middle" font-size="14" font-weight="600" fill="#0b1220">2. Isolated Execution</text>
-          <text x="325" y="65" text-anchor="middle" font-size="12" fill="#627084">Kata microVM</text>
+          <text x="325" y="65" text-anchor="middle" font-size="12" fill="#627084">Secure Isolation</text>
 
           <!-- Arrow -->
           <path d="M 400 50 L 450 50" stroke="#00B8A9" stroke-width="2" marker-end="url(#arrowhead)"/>
@@ -275,7 +275,7 @@
           <!-- Step 3 -->
           <rect x="450" y="20" width="150" height="60" rx="12" fill="#00B8A9" opacity="0.1" stroke="#00B8A9" stroke-width="2"/>
           <text x="525" y="45" text-anchor="middle" font-size="14" font-weight="600" fill="#0b1220">3. Evidence Generation</text>
-          <text x="525" y="65" text-anchor="middle" font-size="12" fill="#627084">WORM Storage</text>
+          <text x="525" y="65" text-anchor="middle" font-size="12" fill="#627084">Tamper-Proof</text>
 
           <!-- Arrow -->
           <path d="M 525 80 L 525 130" stroke="#00B8A9" stroke-width="2" marker-end="url(#arrowhead)"/>
