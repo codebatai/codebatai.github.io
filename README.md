@@ -1,52 +1,56 @@
-# 可信運算平台官方網站
+# Trusted Computing Platform - Official Website
 
-**Codebat Technology Inc. - 加密上傳・隔離執行・可驗證證據包**
+**Codebat Technology Inc. - Encrypted Upload · Isolated Execution · Verifiable Evidence Packages**
 
-## 📋 專案概述
+## 📋 Project Overview
 
-這是 Codebat Technology 可信運算平台的官方網站,採用純靜態 HTML/CSS/JavaScript 技術棧,部署於 GitHub Pages。
+This is the official website for Codebat Technology's Trusted Computing Platform, built with pure static HTML/CSS/JavaScript stack and deployed on GitHub Pages.
 
-### 核心特色
+### Core Features
 
-- ✅ **零依賴**: 不使用任何外部框架或庫,純原生實作
-- ✅ **高效能**: CSS < 20KB, JS < 8KB (壓縮後)
-- ✅ **響應式設計**: 完整支援桌面、平板、手機
-- ✅ **無障礙優化**: 符合 WCAG 2.1 AA 標準
-- ✅ **SEO 友善**: 完整 meta tags 與 JSON-LD 結構化資料
-- ✅ **動畫優雅**: 尊重 `prefers-reduced-motion` 偏好設定
+- ✅ **Zero Dependencies**: No external frameworks or libraries, pure native implementation
+- ✅ **High Performance**: CSS < 20KB, JS < 8KB (minified)
+- ✅ **Responsive Design**: Full support for desktop, tablet, and mobile
+- ✅ **Accessibility Optimized**: WCAG 2.1 AA compliant
+- ✅ **SEO Friendly**: Complete meta tags and JSON-LD structured data
+- ✅ **Graceful Animations**: Respects `prefers-reduced-motion` preferences
 
-## 📂 專案結構
+## 📂 Project Structure
 
 ```
 codebatai.github.io/
-├── index.html          # 首頁 (Hero + 三大價值 + 四步驟 + FAQ + CTA)
-├── product.html        # 產品介紹 (為何更安全 + 承諾 + 信任帶)
-├── how.html           # 運作方式 (四步驟詳細說明)
-├── contact.html       # 聯絡表單
-├── resources.html     # 資源中心 (白皮書、政策、條款)
+├── index.html          # Homepage (Hero + Core Values + 4 Steps + FAQ + CTA)
+├── product.html        # Product Overview (Security Features + Promises)
+├── contact.html        # Contact Form
+├── resources.html      # Resource Center (Whitepaper, Tools)
 ├── css/
-│   └── main.css       # 主樣式表 (~18KB)
+│   └── main.css       # Main Stylesheet (~18KB)
 ├── js/
-│   └── app.js         # 主 JavaScript (~7KB)
+│   └── app.js         # Main JavaScript (~7KB)
 ├── assets/
-│   ├── logo.png       # 網站 Logo
-│   └── og-image.png   # Open Graph 分享圖片 (1200×630)
-└── README.md          # 專案說明 (本檔案)
+│   ├── logo.png       # Website Logo
+│   ├── logo-word.png  # Logo with Wordmark
+│   └── demo/
+│       └── whitepaper.pdf  # Technical Whitepaper
+├── CNAME              # Custom domain configuration
+├── robots.txt         # Search engine crawler rules
+├── sitemap.xml        # XML sitemap for SEO
+└── README.md          # Project Documentation (this file)
 ```
 
-## 🎨 設計系統
+## 🎨 Design System
 
-### 色彩
+### Colors
 
-| 變數 | 顏色代碼 | 用途 |
-|------|---------|------|
-| `--bg` | `#0B1633` | 深藍背景 |
-| `--teal` | `#00B8A9` | 品牌青綠色 (CTA、連結) |
-| `--ink` | `#0b1220` | 主要文字 |
-| `--muted` | `#627084` | 次要文字 |
-| `--paper` | `#F2F5F8` | 淺灰背景 |
+| Variable | Color Code | Usage |
+|----------|-----------|-------|
+| `--bg` | `#0B1633` | Deep blue background |
+| `--teal` | `#00B8A9` | Brand teal (CTA, links) |
+| `--ink` | `#0b1220` | Primary text |
+| `--muted` | `#627084` | Secondary text |
+| `--paper` | `#F2F5F8` | Light gray background |
 
-### 字體
+### Typography
 
 ```css
 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -54,52 +58,52 @@ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
              "PingFang TC", "Heiti TC", sans-serif;
 ```
 
-### 圓角與間距
+### Borders & Spacing
 
-- 主要圓角: `16px`
-- 小圓角: `12px`
-- 間距單位: `8px` 的倍數 (8, 16, 24, 32, 48...)
+- Primary radius: `16px`
+- Small radius: `12px`
+- Spacing unit: Multiples of `8px` (8, 16, 24, 32, 48...)
 
-## 🚀 本地開發
+## 🚀 Local Development
 
-### 1. 複製專案
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/codebatai/codebatai.github.io.git
 cd codebatai.github.io
 ```
 
-### 2. 啟動本地伺服器
+### 2. Start Local Server
 
-使用 Python:
+Using Python:
 ```bash
 python -m http.server 8000
 ```
 
-或使用 Node.js:
+Or using Node.js:
 ```bash
 npx serve .
 ```
 
-### 3. 開啟瀏覽器
+### 3. Open Browser
 
-訪問 `http://localhost:8000`
+Navigate to `http://localhost:8000`
 
-## 📦 部署至 GitHub Pages
+## 📦 Deploy to GitHub Pages
 
-### 方法 1: 直接推送
+### Method 1: Direct Push
 
 ```bash
 git add .
-git commit -m "更新網站內容"
+git commit -m "Update website content"
 git push origin main
 ```
 
-網站將自動部署至 `https://codebat.ai` (或 `https://codebatai.github.io`)
+Website will automatically deploy to `https://codebat.ai` (or `https://codebatai.github.io`)
 
-### 方法 2: GitHub Actions (可選)
+### Method 2: GitHub Actions (Optional)
 
-建立 `.github/workflows/deploy.yml`:
+Create `.github/workflows/deploy.yml`:
 
 ```yaml
 name: Deploy to GitHub Pages
@@ -120,92 +124,91 @@ jobs:
           publish_dir: ./
 ```
 
-## 🔧 自訂與調整
+## 🔧 Customization
 
-### 修改顏色主題
+### Modify Color Theme
 
-編輯 `css/main.css` 的 `:root` 變數:
+Edit `:root` variables in `css/main.css`:
 
 ```css
 :root {
-  --bg: #0B1633;      /* 深藍 → 改成你的品牌色 */
-  --teal: #00B8A9;    /* 青綠 → 改成你的強調色 */
+  --bg: #0B1633;      /* Deep blue → Change to your brand color */
+  --teal: #00B8A9;    /* Teal → Change to your accent color */
   /* ... */
 }
 ```
 
-### 修改文案
+### Modify Content
 
-所有文案都在對應的 HTML 檔案中,直接編輯即可:
+All content is in the corresponding HTML files:
 
-- `index.html` - 首頁
-- `product.html` - 產品介紹
-- `how.html` - 運作方式
-- `contact.html` - 聯絡我們
-- `resources.html` - 資源中心
+- `index.html` - Homepage
+- `product.html` - Product Overview
+- `contact.html` - Contact Us
+- `resources.html` - Resource Center
 
-### 修改 SEO 設定
+### Modify SEO Settings
 
-編輯每個 HTML 檔案的 `<head>` 區塊:
+Edit the `<head>` section in each HTML file:
 
 ```html
-<title>你的標題</title>
-<meta name="description" content="你的描述">
-<meta property="og:title" content="你的標題">
+<title>Your Title</title>
+<meta name="description" content="Your description">
+<meta property="og:title" content="Your title">
 <!-- ... -->
 ```
 
-## ✅ 效能檢查清單
+## ✅ Performance Checklist
 
-- [ ] 圖片使用 WebP/AVIF 格式
-- [ ] 圖片加上 `width` 與 `height` 屬性
-- [ ] 使用 `loading="lazy"` 延遲載入
-- [ ] CSS/JS 壓縮 (可選)
-- [ ] 啟用 HTTP/2 或 HTTP/3
-- [ ] 設定適當的快取標頭
+- [ ] Images use WebP/AVIF format
+- [ ] Images include `width` and `height` attributes
+- [ ] Use `loading="lazy"` for deferred loading
+- [ ] Minify CSS/JS (optional)
+- [ ] Enable HTTP/2 or HTTP/3
+- [ ] Set appropriate cache headers
 
-## 🧪 測試清單
+## 🧪 Testing Checklist
 
-### 功能測試
+### Functionality Tests
 
-- [ ] 導覽列在各頁面正常運作
-- [ ] 所有連結可正常點擊
-- [ ] 表單驗證正常運作
-- [ ] 平滑捲動功能正常
-- [ ] 回到頂部按鈕正常顯示/隱藏
+- [ ] Navigation works on all pages
+- [ ] All links are clickable
+- [ ] Form validation works properly
+- [ ] Smooth scrolling functions correctly
+- [ ] Back-to-top button shows/hides properly
 
-### 響應式測試
+### Responsive Tests
 
-- [ ] 桌面 (1920×1080)
-- [ ] 筆電 (1366×768)
-- [ ] 平板 (768×1024)
-- [ ] 手機 (375×667)
+- [ ] Desktop (1920×1080)
+- [ ] Laptop (1366×768)
+- [ ] Tablet (768×1024)
+- [ ] Mobile (375×667)
 
-### 瀏覽器測試
+### Browser Tests
 
-- [ ] Chrome (最新版)
-- [ ] Firefox (最新版)
-- [ ] Safari (最新版)
-- [ ] Edge (最新版)
+- [ ] Chrome (latest)
+- [ ] Firefox (latest)
+- [ ] Safari (latest)
+- [ ] Edge (latest)
 
-### 無障礙測試
+### Accessibility Tests
 
-- [ ] 鍵盤導航 (Tab 鍵)
-- [ ] 螢幕閱讀器相容性
-- [ ] 顏色對比度 ≥ 4.5:1
-- [ ] `prefers-reduced-motion` 支援
+- [ ] Keyboard navigation (Tab key)
+- [ ] Screen reader compatibility
+- [ ] Color contrast ratio ≥ 4.5:1
+- [ ] `prefers-reduced-motion` support
 
-### SEO 測試
+### SEO Tests
 
-- [ ] Lighthouse 評分 ≥ 95 (各項指標)
-- [ ] meta tags 完整
-- [ ] JSON-LD 結構化資料正確
-- [ ] Open Graph 分享預覽正常
+- [ ] Lighthouse score ≥ 95 (all metrics)
+- [ ] Complete meta tags
+- [ ] Valid JSON-LD structured data
+- [ ] Open Graph preview works correctly
 
-## 📊 效能目標
+## 📊 Performance Targets
 
-| 指標 | 目標值 | 實際值 |
-|------|--------|--------|
+| Metric | Target | Actual |
+|--------|--------|--------|
 | **Lighthouse Performance** | ≥ 90 | - |
 | **Lighthouse Accessibility** | ≥ 95 | - |
 | **Lighthouse Best Practices** | ≥ 95 | - |
@@ -215,35 +218,35 @@ jobs:
 | **Cumulative Layout Shift (CLS)** | < 0.1 | - |
 | **Total Blocking Time (TBT)** | < 300ms | - |
 
-使用 [PageSpeed Insights](https://pagespeed.web.dev/) 測試。
+Test using [PageSpeed Insights](https://pagespeed.web.dev/)
 
-## 🐛 已知問題
+## 🐛 Known Issues
 
-無
+None
 
-## 📝 更新日誌
+## 📝 Changelog
 
 ### v1.0.0 (2025-01-XX)
 
-- ✨ 全新設計:可信運算平台主題
-- ✨ 完整五頁式結構
-- ✨ 響應式設計與無障礙優化
-- ✨ SEO 與效能優化
-- ✨ 原生 JavaScript 動畫系統
+- ✨ New design: Trusted Computing Platform theme
+- ✨ Complete five-page structure
+- ✨ Responsive design and accessibility optimization
+- ✨ SEO and performance optimization
+- ✨ Native JavaScript animation system
 
-## 📄 授權
+## 📄 License
 
 Copyright © 2025 Codebat Technology Inc. All rights reserved.
 
-## 🤝 貢獻
+## 🤝 Contributing
 
-目前不開放外部貢獻。如有建議,請聯絡 support@codebat.ai
+External contributions are not currently accepted. For suggestions, please contact support@codebat.ai
 
-## 📧 聯絡我們
+## 📧 Contact Us
 
 - **Email**: support@codebat.ai
 - **GitHub**: [github.com/codebatai](https://github.com/codebatai)
-- **網站**: [codebat.ai](https://codebat.ai)
+- **Website**: [codebat.ai](https://codebat.ai)
 
 ---
 

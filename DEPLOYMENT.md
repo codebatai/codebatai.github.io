@@ -1,51 +1,51 @@
-# 🚀 部署指南
+# 🚀 Deployment Guide
 
-## 快速開始 (5 分鐘內上線)
+## Quick Start (Live in 5 Minutes)
 
-### 方法 1: GitHub Pages (推薦)
+### Method 1: GitHub Pages (Recommended)
 
-1. **確認檔案結構**
+1. **Verify File Structure**
    ```bash
    git status
    ```
 
-2. **提交所有變更**
+2. **Commit All Changes**
    ```bash
    git add .
-   git commit -m "🎉 重新設計:可信運算平台官網"
+   git commit -m "🎉 Launch: Trusted Computing Platform Website"
    ```
 
-3. **推送至 GitHub**
+3. **Push to GitHub**
    ```bash
    git push origin main
    ```
 
-4. **啟用 GitHub Pages**
-   - 前往 GitHub Repository > Settings > Pages
+4. **Enable GitHub Pages**
+   - Go to GitHub Repository > Settings > Pages
    - Source: Deploy from a branch
    - Branch: `main` / `root`
-   - 點擊 Save
+   - Click Save
 
-5. **等待部署完成** (約 1-2 分鐘)
-   - 訪問 `https://codebatai.github.io`
-   - 或自訂網域 `https://codebat.ai`
+5. **Wait for Deployment** (approximately 1-2 minutes)
+   - Visit `https://codebatai.github.io`
+   - Or custom domain `https://codebat.ai`
 
 ---
 
-## 自訂網域設定
+## Custom Domain Setup
 
-### 1. 在 GitHub 設定 Custom Domain
+### 1. Set Custom Domain in GitHub
 
 Repository Settings > Pages > Custom domain:
 ```
 codebat.ai
 ```
 
-### 2. 設定 DNS 記錄
+### 2. Configure DNS Records
 
-在你的網域註冊商 (如 Cloudflare、GoDaddy) 設定:
+Set up in your domain registrar (e.g., Cloudflare, GoDaddy):
 
-**A 記錄** (指向 GitHub Pages):
+**A Records** (pointing to GitHub Pages):
 ```
 Type: A
 Name: @
@@ -55,46 +55,46 @@ Value: 185.199.110.153
 Value: 185.199.111.153
 ```
 
-**CNAME 記錄** (www 子網域):
+**CNAME Record** (www subdomain):
 ```
 Type: CNAME
 Name: www
 Value: codebatai.github.io
 ```
 
-### 3. 等待 DNS 生效 (10 分鐘 - 48 小時)
+### 3. Wait for DNS Propagation (10 minutes - 48 hours)
 
-檢查 DNS:
+Check DNS:
 ```bash
 dig codebat.ai
 nslookup codebat.ai
 ```
 
-### 4. 啟用 HTTPS
+### 4. Enable HTTPS
 
-GitHub Pages 會自動提供免費的 Let's Encrypt SSL 憑證:
-- ✅ Enforce HTTPS (建議勾選)
+GitHub Pages automatically provides free Let's Encrypt SSL certificate:
+- ✅ Enforce HTTPS (recommended)
 
 ---
 
-## 本地測試
+## Local Testing
 
-### 使用 Python (推薦)
+### Using Python (Recommended)
 
 ```bash
 cd codebatai.github.io
 python -m http.server 8000
 ```
 
-訪問: `http://localhost:8000`
+Visit: `http://localhost:8000`
 
-### 使用 Node.js
+### Using Node.js
 
 ```bash
 npx serve .
 ```
 
-### 使用 PHP
+### Using PHP
 
 ```bash
 php -S localhost:8000
@@ -102,41 +102,41 @@ php -S localhost:8000
 
 ---
 
-## 效能優化 (可選)
+## Performance Optimization (Optional)
 
-### 1. 壓縮 CSS/JS
+### 1. Minify CSS/JS
 
-**使用線上工具**:
+**Using Online Tools**:
 - CSS: [cssnano](https://cssnano.co/)
 - JS: [terser](https://try.terser.org/)
 
-**或使用 CLI**:
+**Or Using CLI**:
 ```bash
-# 安裝工具
+# Install tools
 npm install -g cssnano-cli terser
 
-# 壓縮 CSS
+# Minify CSS
 cssnano css/main.css css/main.min.css
 
-# 壓縮 JS
+# Minify JS
 terser js/app.js -o js/app.min.js -c -m
 ```
 
-更新 HTML 中的參考:
+Update HTML references:
 ```html
 <link rel="stylesheet" href="./css/main.min.css">
 <script src="./js/app.min.js"></script>
 ```
 
-### 2. 圖片優化
+### 2. Image Optimization
 
-**轉換為 WebP**:
+**Convert to WebP**:
 ```bash
-# 使用 cwebp (需安裝 libwebp)
+# Using cwebp (requires libwebp)
 cwebp -q 80 assets/logo.png -o assets/logo.webp
 ```
 
-**HTML 中使用 `<picture>`**:
+**Use `<picture>` in HTML**:
 ```html
 <picture>
   <source srcset="./assets/logo.webp" type="image/webp">
@@ -144,56 +144,21 @@ cwebp -q 80 assets/logo.png -o assets/logo.webp
 </picture>
 ```
 
-### 3. 加入 `robots.txt`
+### 3. robots.txt Configuration
 
-建立 `robots.txt`:
-```
-User-agent: *
-Allow: /
+✅ Already created at `robots.txt`
 
-Sitemap: https://codebat.ai/sitemap.xml
-```
+### 4. sitemap.xml Configuration
 
-### 4. 建立 `sitemap.xml`
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://codebat.ai/</loc>
-    <lastmod>2025-01-17</lastmod>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://codebat.ai/product.html</loc>
-    <lastmod>2025-01-17</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://codebat.ai/how.html</loc>
-    <lastmod>2025-01-17</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://codebat.ai/contact.html</loc>
-    <lastmod>2025-01-17</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://codebat.ai/resources.html</loc>
-    <lastmod>2025-01-17</lastmod>
-    <priority>0.7</priority>
-  </url>
-</urlset>
-```
+✅ Already created at `sitemap.xml`
 
 ---
 
-## 監控與分析
+## Monitoring & Analytics
 
-### Google Analytics (可選)
+### Google Analytics (Optional)
 
-在 `</head>` 前加入:
+Add before `</head>`:
 ```html
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
@@ -205,122 +170,124 @@ Sitemap: https://codebat.ai/sitemap.xml
 </script>
 ```
 
-### 輕量替代方案
+### Lightweight Alternatives
 
-- [Plausible](https://plausible.io/) (隱私友善)
+- [Plausible](https://plausible.io/) (privacy-friendly)
 - [Simple Analytics](https://simpleanalytics.com/)
-- [Umami](https://umami.is/) (開源、自架)
+- [Umami](https://umami.is/) (open-source, self-hosted)
 
 ---
 
-## 測試清單
+## Pre-Deployment Checklist
 
-部署前請確認:
+Before deploying, verify:
 
-- [ ] 所有連結正常運作
-- [ ] 圖片正常載入
-- [ ] 表單可正常提交
-- [ ] 響應式在各裝置正常顯示
-- [ ] 無 JavaScript 錯誤 (開 Console 檢查)
-- [ ] Lighthouse 評分 ≥ 90 (所有指標)
-- [ ] meta tags 正確
-- [ ] favicon 正常顯示
+- [ ] All links work properly
+- [ ] Images load correctly
+- [ ] Forms submit successfully
+- [ ] Responsive design works on all devices
+- [ ] No JavaScript errors (check Console)
+- [ ] Lighthouse score ≥ 90 (all metrics)
+- [ ] Meta tags are correct
+- [ ] Favicon displays properly
+- [ ] robots.txt is accessible
+- [ ] sitemap.xml is accessible
 
-### 使用 Lighthouse 測試
+### Using Lighthouse Testing
 
 ```bash
-# 安裝 Lighthouse CLI
+# Install Lighthouse CLI
 npm install -g lighthouse
 
-# 測試網站
+# Test website
 lighthouse https://codebat.ai --view
 ```
 
-或使用線上工具:
+Or use online tools:
 - [PageSpeed Insights](https://pagespeed.web.dev/)
 - [GTmetrix](https://gtmetrix.com/)
 - [WebPageTest](https://www.webpagetest.org/)
 
 ---
 
-## 備份策略
+## Backup Strategy
 
-### 自動備份 (GitHub)
+### Automatic Backup (GitHub)
 
-✅ GitHub 自動保留所有版本歷史
+✅ GitHub automatically preserves all version history
 
-### 手動備份
+### Manual Backup
 
 ```bash
-# 建立完整備份
+# Create complete backup
 git archive --format=zip --output=backup-$(date +%Y%m%d).zip HEAD
 
-# 或直接複製整個資料夾
+# Or copy entire directory
 cp -r codebatai.github.io codebatai-backup-$(date +%Y%m%d)
 ```
 
 ---
 
-## 常見問題
+## Common Issues
 
-### Q: GitHub Pages 更新需要多久?
+### Q: How long does GitHub Pages deployment take?
 
-A: 通常 1-2 分鐘,最長不超過 10 分鐘。
+A: Usually 1-2 minutes, maximum 10 minutes.
 
-### Q: 如何強制重新部署?
+### Q: How to force redeployment?
 
-A: 做一個空 commit 並推送:
+A: Make an empty commit and push:
 ```bash
 git commit --allow-empty -m "Trigger rebuild"
 git push origin main
 ```
 
-### Q: 自訂網域 HTTPS 無法啟用?
+### Q: Custom domain HTTPS won't enable?
 
 A:
-1. 確認 DNS 記錄已生效
-2. 等待 10-60 分鐘
-3. 嘗試取消勾選再重新勾選 "Enforce HTTPS"
+1. Verify DNS records have propagated
+2. Wait 10-60 minutes
+3. Try unchecking and re-checking "Enforce HTTPS"
 
-### Q: 網站顯示 404?
+### Q: Website shows 404?
 
 A:
-1. 確認 Branch 設定正確 (`main` / `root`)
-2. 確認 `index.html` 存在於根目錄
-3. 等待幾分鐘讓 GitHub Pages 完成部署
+1. Verify Branch setting is correct (`main` / `root`)
+2. Verify `index.html` exists in root directory
+3. Wait a few minutes for GitHub Pages to complete deployment
 
 ---
 
-## 進階:使用 Cloudflare CDN
+## Advanced: Using Cloudflare CDN
 
-1. 將網域 DNS 託管至 Cloudflare
-2. 設定 CNAME 指向 `codebatai.github.io`
-3. 啟用 Cloudflare CDN 與快取
-4. 效能提升 30-50%
+1. Transfer domain DNS hosting to Cloudflare
+2. Set CNAME pointing to `codebatai.github.io`
+3. Enable Cloudflare CDN and caching
+4. Performance improvement: 30-50%
 
 ---
 
-## 緊急復原
+## Emergency Recovery
 
-如果部署出問題:
+If deployment fails:
 
 ```bash
-# 回到上一個版本
-git log --oneline  # 找到正常運作的 commit hash
+# Revert to previous version
+git log --oneline  # Find working commit hash
 git reset --hard <commit-hash>
 git push --force origin main
 ```
 
-⚠️ **注意**: `--force` 會覆寫遠端歷史,請謹慎使用。
+⚠️ **Warning**: `--force` overwrites remote history, use with caution.
 
 ---
 
-## 聯絡支援
+## Support
 
-如有部署問題:
+For deployment issues:
 - 📧 Email: support@codebat.ai
 - 🔗 GitHub Issues: [github.com/codebatai/codebatai.github.io/issues](https://github.com/codebatai/codebatai.github.io/issues)
 
 ---
 
-**祝部署順利! 🎉**
+**Happy Deploying! 🎉**
