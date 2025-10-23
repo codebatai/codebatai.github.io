@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Overview | Trusted Computing Platform - Codebat Technology</title>
-  <meta name="description" content="Learn about the security features, technical advantages, and our commitments. End-to-end encryption, microVM isolation, immutable evidence packages.">
+  <meta name="description" content="Discover why organizations trust our platform for data security and compliance. Enterprise-grade protection with verifiable Evidence Packages for audit trails.">
   <link rel="icon" type="image/png" href="./assets/logo.png">
   <link rel="stylesheet" href="./css/main.css">
 </head>
@@ -27,9 +27,9 @@
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/#values">Core Values</a></li>
-        <li><a href="/how">How It Works</a></li>
         <li><a href="/#faq">FAQ</a></li>
         <li><a href="/product" style="color: var(--teal);">Product</a></li>
+        <li><a href="/resources">Resources</a></li>
         <li><a href="/contact" class="btn btn-primary" style="padding: 8px 20px;">Contact Us</a></li>
       </ul>
     </div>
@@ -52,48 +52,48 @@
         <div class="card reveal-on-scroll">
           <h3>🏠 Data Stays On-Premises</h3>
           <p>
-            <strong>Supports on-premises S3/MinIO (Object Lock)</strong>. All data storage and processing occurs within your infrastructure; plaintext never leaves, all processing is encrypted.
+            <strong>Works with your existing on-premises storage</strong>. All data storage and processing occurs within your infrastructure; sensitive data never leaves your control, all processing uses encrypted data.
           </p>
           <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
-            <li>Compatible with S3 API on-premises object storage</li>
-            <li>Supports Object Lock (WORM) mode</li>
+            <li>Compatible with industry-standard storage systems</li>
+            <li>Supports write-once, tamper-proof storage</li>
             <li>Integrates with existing backup and disaster recovery processes</li>
           </ul>
         </div>
 
         <div class="card reveal-on-scroll">
-          <h3>👁️ Execution Cannot Be Spied On</h3>
+          <h3>👁️ Execution Cannot Be Compromised</h3>
           <p>
-            <strong>microVM isolation + anti-surveillance rules</strong> block sensitive behaviors like <code>ptrace</code> and <code>/proc</code> injection. Each task runs in an isolated lightweight VM with a secure and controlled execution environment.
+            <strong>Advanced isolation with anti-surveillance controls</strong> prevent unauthorized monitoring and data extraction attempts. Each task runs in a completely isolated, secure execution environment.
           </p>
           <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
-            <li>Kata Containers microVM technology</li>
-            <li>Default deny egress (no external connections)</li>
-            <li>Customizable and auditable security rules</li>
+            <li>Enterprise-grade virtualization technology</li>
+            <li>Zero external network access during processing</li>
+            <li>Fully auditable security policies</li>
           </ul>
         </div>
 
         <div class="card reveal-on-scroll">
-          <h3>📜 Evidence Speaks, Not Claims</h3>
+          <h3>📜 Evidence Packages Provide Proof, Not Claims</h3>
           <p>
-            Every event has a timestamp and signature. <strong>Not a claim, but verifiable proof</strong>. Third parties can use verification tools to reconstruct the complete evidence chain without trusting the platform provider.
+            Every operation creates cryptographically sealed Evidence Packages with timestamps and digital signatures. <strong>Not marketing promises, but independently verifiable proof</strong>. Auditors can verify authenticity without needing to trust us.
           </p>
           <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
-            <li>Event hash → Merkle tree → signature</li>
-            <li>WORM storage (immutable after write)</li>
-            <li>Provides independent verification tools and documentation</li>
+            <li>Cryptographic proof of every operation</li>
+            <li>Tamper-proof storage (cannot be modified after creation)</li>
+            <li>Independent verification tools for auditors and regulators</li>
           </ul>
         </div>
 
         <div class="card reveal-on-scroll">
-          <h3>🔧 Compatible with Your Current Setup</h3>
+          <h3>🔧 Works with Your Existing Infrastructure</h3>
           <p>
-            <strong>No need to replace servers or change BIOS settings</strong>; supports CPU/GPU. Ready to use immediately, seamless integration with existing infrastructure, no vendor lock-in.
+            <strong>No expensive hardware upgrades or system modifications required</strong>. Supports both CPU and GPU workloads. Seamless integration with your current infrastructure, no vendor lock-in.
           </p>
           <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
-            <li>Supports mainstream x86-64 architecture</li>
-            <li>Both CPU and GPU acceleration available</li>
-            <li>Containerized deployment, easy to maintain</li>
+            <li>Standard enterprise hardware compatibility</li>
+            <li>Flexible compute options for all workload types</li>
+            <li>Modern deployment architecture, simple maintenance</li>
           </ul>
         </div>
       </div>
@@ -109,21 +109,21 @@
         <div class="card reveal-on-scroll">
           <h3>🔒 Privacy</h3>
           <p>
-            Default deny egress; results are delivered only to parties with decryption keys. We cannot and will not attempt to interpret your data.
+            Zero external network access during processing; results are delivered only to authorized parties with encryption keys. We have zero ability to access your sensitive data—by design, not by policy.
           </p>
         </div>
 
         <div class="card reveal-on-scroll">
           <h3>🌐 Transparency</h3>
           <p>
-            Supply chain signatures, approval processes, and key release procedures are all recorded. Every step is traceable, every decision has evidence.
+            Every approval, execution, and delivery is cryptographically signed and recorded in Evidence Packages. Every step is traceable, every decision backed by verifiable proof.
           </p>
         </div>
 
         <div class="card reveal-on-scroll">
           <h3>✅ Auditable</h3>
           <p>
-            Provides verification tools that allow third parties to reconstruct evidence chains. Security is not a black box, but independently verifiable facts.
+            Evidence Packages can be independently verified by auditors and regulators using our verification tools. Security isn't a black box—it's mathematically provable, independently verifiable facts.
           </p>
         </div>
       </div>
@@ -133,31 +133,31 @@
   <!-- Trust Band -->
   <div class="trust-band">
     <div class="container">
-      <h3 class="text-center mb-4" style="color: var(--ink);">Technical Features Overview</h3>
+      <h3 class="text-center mb-4" style="color: var(--ink);">Core Security Features</h3>
       <div class="trust-items" style="max-width: 960px; margin: 0 auto;">
         <div class="trust-item">
           <div class="trust-icon">🔐</div>
-          <p>End-to-End Encryption<br><small style="color: var(--muted); font-size: 12px;">AES-256-GCM</small></p>
+          <p>End-to-End Encryption<br><small style="color: var(--muted); font-size: 12px;">Military-Grade</small></p>
         </div>
         <div class="trust-item">
           <div class="trust-icon">🛡️</div>
-          <p>Immutable Evidence<br><small style="color: var(--muted); font-size: 12px;">WORM Storage</small></p>
+          <p>Evidence Packages<br><small style="color: var(--muted); font-size: 12px;">Tamper-Proof</small></p>
         </div>
         <div class="trust-item">
           <div class="trust-icon">🔬</div>
-          <p>Kata microVM Isolation<br><small style="color: var(--muted); font-size: 12px;">Strong Isolation</small></p>
+          <p>Secure Isolation<br><small style="color: var(--muted); font-size: 12px;">Zero Trust Architecture</small></p>
         </div>
         <div class="trust-item">
           <div class="trust-icon">🏢</div>
-          <p>On-Premises Support<br><small style="color: var(--muted); font-size: 12px;">S3/MinIO</small></p>
+          <p>On-Premises Support<br><small style="color: var(--muted); font-size: 12px;">Your Infrastructure</small></p>
         </div>
         <div class="trust-item">
           <div class="trust-icon">⚡</div>
-          <p>CPU/GPU Support<br><small style="color: var(--muted); font-size: 12px;">Flexible Computing</small></p>
+          <p>Flexible Computing<br><small style="color: var(--muted); font-size: 12px;">CPU & GPU</small></p>
         </div>
         <div class="trust-item">
           <div class="trust-icon">🔍</div>
-          <p>Independently Verifiable<br><small style="color: var(--muted); font-size: 12px;">Third-Party Verification</small></p>
+          <p>Independently Verifiable<br><small style="color: var(--muted); font-size: 12px;">Auditor Tools</small></p>
         </div>
       </div>
     </div>
@@ -185,13 +185,13 @@
             </tr>
             <tr style="border-bottom: 1px solid #eef2f7;">
               <td style="padding: 16px; font-weight: 500;">Execution Isolation</td>
-              <td style="padding: 16px; text-align: center; color: var(--muted);">Container / VM</td>
-              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">microVM + Anti-surveillance</td>
+              <td style="padding: 16px; text-align: center; color: var(--muted);">Basic isolation</td>
+              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">Advanced isolation + Anti-surveillance</td>
             </tr>
             <tr style="border-bottom: 1px solid #eef2f7;">
-              <td style="padding: 16px; font-weight: 500;">Evidence Trail</td>
-              <td style="padding: 16px; text-align: center; color: var(--muted);">Logs (modifiable)</td>
-              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">WORM Evidence Package</td>
+              <td style="padding: 16px; font-weight: 500;">Audit Trail</td>
+              <td style="padding: 16px; text-align: center; color: var(--muted);">Logs (can be modified)</td>
+              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">Tamper-Proof Evidence Packages</td>
             </tr>
             <tr style="border-bottom: 1px solid #eef2f7;">
               <td style="padding: 16px; font-weight: 500;">Third-Party Verification</td>
@@ -241,17 +241,17 @@
           <h4>Product</h4>
           <ul class="footer-links">
             <li><a href="/product">Product Overview</a></li>
-            <li><a href="/how">How It Works</a></li>
             <li><a href="/resources">Documentation</a></li>
+            <li><a href="/#faq">FAQ</a></li>
           </ul>
         </div>
 
         <div class="footer-section">
           <h4>Resources</h4>
           <ul class="footer-links">
-            <li><a href="/resources">Download Whitepaper</a></li>
-            <li><a href="/resources#privacy">Privacy Policy</a></li>
-            <li><a href="/resources#terms">Terms of Service</a></li>
+            <li><a href="/resources">Technical Whitepaper</a></li>
+            <li><a href="/resources">Verification Tools</a></li>
+            <li><a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
 
