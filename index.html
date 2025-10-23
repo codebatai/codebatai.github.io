@@ -9,8 +9,8 @@
   <!-- SEO Meta Tags -->
   <title>Trusted Computing Platform | Encrypted Upload・Isolated Execution・Verifiable Evidence</title>
   <meta name="description"
-    content="Keep sensitive data in your infrastructure, bring security proof back to your pocket. Encrypted upload, Kata microVM isolation, immutable evidence packages, zero hardware changes.">
-  <meta name="keywords" content="trusted computing, encrypted upload, isolated execution, evidence package, microVM, data security, zero trust architecture">
+    content="Keep sensitive data in your infrastructure, bring security proof back to your pocket. Enterprise-grade encryption, isolated execution, verifiable evidence packages that prove compliance.">
+  <meta name="keywords" content="trusted computing, encrypted upload, isolated execution, evidence package, data security, compliance, audit trail, verifiable proof">
   <meta name="author" content="Codebat Technology Inc.">
 
   <!-- Open Graph / Facebook -->
@@ -28,7 +28,7 @@
   <meta name="twitter:image" content="https://codebat.ai/assets/og-image.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="./assets/logo.png">
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://codebat.ai">
@@ -46,7 +46,7 @@
         "name": "Codebat Technology Inc.",
         "url": "https://codebat.ai",
         "logo": "https://codebat.ai/assets/logo.png",
-        "description": "Trusted computing platform provider offering encrypted upload, isolated execution, and verifiable evidence package solutions",
+        "description": "Trusted computing platform provider offering enterprise-grade data security with verifiable Evidence Packages for compliance and audit trails",
         "contactPoint": {
           "@type": "ContactPoint",
           "email": "support@codebat.ai",
@@ -57,7 +57,7 @@
       {
         "@type": "Product",
         "name": "Trusted Computing Platform",
-        "description": "Encrypted upload, isolated execution, verifiable evidence packages—zero hardware changes, zero data leakage, zero excuses",
+        "description": "Enterprise data security platform with tamper-proof Evidence Packages—zero hardware changes, zero data leakage, zero excuses",
         "brand": {
           "@type": "Brand",
           "name": "Codebat Technology"
@@ -73,10 +73,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What is the performance overhead?",
+            "name": "What is the performance impact?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "GPU-dominated inference typically adds 4–6% overhead; CPU-dominated tasks can be controlled within ≤15%."
+              "text": "Our platform is designed for minimal performance impact while maintaining maximum security. Most workloads experience negligible overhead."
             }
           },
           {
@@ -84,7 +84,7 @@
             "name": "Do I need new hardware?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Deploy directly on existing servers and on-premises storage."
+              "text": "No. Deploy directly on your existing infrastructure with standard enterprise hardware."
             }
           },
           {
@@ -92,15 +92,15 @@
             "name": "Can you access my data?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No plaintext is uploaded. All uploads and returns are end-to-end encrypted; the platform only handles ciphertext and hashes."
+              "text": "Absolutely not. Your data is encrypted before it reaches our platform. We only process encrypted information and have zero ability to decrypt your sensitive data."
             }
           },
           {
             "@type": "Question",
-            "name": "Can evidence packages be tampered with?",
+            "name": "Can Evidence Packages be tampered with?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Once written, they are immediately locked (WORM). Event timestamps and signature chains can be independently verified."
+              "text": "Impossible. Evidence Packages are cryptographically sealed and permanently locked upon creation. Auditors can independently verify their authenticity."
             }
           }
         ]
@@ -117,7 +117,7 @@
     <div class="nav-container">
       <a href="/" class="logo" aria-label="Home">
         <img src="./assets/logo.png" alt="Codebat Logo" class="logo-img">
-        <span>Codebat</span>
+        <!-- <span>Codebat</span> -->
       </a>
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
         <span></span>
@@ -127,9 +127,9 @@
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#values">Core Values</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="/product">Product</a></li>
+        <li><a href="/resources">Resources</a></li>
         <li><a href="/contact" class="btn btn-primary" style="padding: 8px 20px;">Contact Us</a></li>
       </ul>
     </div>
@@ -147,7 +147,7 @@
         <a href="/resources" class="btn btn-ghost">Download Whitepaper</a>
       </div>
       <p class="trust-note">
-        End-to-End Encryption ｜ Kata microVM Isolation ｜ Immutable Evidence ｜ On-Premises S3/MinIO Support
+        End-to-End Encryption ｜ Secure Isolation ｜ Immutable Evidence Packages ｜ On-Premises Support
       </p>
     </div>
   </section>
@@ -160,21 +160,21 @@
         <div class="card reveal-on-scroll">
           <h3>🔒 Never See Your Data, Yet Verify Everything</h3>
           <p>
-            Every task automatically generates an "evidence package": event hash → Merkle root → signature & timestamp → WORM storage. <strong>Who did what, when</strong>—auditable without trust.
+            Every task automatically generates a tamper-proof <strong>"Evidence Package"</strong> with cryptographic signatures and timestamps. <strong>Who did what, when</strong>—independently verifiable proof you can audit without trusting us.
           </p>
         </div>
 
         <div class="card reveal-on-scroll">
-          <h3>⚙️ No Hardware Changes, No BIOS/Kernel Modifications</h3>
+          <h3>⚙️ No Hardware Changes, No System Modifications</h3>
           <p>
-            Deploy directly on existing servers. Kata microVM provides strong isolation with anti-surveillance mechanisms (blocking <code>ptrace</code>), supports CPU/GPU, seamlessly integrates with on-premises S3/MinIO.
+            Deploy directly on existing infrastructure. Advanced isolation technology prevents unauthorized access and surveillance, supports both CPU and GPU workloads, seamlessly integrates with your on-premises storage.
           </p>
         </div>
 
         <div class="card reveal-on-scroll">
-          <h3>📦 Trusted Supply Chain, Worry-Free Operations</h3>
+          <h3>📦 Complete Audit Trail, Worry-Free Compliance</h3>
           <p>
-            Algorithm images are fully signed and traced. Approval, key release, and delivery are all recorded; every result you receive is protected by end-to-end encryption and evidence chains.
+            Every operation is cryptographically signed and recorded in tamper-proof Evidence Packages. Approvals, executions, and deliveries are all tracked—giving you bulletproof audit trails for compliance and governance.
           </p>
         </div>
       </div>
@@ -195,7 +195,7 @@
         </div>
         <div class="trust-item">
           <div class="trust-icon">🔬</div>
-          <p>Kata microVM Isolation</p>
+          <p>Secure Isolation</p>
         </div>
         <div class="trust-item">
           <div class="trust-icon">🏢</div>
@@ -216,7 +216,7 @@
           <div class="timeline-content">
             <h3>Encrypted Upload, Plaintext Stays Inside</h3>
             <p>
-              Data is end-to-end encrypted (AES-256-GCM supported) on-premises before being sent to the platform; the platform only handles ciphertext and cannot interpret the original content.
+              Data is encrypted using military-grade encryption on your premises before transmission. The platform only handles encrypted data and cannot access your sensitive information.
             </p>
           </div>
         </div>
@@ -224,9 +224,9 @@
         <div class="timeline-item reveal-on-scroll">
           <div class="timeline-icon">2</div>
           <div class="timeline-content">
-            <h3>Isolated Execution, Anti-Surveillance Mechanisms</h3>
+            <h3>Isolated Execution, Protected Environment</h3>
             <p>
-              Each task runs in an isolated Kata microVM, blocking sensitive operations like <code>ptrace</code> and memory injection; no external connections during execution.
+              Each task runs in a completely isolated environment with advanced security controls that prevent unauthorized access, data extraction, or external communications during processing.
             </p>
           </div>
         </div>
@@ -234,9 +234,9 @@
         <div class="timeline-item reveal-on-scroll">
           <div class="timeline-icon">3</div>
           <div class="timeline-content">
-            <h3>Automatic Evidence Generation, WORM Storage</h3>
+            <h3>Automatic Evidence Package Creation</h3>
             <p>
-              All events (upload, execution, output) instantly generate hash → Merkle tree → signature & timestamp, written to WORM storage and immutable.
+              Every operation automatically creates a cryptographically sealed Evidence Package with timestamps and digital signatures. Once created, these packages are permanently locked and cannot be modified by anyone—giving you indisputable proof of what happened.
             </p>
           </div>
         </div>
@@ -244,16 +244,16 @@
         <div class="timeline-item reveal-on-scroll">
           <div class="timeline-icon">4</div>
           <div class="timeline-content">
-            <h3>Encrypted Result Delivery, Independent Verification</h3>
+            <h3>Secure Delivery with Verifiable Proof</h3>
             <p>
-              Execution results are encrypted before return; only the party with the decryption key can view them. Evidence packages can be independently verified by third parties to reconstruct the verification chain.
+              Results are encrypted and delivered only to authorized parties. Every Evidence Package can be independently verified by auditors, regulators, or third parties—no need to trust our word, the cryptographic proof speaks for itself.
             </p>
           </div>
         </div>
       </div>
 
       <div class="text-center mt-5">
-        <a href="/how" class="btn btn-ghost">View Technical Details</a>
+        <a href="/contact" class="btn btn-primary">Contact Us to Learn More</a>
       </div>
     </div>
   </section>
@@ -265,22 +265,22 @@
       <div class="grid-2">
         <div class="card reveal-on-scroll">
           <h3>🏠 Data Stays On-Premises</h3>
-          <p>Supports on-premises S3/MinIO (Object Lock). Plaintext never leaves your infrastructure; all processing is encrypted.</p>
+          <p>Works with your existing on-premises storage infrastructure. Your sensitive data never leaves your control—all processing uses encrypted data, keeping plaintext safely within your environment.</p>
         </div>
 
         <div class="card reveal-on-scroll">
-          <h3>👁️ Execution Cannot Be Spied On</h3>
-          <p>microVM isolation + anti-surveillance rules block sensitive behaviors like <code>ptrace</code>; execution environment is secure and controlled.</p>
+          <h3>👁️ Execution Cannot Be Compromised</h3>
+          <p>Advanced isolation technology creates a secure execution environment that blocks unauthorized monitoring, data extraction attempts, and ensures your computations remain private and protected.</p>
         </div>
 
         <div class="card reveal-on-scroll">
-          <h3>📜 Evidence Speaks, Not Claims</h3>
-          <p>Every event has a timestamp and signature. <strong>Not a claim, but verifiable proof</strong>.</p>
+          <h3>📜 Evidence Packages Provide Proof, Not Claims</h3>
+          <p>Every operation creates tamper-proof Evidence Packages with cryptographic signatures and timestamps. <strong>Not marketing promises, but independently verifiable proof</strong> that satisfies auditors and regulators.</p>
         </div>
 
         <div class="card reveal-on-scroll">
-          <h3>🔧 Compatible with Your Current Setup</h3>
-          <p>No need to replace servers or change BIOS settings; supports CPU/GPU. Ready to use, seamless integration.</p>
+          <h3>🔧 Works with Your Existing Infrastructure</h3>
+          <p>No expensive hardware upgrades or system overhauls required. Deploy on your current servers with both CPU and GPU support. Ready to integrate seamlessly with your existing operations.</p>
         </div>
       </div>
 
@@ -297,10 +297,10 @@
 
       <div class="faq-item reveal-on-scroll">
         <div class="faq-question" role="button" tabindex="0" aria-expanded="true">
-          ❓ What is the performance overhead?
+          ❓ What is the performance impact?
         </div>
         <div class="faq-answer">
-          GPU-dominated inference typically adds <strong>4–6%</strong> overhead; CPU-dominated tasks can be controlled within <strong>≤15%</strong>. We continuously optimize the balance between performance and security.
+          Our platform is designed for minimal performance impact while maintaining maximum security. Most workloads experience negligible overhead, and we continuously optimize to ensure your operations run smoothly without compromise.
         </div>
       </div>
 
@@ -309,7 +309,7 @@
           ❓ Do I need new hardware?
         </div>
         <div class="faq-answer">
-          <strong>No.</strong> Deploy directly on existing servers and on-premises storage. Supports mainstream x86-64 architecture with no special hardware or BIOS adjustments required.
+          <strong>No.</strong> Deploy directly on your existing infrastructure—servers, storage, and network. Our platform works with standard enterprise hardware with no special requirements or system modifications.
         </div>
       </div>
 
@@ -318,16 +318,16 @@
           ❓ Can you access my data?
         </div>
         <div class="faq-answer">
-          <strong>No plaintext is uploaded.</strong> All uploads and returns are end-to-end encrypted; the platform only handles ciphertext and hashes, unable to interpret the original content.
+          <strong>Absolutely not.</strong> Your data is encrypted before it ever reaches our platform. We only process encrypted information and have zero ability to decrypt or view your sensitive data. You maintain complete control.
         </div>
       </div>
 
       <div class="faq-item reveal-on-scroll">
         <div class="faq-question" role="button" tabindex="0" aria-expanded="true">
-          ❓ Can evidence packages be tampered with?
+          ❓ Can Evidence Packages be tampered with?
         </div>
         <div class="faq-answer">
-          <strong>No.</strong> Once written, they are immediately locked (WORM). Event timestamps and signature chains can be independently verified. Third parties can use verification tools to reconstruct the complete evidence chain.
+          <strong>Impossible.</strong> Evidence Packages are cryptographically sealed and permanently locked the moment they're created. Not even system administrators can modify them. Auditors and regulators can independently verify their authenticity using our verification tools—providing bulletproof audit trails.
         </div>
       </div>
     </div>
@@ -363,17 +363,17 @@
           <h4>Product</h4>
           <ul class="footer-links">
             <li><a href="/product">Product Overview</a></li>
-            <li><a href="/how">How It Works</a></li>
             <li><a href="/resources">Documentation</a></li>
+            <li><a href="/#faq">FAQ</a></li>
           </ul>
         </div>
 
         <div class="footer-section">
           <h4>Resources</h4>
           <ul class="footer-links">
-            <li><a href="/resources">Download Whitepaper</a></li>
-            <li><a href="/resources#privacy">Privacy Policy</a></li>
-            <li><a href="/resources#terms">Terms of Service</a></li>
+            <li><a href="/resources">Technical Whitepaper</a></li>
+            <li><a href="/resources">Verification Tools</a></li>
+            <li><a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
 
