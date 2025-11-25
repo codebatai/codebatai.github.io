@@ -146,55 +146,9 @@ function initMobileMenu() {
 // 6. 表單驗證 (用於聯絡頁面)
 // ===========================
 function initFormValidation() {
-  const forms = document.querySelectorAll('.contact-form');
-
-  forms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-      const email = form.querySelector('input[type="email"]');
-      const message = form.querySelector('textarea');
-
-      let isValid = true;
-
-      // Simple validation
-      if (email && !email.value.includes('@')) {
-        isValid = false;
-        showError(email, 'Please enter a valid email address');
-      }
-
-      if (message && message.value.trim().length < 10) {
-        isValid = false;
-        showError(message, 'Message must be at least 10 characters');
-      }
-
-      if (!isValid) {
-        e.preventDefault();
-      }
-    });
-  });
-}
-
-function showError(input, message) {
-  // 移除舊的錯誤訊息
-  const existingError = input.parentElement.querySelector('.error-message');
-  if (existingError) {
-    existingError.remove();
-  }
-
-  // 添加新的錯誤訊息
-  const errorDiv = document.createElement('div');
-  errorDiv.className = 'error-message';
-  errorDiv.style.color = '#d32f2f';
-  errorDiv.style.fontSize = '14px';
-  errorDiv.style.marginTop = '4px';
-  errorDiv.textContent = message;
-
-  input.parentElement.appendChild(errorDiv);
-  input.focus();
-
-  // 3秒後移除錯誤訊息
-  setTimeout(() => {
-    errorDiv.remove();
-  }, 3000);
+  // Form validation is now handled in contact.html inline script
+  // to avoid duplicate validation messages
+  // This function is kept for backward compatibility but does nothing
 }
 
 // ===========================
