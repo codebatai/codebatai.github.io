@@ -52,43 +52,57 @@
         <!-- Left: Contact Form -->
         <div class="card reveal-on-scroll">
           <h2 style="margin-bottom: 24px; font-size: 24px;">Leave Your Message</h2>
-          <form class="contact-form" action="mailto:support@codebat.ai" method="post" enctype="text/plain">
+          <form class="contact-form" action="https://formsubmit.co/support@codebat.ai" method="POST">
+
+            <!-- FormSubmit Configuration (Hidden Fields) -->
+            <input type="hidden" name="_subject" value="New Contact Form Submission - Codebat.ai">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://codebat.ai/thank-you.html">
+            <input type="text" name="_honey" style="display:none">
 
             <div class="form-group">
               <label for="name" class="form-label">Name *</label>
-              <input type="text" id="name" name="name" class="form-input" required placeholder="Enter your name">
+              <input type="text" id="name" name="Name" class="form-input" required placeholder="Enter your name">
             </div>
 
             <div class="form-group">
               <label for="email" class="form-label">Email *</label>
-              <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
+              <input type="email" id="email" name="Email" class="form-input" required placeholder="your@email.com">
             </div>
 
             <div class="form-group">
               <label for="company" class="form-label">Company Name</label>
-              <input type="text" id="company" name="company" class="form-input" placeholder="Your company or organization">
+              <input type="text" id="company" name="Company" class="form-input" placeholder="Your company or organization">
             </div>
 
             <div class="form-group">
               <label for="inquiry-type" class="form-label">Inquiry Type *</label>
-              <select id="inquiry-type" name="inquiry-type" class="form-input" required>
+              <select id="inquiry-type" name="Inquiry_Type" class="form-input" required>
                 <option value="">Please select</option>
-                <option value="poc">Request PoC</option>
-                <option value="technical">Technical Consultation</option>
-                <option value="partnership">Business Partnership</option>
-                <option value="support">Technical Support</option>
-                <option value="other">Other</option>
+                <option value="Request PoC">Request PoC</option>
+                <option value="Technical Consultation">Technical Consultation</option>
+                <option value="Business Partnership">Business Partnership</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="message" class="form-label">Message *</label>
-              <textarea id="message" name="message" class="form-textarea" required
+              <textarea id="message" name="Message" class="form-textarea" required
                 placeholder="Please describe your requirements in detail..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
-              Send Message
+            <button type="submit" class="btn btn-primary submit-btn" style="width: 100%; margin-top: 8px; position: relative;">
+              <span class="btn-text">Send Message</span>
+              <span class="btn-loader" style="display: none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+                  <circle cx="12" cy="12" r="10" opacity="0.25"></circle>
+                  <path d="M12 2a10 10 0 0 1 10 10" opacity="0.75"></path>
+                </svg>
+                Sending...
+              </span>
             </button>
 
             <p style="margin-top: 16px; font-size: 13px; color: var(--muted); line-height: 1.6;">
@@ -197,8 +211,40 @@
 
   <script src="./js/app.js"></script>
 
-  <!-- Responsive Adjustment -->
+  <!-- Form Submit Animation -->
+  <script>
+    // Show loading state when form is submitted
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      const submitBtn = this.querySelector('.submit-btn');
+      const btnText = submitBtn.querySelector('.btn-text');
+      const btnLoader = submitBtn.querySelector('.btn-loader');
+
+      // Disable button and show loading
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.8';
+      btnText.style.display = 'none';
+      btnLoader.style.display = 'inline-flex';
+      btnLoader.style.alignItems = 'center';
+      btnLoader.style.gap = '8px';
+    });
+  </script>
+
+  <!-- Responsive Adjustment & Animations -->
   <style>
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .submit-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .btn-loader svg {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
     @media (max-width: 768px) {
       section.section > .container > div[style*="grid-template-columns"] {
         grid-template-columns: 1fr !important;
