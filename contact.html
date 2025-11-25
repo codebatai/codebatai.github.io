@@ -211,15 +211,43 @@
 
   <script src="./js/app.js"></script>
 
-  <!-- Form Submit Animation -->
+  <!-- Form Submit Animation & Validation -->
   <script>
-    // Show loading state when form is submitted
+    // Show loading state only when form is valid
     document.querySelector('.contact-form').addEventListener('submit', function(e) {
-      const submitBtn = this.querySelector('.submit-btn');
+      const form = this;
+      const submitBtn = form.querySelector('.submit-btn');
       const btnText = submitBtn.querySelector('.btn-text');
       const btnLoader = submitBtn.querySelector('.btn-loader');
 
-      // Disable button and show loading
+      // Validate form first
+      const message = form.querySelector('textarea[name="Message"]');
+      const email = form.querySelector('input[name="Email"]');
+
+      let isValid = true;
+
+      // Remove any existing error messages
+      form.querySelectorAll('.error-message').forEach(el => el.remove());
+
+      // Validate message length
+      if (message && message.value.trim().length < 10) {
+        isValid = false;
+        showError(message, 'Message must be at least 10 characters');
+      }
+
+      // Validate email format
+      if (email && !email.value.includes('@')) {
+        isValid = false;
+        showError(email, 'Please enter a valid email address');
+      }
+
+      // If validation fails, prevent submission
+      if (!isValid) {
+        e.preventDefault();
+        return;
+      }
+
+      // Only show loading if validation passes
       submitBtn.disabled = true;
       submitBtn.style.opacity = '0.8';
       btnText.style.display = 'none';
@@ -227,6 +255,24 @@
       btnLoader.style.alignItems = 'center';
       btnLoader.style.gap = '8px';
     });
+
+    // Error message helper function
+    function showError(input, message) {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error-message';
+      errorDiv.style.color = '#d32f2f';
+      errorDiv.style.fontSize = '14px';
+      errorDiv.style.marginTop = '4px';
+      errorDiv.textContent = message;
+
+      input.parentElement.appendChild(errorDiv);
+      input.focus();
+
+      // Remove error after 3 seconds
+      setTimeout(() => {
+        errorDiv.remove();
+      }, 3000);
+    }
   </script>
 
   <!-- Responsive Adjustment & Animations -->
