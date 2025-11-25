@@ -155,15 +155,15 @@ function initFormValidation() {
 
       let isValid = true;
 
-      // 簡單驗證
+      // Simple validation
       if (email && !email.value.includes('@')) {
         isValid = false;
-        showError(email, '請輸入有效的電子郵件地址');
+        showError(email, 'Please enter a valid email address');
       }
 
       if (message && message.value.trim().length < 10) {
         isValid = false;
-        showError(message, '訊息至少需要 10 個字元');
+        showError(message, 'Message must be at least 10 characters');
       }
 
       if (!isValid) {
