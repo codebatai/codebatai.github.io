@@ -398,8 +398,15 @@ a:hover {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
+/* Fixed 2x2 grid layout */
+.grid-2x2 {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 @media (max-width: 768px) {
-  .grid-2, .grid-3, .grid-4 {
+  .grid-2, .grid-3, .grid-4, .grid-2x2 {
     grid-template-columns: 1fr;
   }
 }
