@@ -94,8 +94,15 @@
                 placeholder="Please describe your requirements in detail..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
-              Send Message
+            <button type="submit" class="btn btn-primary submit-btn" style="width: 100%; margin-top: 8px; position: relative;">
+              <span class="btn-text">Send Message</span>
+              <span class="btn-loader" style="display: none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+                  <circle cx="12" cy="12" r="10" opacity="0.25"></circle>
+                  <path d="M12 2a10 10 0 0 1 10 10" opacity="0.75"></path>
+                </svg>
+                Sending...
+              </span>
             </button>
 
             <p style="margin-top: 16px; font-size: 13px; color: var(--muted); line-height: 1.6;">
@@ -208,8 +215,86 @@
 
   <script src="./js/app.js"></script>
 
-  <!-- Responsive Adjustment -->
+  <!-- Form Submit Animation & Validation -->
+  <script>
+    // Show loading state only when form is valid
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      const form = this;
+      const submitBtn = form.querySelector('.submit-btn');
+      const btnText = submitBtn.querySelector('.btn-text');
+      const btnLoader = submitBtn.querySelector('.btn-loader');
+
+      // Validate form first
+      const message = form.querySelector('textarea[name="Message"]');
+      const email = form.querySelector('input[name="Email"]');
+
+      let isValid = true;
+
+      // Remove any existing error messages
+      form.querySelectorAll('.error-message').forEach(el => el.remove());
+
+      // Validate message length
+      if (message && message.value.trim().length < 10) {
+        isValid = false;
+        showError(message, 'Message must be at least 10 characters');
+      }
+
+      // Validate email format
+      if (email && !email.value.includes('@')) {
+        isValid = false;
+        showError(email, 'Please enter a valid email address');
+      }
+
+      // If validation fails, prevent submission
+      if (!isValid) {
+        e.preventDefault();
+        return;
+      }
+
+      // Only show loading if validation passes
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.8';
+      btnText.style.display = 'none';
+      btnLoader.style.display = 'inline-flex';
+      btnLoader.style.alignItems = 'center';
+      btnLoader.style.gap = '8px';
+    });
+
+    // Error message helper function
+    function showError(input, message) {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error-message';
+      errorDiv.style.color = '#d32f2f';
+      errorDiv.style.fontSize = '14px';
+      errorDiv.style.marginTop = '4px';
+      errorDiv.textContent = message;
+
+      input.parentElement.appendChild(errorDiv);
+      input.focus();
+
+      // Remove error after 3 seconds
+      setTimeout(() => {
+        errorDiv.remove();
+      }, 3000);
+    }
+  </script>
+
+  <!-- Responsive Adjustment & Animations -->
   <style>
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .submit-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .btn-loader svg {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
     @media (max-width: 768px) {
       section.section > .container > div[style*="grid-template-columns"] {
         grid-template-columns: 1fr !important;
