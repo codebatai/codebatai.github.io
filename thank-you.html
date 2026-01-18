@@ -12,6 +12,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/style.min.css">
   <style>
+    @font-face {
+      font-family: 'Mokoto';
+      src: url('./assets/font/mokoto/Mokoto Demo.ttf') format('truetype');
+      font-weight: 400;
+    }
+
     :root {
       --signal: #ff4d00;
       --black: #0a0a0a;
@@ -67,8 +73,21 @@
     }
 
     .nav-logo img {
-      height: 32px;
+      height: 36px;
       width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover img {
+      transform: scale(1.05);
+    }
+
+    .nav-logo span {
+      font-family: 'Mokoto', sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
     }
 
     .nav-links {
@@ -459,6 +478,7 @@
   <nav class="nav">
     <a href="/" class="nav-logo">
       <img src="./assets/logo.png" alt="Codebat">
+      <span>codebat</span>
     </a>
     <button class="menu-toggle" aria-label="Toggle menu">
       <span></span>
