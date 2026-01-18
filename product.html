@@ -892,6 +892,7 @@
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.3s ease;
+                z-index: 999;
             }
 
             .nav-links.active {
@@ -901,6 +902,15 @@
 
             .nav-links a {
                 font-size: 24px;
+                color: var(--black);
+            }
+
+            .nav-links .btn-dark {
+                color: var(--white) !important;
+            }
+
+            .menu-toggle {
+                z-index: 1001;
             }
 
             .products-grid {
