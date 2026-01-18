@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codebat — The New Standard for Trusted AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: 'Geist Mono';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --white: #fafafa;
+            --gray-50: #f9f9f9;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --signal: #ff4d00;
+            --signal-light: rgba(255, 77, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--signal);
+            color: var(--white);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Geist', 'DM Sans', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+
+        .serif {
+            font-family: 'Instrument Serif', Georgia, serif;
+        }
+
+        .mono {
+            font-family: 'Geist Mono', 'SF Mono', monospace;
+            font-size: 0.85em;
+            letter-spacing: -0.02em;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--white);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-inner {
+            text-align: center;
+        }
+
+        .loader-logo {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 24px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .loader-bar {
+            width: 120px;
+            height: 2px;
+            background: var(--gray-200);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            height: 100%;
+            background: var(--signal);
+            animation: loading 1.2s ease-out forwards;
+        }
+
+        @keyframes loading {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            background: rgba(250, 250, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 14px 0;
+            box-shadow: 0 1px 0 var(--gray-200);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo span {
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--black);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-dark {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn-dark:hover {
+            background: var(--gray-800);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--black);
+            border: 1px solid var(--gray-300);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--black);
+        }
+
+        .btn-signal {
+            background: var(--signal);
+            color: var(--white);
+        }
+
+        .btn-signal:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            color: var(--gray-500);
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--gray-400);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 110px);
+            font-weight: 500;
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            margin-bottom: 40px;
+            max-width: 1000px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero h1 em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-sub {
+            font-size: clamp(18px, 2vw, 22px);
+            color: var(--gray-600);
+            max-width: 560px;
+            margin-bottom: 48px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease 0.8s forwards;
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            aspect-ratio: 1;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Marquee */
+        .marquee-section {
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 20px 0;
+            overflow: hidden;
+            background: var(--gray-100);
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 35s linear infinite;
+        }
+
+        .marquee:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-item {
+            flex-shrink: 0;
+            padding: 0 48px;
+            font-size: 13px;
+            color: var(--gray-500);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: color 0.2s;
+        }
+
+        .marquee-item:hover {
+            color: var(--black);
+        }
+
+        .marquee-item::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: var(--signal);
+            border-radius: 50%;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Section */
+        section {
+            padding: clamp(80px, 12vw, 160px) 0;
+        }
+
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.12;
+            margin-bottom: 24px;
+        }
+
+        .section-title em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* Why Section */
+        .why-section {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .why-section .section-label {
+            color: var(--gray-500);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--gray-800);
+            margin-top: 80px;
+        }
+
+        .why-item {
+            background: var(--black);
+            padding: 48px;
+            transition: background 0.4s ease;
+        }
+
+        .why-item:hover {
+            background: var(--gray-900);
+        }
+
+        .why-item .number {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 64px;
+            font-style: italic;
+            color: var(--signal);
+            line-height: 1;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .why-item:hover .number {
+            transform: translateX(8px);
+        }
+
+        .why-item h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .why-item p {
+            font-size: 15px;
+            color: var(--gray-400);
+            line-height: 1.7;
+        }
+
+        /* Tech Section */
+        .tech-section {
+            background: var(--gray-100);
+        }
+
+        .tech-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 100px;
+        }
+
+        .tech-header p {
+            font-size: 18px;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .tech-list {
+            counter-reset: tech;
+        }
+
+        .tech-item {
+            display: grid;
+            grid-template-columns: 200px 1fr 300px;
+            gap: 60px;
+            padding: 60px 0;
+            border-top: 1px solid var(--gray-300);
+            align-items: start;
+            transition: background 0.3s ease;
+        }
+
+        .tech-item:last-child {
+            border-bottom: 1px solid var(--gray-300);
+        }
+
+        .tech-item:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .tech-item .label {
+            font-size: 13px;
+            color: var(--gray-500);
+            counter-increment: tech;
+        }
+
+        .tech-item .label::before {
+            content: '0' counter(tech);
+            display: block;
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 48px;
+            font-style: italic;
+            color: var(--black);
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .tech-item:hover .label::before {
+            color: var(--signal);
+        }
+
+        .tech-item h3 {
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .tech-item .desc {
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .tech-item .problem {
+            font-size: 14px;
+            color: var(--gray-500);
+            padding: 20px;
+            background: var(--white);
+            border-left: 2px solid var(--signal);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-item:hover .problem {
+            transform: translateX(4px);
+        }
+
+        .tech-stat {
+            margin-top: 32px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .tech-stat .value {
+            font-family: 'Geist Mono', monospace;
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--signal);
+        }
+
+        .tech-stat .unit {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        /* Products */
+        .products-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .product-card {
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 40px;
+            background: var(--white);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--signal);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-card:hover {
+            border-color: var(--black);
+            box-shadow: 0 24px 48px -12px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .product-card .sku {
+            font-family: 'Geist Mono', monospace;
+            font-size: 11px;
+            color: var(--signal);
+            background: var(--signal-light);
+            padding: 6px 10px;
+            border-radius: 4px;
+            width: fit-content;
+            margin-bottom: 24px;
+        }
+
+        .product-card h3 {
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .product-card .target {
+            font-size: 13px;
+            color: var(--gray-500);
+            margin-bottom: 24px;
+        }
+
+        .product-card .features {
+            flex: 1;
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .product-card .features li {
+            font-size: 14px;
+            color: var(--gray-600);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .product-card .features li::before {
+            content: '→';
+            color: var(--signal);
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .product-card:hover .features li::before {
+            transform: translateX(4px);
+        }
+
+        .product-card .use-case {
+            font-size: 13px;
+            color: var(--gray-500);
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        /* Solutions */
+        .solutions-section {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-top: 80px;
+        }
+
+        .solution-card {
+            padding: 48px;
+            border: 1px solid var(--gray-800);
+            margin: -1px 0 0 -1px;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .solution-card:hover {
+            background: var(--gray-900);
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 48px;
+            height: 3px;
+            background: var(--signal);
+            transition: width 0.4s ease;
+        }
+
+        .solution-card:hover::before {
+            width: 100%;
+        }
+
+        .solution-card .industry {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            margin-bottom: 20px;
+        }
+
+        .solution-card h3 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .solution-card .challenge,
+        .solution-card .answer {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .solution-card .challenge {
+            color: var(--gray-500);
+        }
+
+        .solution-card .answer {
+            color: var(--gray-300);
+        }
+
+        /* Partners */
+        .partners-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: start;
+        }
+
+        .partners-sticky {
+            position: sticky;
+            top: 120px;
+        }
+
+        .partner-block {
+            padding: 48px 0;
+            border-top: 1px solid var(--gray-200);
+            transition: transform 0.3s ease;
+        }
+
+        .partner-block:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .partner-block:hover {
+            transform: translateX(8px);
+        }
+
+        .partner-block h3 {
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .partner-block p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        /* Investors */
+        .investors-section {
+            background: var(--gray-100);
+        }
+
+        .investors-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin: 80px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .value {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(48px, 6vw, 80px);
+            font-style: italic;
+            line-height: 1;
+            margin-bottom: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .stat-item:hover .value {
+            color: var(--signal);
+        }
+
+        .stat-item .label {
+            font-size: 14px;
+            color: var(--gray-600);
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        .roadmap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .roadmap-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -8px rgba(0,0,0,0.08);
+        }
+
+        .roadmap-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--signal), var(--signal) 33%, var(--gray-200) 33%);
+        }
+
+        .roadmap-card:nth-child(2)::before {
+            background: linear-gradient(90deg, var(--signal), var(--signal) 66%, var(--gray-200) 66%);
+        }
+
+        .roadmap-card:nth-child(3)::before {
+            background: var(--signal);
+        }
+
+        .roadmap-card .year {
+            font-family: 'Geist Mono', monospace;
+            font-size: 13px;
+            color: var(--signal);
+            margin-bottom: 8px;
+        }
+
+        .roadmap-card h4 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .roadmap-card ul {
+            list-style: none;
+        }
+
+        .roadmap-card ul li {
+            font-size: 14px;
+            color: var(--gray-600);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .roadmap-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            border: 1px solid var(--gray-800);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--gray-600);
+            background: var(--gray-900);
+        }
+
+        .contact-card h4 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            font-size: 14px;
+            color: var(--gray-400);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .contact-card .btn {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 48px 0;
+            border-top: 1px solid var(--gray-800);
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-links a {
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .why-grid,
+            .products-grid,
+            .solutions-grid,
+            .investors-stats,
+            .roadmap,
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .tech-item {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .tech-header,
+            .partners-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .partners-sticky {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links a:not(.btn) {
+                display: none;
+            }
+
+            .why-grid,
+            .products-grid,
+            .solutions-grid,
+            .investors-stats,
+            .roadmap,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            footer .container {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <img src="pure_black.png" alt="Codebat" class="loader-logo">
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="pure_black.png" alt="Codebat">
+                <span>codebat</span>
+            </a>
+            <div class="nav-links">
+                <a href="#why">Why Us</a>
+                <a href="#tech">Technology</a>
+                <a href="#products">Products</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#investors">Investors</a>
+                <a href="#contact" class="btn btn-dark">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-visual">
+            <img src="pure_black.png" alt="">
+        </div>
+        <div class="container">
+            <div class="hero-eyebrow">Software-Defined Trust</div>
+            <h1>The New Standard for <em>Trusted AI</em></h1>
+            <p class="hero-sub">Protect your data during computation—the critical moment traditional security misses. Post-quantum security starts now.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-dark">Schedule Evaluation →</a>
+                <a href="#tech" class="btn btn-outline">Explore Technology</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-section">
+        <div class="marquee">
+            <div class="marquee-item">FIPS 140-3 Level 2 Certification</div>
+            <div class="marquee-item">35 Patent Families</div>
+            <div class="marquee-item">288 Bytes Ultra-Lean Evidence</div>
+            <div class="marquee-item">k≤32 Threshold Signatures</div>
+            <div class="marquee-item">Zero-TEE Architecture</div>
+            <div class="marquee-item">NIST PQC Standard Support</div>
+            <div class="marquee-item">FIPS 140-3 Level 2 Certification</div>
+            <div class="marquee-item">35 Patent Families</div>
+            <div class="marquee-item">288 Bytes Ultra-Lean Evidence</div>
+            <div class="marquee-item">k≤32 Threshold Signatures</div>
+            <div class="marquee-item">Zero-TEE Architecture</div>
+            <div class="marquee-item">NIST PQC Standard Support</div>
+        </div>
+    </div>
+
+    <section class="why-section" id="why">
+        <div class="container">
+            <div class="section-label reveal">Why Now</div>
+            <h2 class="section-title reveal">Why <em>Now</em> is the Time for Codebat</h2>
+            <div class="why-grid">
+                <div class="why-item reveal">
+                    <div class="number">1</div>
+                    <h3>The Invisible Security Gap</h3>
+                    <p>Firewalls protect data at rest. TLS protects data in transit. But data being processed in CPU and memory is completely exposed. We provide runtime encryption to eliminate this last attack surface.</p>
+                </div>
+                <div class="why-item reveal reveal-delay-1">
+                    <div class="number">2</div>
+                    <h3>Quantum Countdown</h3>
+                    <p>Quantum computers will break RSA/ECC encryption within years. NIST has already initiated post-quantum cryptography migration. We enable seamless transition with crypto-agility.</p>
+                </div>
+                <div class="why-item reveal reveal-delay-2">
+                    <div class="number">3</div>
+                    <h3>Compliance Wave</h3>
+                    <p>From FDA to SEC, regulators worldwide are mandating higher data integrity and audit standards. We help you automatically meet HIPAA, 21 CFR Part 11, and EU DORA requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-section" id="tech">
+        <div class="container">
+            <div class="tech-header">
+                <div class="reveal">
+                    <div class="section-label">Technology</div>
+                    <h2 class="section-title">Not Just Defense—<br>A Computing <em>Revolution</em></h2>
+                </div>
+                <p class="reveal reveal-delay-1">Backed by 35 patent families, we've built a 3-5 year technology moat. Our vendor-agnostic "software-defined trust" architecture supports x86, ARM, and RISC-V.</p>
+            </div>
+            <div class="tech-list">
+                <div class="tech-item reveal">
+                    <div class="label">Ultra-Lean Evidence</div>
+                    <div>
+                        <h3>288-Byte Proof</h3>
+                        <p class="desc">We compress proofs to just 288 bytes—35,000x smaller. This enables ultra-low latency for high-frequency trading and real-time AI inference.</p>
+                        <div class="tech-stat">
+                            <span class="value">8.7%</span>
+                            <span class="unit">Total Performance Overhead</span>
+                        </div>
+                    </div>
+                    <div class="problem">Competitors' proof files reach 10MB+, causing severe network latency and performance bottlenecks.</div>
+                </div>
+                <div class="tech-item reveal">
+                    <div class="label">Threshold Signatures</div>
+                    <div>
+                        <h3>Massive-Scale PQC Threshold Signatures</h3>
+                        <p class="desc">Our proprietary algorithm supports production-grade k≤32 threshold signatures with native NIST FIPS 204 compliance. Solving permission management in large distributed systems.</p>
+                        <div class="tech-stat">
+                            <span class="value">k≤32</span>
+                            <span class="unit">Threshold Signature Support</span>
+                        </div>
+                    </div>
+                    <div class="problem">Existing solutions experience mathematical overflow and performance collapse at k > 8.</div>
+                </div>
+                <div class="tech-item reveal">
+                    <div class="label">Physical Isolation</div>
+                    <div>
+                        <h3>Chip-Level Physical Isolation</h3>
+                        <p class="desc">Our proprietary BRAM/SRAM buffer architecture creates physical isolation within the chip. Immune to Rowhammer, Spectre, and other attacks—keys never leave the secure boundary.</p>
+                        <div class="tech-stat">
+                            <span class="value">Zero-TEE</span>
+                            <span class="unit">Vendor Agnostic</span>
+                        </div>
+                    </div>
+                    <div class="problem">Intel SGX/AMD SEV dependencies have shared resource vulnerabilities, susceptible to side-channel attacks.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <div class="products-header reveal">
+                <div class="section-label">Products</div>
+                <h2 class="section-title">Trust Engines for <em>Critical Scenarios</em></h2>
+            </div>
+            <div class="products-grid">
+                <div class="product-card reveal">
+                    <div class="sku">SKU-A</div>
+                    <h3>Key Governance & Code Signing</h3>
+                    <p class="target">SaaS Providers · Financial Institutions · Software Developers</p>
+                    <ul class="features">
+                        <li>Enterprise Root CA protection</li>
+                        <li>Automated code signing workflow to prevent supply chain attacks</li>
+                        <li>Multi-party permission management with threshold signatures</li>
+                    </ul>
+                    <p class="use-case">Protect CI/CD pipelines and ensure software integrity</p>
+                </div>
+                <div class="product-card reveal reveal-delay-1">
+                    <div class="sku">SKU-B</div>
+                    <h3>PQC Crypto Offload Accelerator</h3>
+                    <p class="target">Telecom Carriers · ISPs · Large Data Centers</p>
+                    <ul class="features">
+                        <li>Hardware acceleration designed for post-quantum cryptography</li>
+                        <li>50K–200K TPS ultra-high throughput</li>
+                        <li>Offload CPU encryption burden</li>
+                    </ul>
+                    <p class="use-case">5G network security, large-scale VPN gateways</p>
+                </div>
+                <div class="product-card reveal reveal-delay-2">
+                    <div class="sku">CEE</div>
+                    <h3>Compliance Evidence Engine</h3>
+                    <p class="target">Pharmaceuticals · Banks · Government Agencies</p>
+                    <ul class="features">
+                        <li>Auto-generate tamper-proof digital audit reports</li>
+                        <li>FDA 21 CFR, SEC, HIPAA compliant</li>
+                        <li>Traceable decision and data operation chains</li>
+                    </ul>
+                    <p class="use-case">Clinical trial data submission, financial compliance review</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solutions-section" id="solutions">
+        <div class="container">
+            <div class="section-label reveal">Solutions</div>
+            <h2 class="section-title reveal">Protect Your Core <em>Digital Assets</em></h2>
+            <div class="solutions-grid">
+                <div class="solution-card reveal">
+                    <div class="industry">Semiconductor</div>
+                    <h3>Chip Design Protection</h3>
+                    <p class="challenge">EDA tools and chip design IP worth billions, often under ITAR export controls. Leakage causes catastrophic losses.</p>
+                    <p class="answer">Chip-level isolation ensures IP remains encrypted throughout computation, preventing insider theft and espionage.</p>
+                </div>
+                <div class="solution-card reveal reveal-delay-1">
+                    <div class="industry">Finance</div>
+                    <h3>Trading Algorithm Security</h3>
+                    <p class="challenge">HFT algorithms are core secrets. SEC requires immutable records of every trading decision.</p>
+                    <p class="answer">Ultra-low latency evidence protection for algorithms. Chain evidence provides undeniable audit trails.</p>
+                </div>
+                <div class="solution-card reveal reveal-delay-2">
+                    <div class="industry">Healthcare</div>
+                    <h3>Patient Data Privacy</h3>
+                    <p class="challenge">Highly sensitive PHI data faces strict HIPAA requirements and ransomware threats.</p>
+                    <p class="answer">Ensure medical data privacy in AI analytics models. Auto-generate compliance reports, reduce legal risk.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners">
+        <div class="container">
+            <div class="partners-layout">
+                <div class="partners-sticky reveal">
+                    <div class="section-label">Partners</div>
+                    <h2 class="section-title">Building the Post-Quantum <em>Trust Ecosystem</em></h2>
+                    <p style="color: var(--gray-600); margin-top: 24px; line-height: 1.7;">We don't just sell products—we're building global security infrastructure.</p>
+                </div>
+                <div>
+                    <div class="partner-block reveal">
+                        <h3>National AI Sovereignty Platforms</h3>
+                        <p>We're partnering with governments and enterprises in Southeast Asia and the Middle East to establish "National AI Sovereign Cloud" pilots. Codebat ensures national data is processed securely within borders, maintaining digital sovereignty.</p>
+                        <a href="#contact" class="btn btn-outline">Become a Partner</a>
+                    </div>
+                    <div class="partner-block reveal">
+                        <h3>RISC-V Edge Security</h3>
+                        <p>We're extending trusted computing capabilities to the edge. Through partnerships with RISC-V chip makers, we provide native post-quantum security for IoT devices.</p>
+                        <a href="#contact" class="btn btn-outline">Explore Tech Partnership</a>
+                    </div>
+                    <div class="partner-block reveal">
+                        <h3>CI/CD Security Integration</h3>
+                        <p>We invite DevSecOps partners to integrate Codebat's signing and verification capabilities into mainstream CI/CD toolchains, enabling "Security as Code."</p>
+                        <a href="#contact" class="btn btn-outline">Join the Ecosystem</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="investors-section" id="investors">
+        <div class="container">
+            <div class="section-label reveal">Investors</div>
+            <h2 class="section-title reveal">Capture the <em>Explosive Growth</em> of Confidential Computing</h2>
+            <div class="investors-stats">
+                <div class="stat-item reveal">
+                    <div class="value">$78B</div>
+                    <div class="label">Total Addressable Market in Data Security & Privacy Computing</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-1">
+                    <div class="value">62.1%</div>
+                    <div class="label">Confidential Computing CAGR Through 2028</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-2">
+                    <div class="value">83-89%</div>
+                    <div class="label">Projected Gross Margin (HaaS Model)</div>
+                </div>
+            </div>
+            <div class="roadmap">
+                <div class="roadmap-card reveal">
+                    <div class="year">2026</div>
+                    <h4>Commercial Validation</h4>
+                    <ul>
+                        <li>FIPS 140-3 L2 certification</li>
+                        <li>SKU-A/B global launch</li>
+                        <li>Series A completion</li>
+                    </ul>
+                </div>
+                <div class="roadmap-card reveal reveal-delay-1">
+                    <div class="year">2027</div>
+                    <h4>Ecosystem Expansion</h4>
+                    <ul>
+                        <li>Full NIST ML-DSA quantum migration</li>
+                        <li>RISC-V edge solution launch</li>
+                        <li>Series B initiation</li>
+                    </ul>
+                </div>
+                <div class="roadmap-card reveal reveal-delay-2">
+                    <div class="year">2028+</div>
+                    <h4>Market Leadership</h4>
+                    <ul>
+                        <li>De facto standard for confidential computing</li>
+                        <li>Post-quantum security market leader</li>
+                        <li>Continued product matrix expansion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-label reveal">Contact</div>
+            <h2 class="section-title reveal">Transition Your Systems Before Quantum Threats <em>Arrive</em></h2>
+            <div class="contact-grid">
+                <div class="contact-card reveal">
+                    <h4>Customer Deployment</h4>
+                    <p>We can complete a "Software-Defined Trust" cloud POC deployment in two weeks.</p>
+                    <a href="mailto:poc@codebat.ai" class="btn btn-signal">Schedule Evaluation</a>
+                </div>
+                <div class="contact-card reveal reveal-delay-1">
+                    <h4>Investment & Strategy</h4>
+                    <p>Learn about our latest fundraising plans and financial projections.</p>
+                    <a href="mailto:ir@codebat.ai" class="btn btn-signal">Contact IR Team</a>
+                </div>
+                <div class="contact-card reveal reveal-delay-2">
+                    <h4>Partnership</h4>
+                    <p>If you're a system integrator or planning national AI infrastructure.</p>
+                    <a href="mailto:partners@codebat.ai" class="btn btn-signal">Explore Opportunities</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Technical Whitepaper</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">About Us</a>
+            </div>
+            <div class="copyright">© 2026 codebat.ai. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (top < windowHeight - 80) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', () => {
+            setTimeout(revealOnScroll, 100);
+        });
+
+        // Smooth anchor scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
