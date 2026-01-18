@@ -1,405 +1,1979 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- SEO Meta Tags -->
-  <title>Trusted Computing Platform | Encrypted Upload・Isolated Execution・Verifiable Evidence</title>
-  <meta name="description"
-    content="Keep sensitive data in your infrastructure, bring security proof back to your pocket. Enterprise-grade encryption, isolated execution, verifiable cryptographic proof for compliance.">
-  <meta name="keywords" content="trusted computing, encrypted upload, isolated execution, cryptographic verification, data security, compliance, audit trail, verifiable proof">
-  <meta name="author" content="Codebat Technology Inc.">
+    <!-- SEO Meta Tags -->
+    <title>Codebat — The New Standard for Trusted AI</title>
+    <meta name="description" content="Protect your data during computation—the critical moment traditional security misses. Post-quantum security starts now.">
+    <meta name="keywords" content="trusted computing, post-quantum cryptography, confidential computing, data security, compliance, PQC, FIPS 140-3">
+    <meta name="author" content="Codebat Technology Inc.">
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://codebat.ai/">
-  <meta property="og:title" content="Trusted Computing Platform | Encrypted Upload・Isolated Execution・Verifiable Evidence">
-  <meta property="og:description" content="Keep sensitive data in your infrastructure, bring security proof back to your pocket. Zero hardware changes, zero data leakage, zero excuses.">
-  <meta property="og:image" content="https://codebat.ai/assets/og-image.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codebat.ai/">
+    <meta property="og:title" content="Codebat — The New Standard for Trusted AI">
+    <meta property="og:description" content="Protect your data during computation—the critical moment traditional security misses. Post-quantum security starts now.">
+    <meta property="og:image" content="https://codebat.ai/assets/og-image.png">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://codebat.ai/">
-  <meta name="twitter:title" content="Trusted Computing Platform | Encrypted Upload・Isolated Execution・Verifiable Evidence">
-  <meta name="twitter:description" content="Keep sensitive data in your infrastructure, bring security proof back to your pocket.">
-  <meta name="twitter:image" content="https://codebat.ai/assets/og-image.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://codebat.ai/">
+    <meta name="twitter:title" content="Codebat — The New Standard for Trusted AI">
+    <meta name="twitter:description" content="Protect your data during computation—the critical moment traditional security misses.">
+    <meta name="twitter:image" content="https://codebat.ai/assets/og-image.png">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
 
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://codebat.ai">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="./css/main.css">
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "name": "Codebat Technology Inc.",
-        "url": "https://codebat.ai",
-        "logo": "https://codebat.ai/assets/logo.png",
-        "description": "Trusted computing platform provider offering enterprise-grade data security with verifiable cryptographic proof for compliance and audit trails",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "support@codebat.ai",
-          "contactType": "customer service",
-          "availableLanguage": ["en", "zh-TW"]
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "Trusted Computing Platform",
-        "description": "Enterprise data security platform with tamper-proof audit records—zero hardware changes, zero data leakage, zero excuses",
-        "brand": {
-          "@type": "Brand",
-          "name": "Codebat Technology"
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Codebat Technology Inc.",
+          "url": "https://codebat.ai",
+          "logo": "https://codebat.ai/assets/logo.png",
+          "description": "Software-defined trust platform with post-quantum cryptography for confidential computing"
         },
-        "offers": {
-          "@type": "Offer",
-          "availability": "https://schema.org/InStock",
-          "priceCurrency": "USD"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the performance impact?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Our platform is designed for minimal performance impact while maintaining maximum security. Most workloads experience negligible overhead."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do I need new hardware?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. Deploy directly on your existing infrastructure with standard enterprise hardware."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can you access my data?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Absolutely not. Your data is encrypted before it reaches our platform. We only process encrypted information and have zero ability to decrypt your sensitive data."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can verification records be tampered with?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Impossible. Verification records are cryptographically sealed and permanently locked upon creation. Auditors can independently verify their authenticity."
-            }
+        {
+          "@type": "Product",
+          "name": "Codebat Trust Platform",
+          "description": "Post-quantum security platform with 288-byte ultra-lean evidence and chip-level physical isolation",
+          "brand": {
+            "@type": "Brand",
+            "name": "Codebat Technology"
           }
-        ]
-      }
-    ]
-  }
-  </script>
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: 'Geist Mono';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --white: #fafafa;
+            --gray-50: #f9f9f9;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --signal: #ff4d00;
+            --signal-light: rgba(255, 77, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--signal);
+            color: var(--white);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Geist', 'DM Sans', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+
+        .serif {
+            font-family: 'Instrument Serif', Georgia, serif;
+        }
+
+        .mono {
+            font-family: 'Geist Mono', 'SF Mono', monospace;
+            font-size: 0.85em;
+            letter-spacing: -0.02em;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--white);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-inner {
+            text-align: center;
+        }
+
+        .loader-logo {
+            width: auto;
+            height: 56px;
+            margin-top: 20px;
+            margin-bottom: 24px;
+            animation: pulse 1.5s ease-in-out infinite;
+            object-fit: contain;
+        }
+
+        .loader-bar {
+            width: 120px;
+            height: 2px;
+            background: var(--gray-200);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            height: 100%;
+            background: var(--signal);
+            animation: loading 1.2s ease-out forwards;
+        }
+
+        @keyframes loading {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            background: rgba(250, 250, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 14px 0;
+            box-shadow: 0 1px 0 var(--gray-200);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo span {
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--black);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-dark {
+            background: var(--black);
+            color: var(--white) !important;
+        }
+
+        .btn-dark:hover {
+            background: var(--gray-800);
+            color: var(--white) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-links .btn-dark {
+            color: var(--white) !important;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--black);
+            border: 1px solid var(--gray-300);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--black);
+        }
+
+        .btn-signal {
+            background: var(--signal);
+            color: var(--white);
+        }
+
+        .btn-signal:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 101;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--black);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.6;
+        }
+
+        .hero-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(250,250,250,0.4) 0%, rgba(250,250,250,0.85) 100%);
+            z-index: -1;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            color: var(--gray-500);
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--gray-400);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 80px);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 40px;
+            max-width: 900px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero h1 em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-sub {
+            font-size: clamp(18px, 2vw, 22px);
+            color: var(--gray-600);
+            max-width: 560px;
+            margin-bottom: 48px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease 0.8s forwards;
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            aspect-ratio: 1;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Marquee */
+        .marquee-section {
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 20px 0;
+            overflow: hidden;
+            background: var(--gray-100);
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 35s linear infinite;
+        }
+
+        .marquee:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-item {
+            flex-shrink: 0;
+            padding: 0 48px;
+            font-size: 13px;
+            color: var(--gray-500);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: color 0.2s;
+        }
+
+        .marquee-item:hover {
+            color: var(--black);
+        }
+
+        .marquee-item::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: var(--signal);
+            border-radius: 50%;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Section */
+        section {
+            padding: clamp(80px, 12vw, 160px) 0;
+        }
+
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .section-title em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.25em;
+            letter-spacing: -0.03em;
+        }
+
+        /* Why Section */
+        .why-section {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .why-section .section-label {
+            color: var(--gray-500);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--gray-800);
+            margin-top: 80px;
+        }
+
+        .why-item {
+            background: var(--black);
+            padding: 48px;
+            transition: background 0.4s ease;
+        }
+
+        .why-item:hover {
+            background: var(--gray-900);
+        }
+
+        .why-item .number {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 64px;
+            font-style: italic;
+            color: var(--signal);
+            line-height: 1;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .why-item:hover .number {
+            transform: translateX(8px);
+        }
+
+        .why-item h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .why-item p {
+            font-size: 15px;
+            color: var(--gray-400);
+            line-height: 1.7;
+        }
+
+        /* Tech Section */
+        .tech-section {
+            background: var(--gray-100);
+        }
+
+        .tech-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 100px;
+        }
+
+        .tech-header p {
+            font-size: 18px;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .tech-list {
+            counter-reset: tech;
+        }
+
+        .tech-item {
+            display: grid;
+            grid-template-columns: 200px 1fr 300px;
+            gap: 60px;
+            padding: 60px clamp(24px, 5vw, 80px);
+            margin-left: calc(-1 * clamp(24px, 5vw, 80px));
+            margin-right: calc(-1 * clamp(24px, 5vw, 80px));
+            border-top: 1px solid var(--gray-300);
+            align-items: start;
+            transition: background 0.3s ease;
+        }
+
+        .tech-item:last-child {
+            border-bottom: 1px solid var(--gray-300);
+        }
+
+        .tech-item:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .tech-item .label {
+            font-size: 13px;
+            color: var(--gray-500);
+            counter-increment: tech;
+        }
+
+        .tech-item .label::before {
+            content: '0' counter(tech);
+            display: block;
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 48px;
+            font-style: italic;
+            color: var(--black);
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .tech-item:hover .label::before {
+            color: var(--signal);
+        }
+
+        .tech-item h3 {
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .tech-item .desc {
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .tech-item .problem {
+            font-size: 14px;
+            color: var(--gray-500);
+            padding: 20px;
+            background: var(--white);
+            border-left: 2px solid var(--signal);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-item:hover .problem {
+            transform: translateX(4px);
+        }
+
+        .tech-stat {
+            margin-top: 32px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .tech-stat .value {
+            font-family: 'Geist Mono', monospace;
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--signal);
+        }
+
+        .tech-stat .unit {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        /* Tech Video */
+        .tech-item-video {
+            grid-template-columns: 200px 1fr 1fr;
+        }
+
+        .tech-video {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .video-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
+            aspect-ratio: 16/9;
+            cursor: pointer;
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255, 77, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 77, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .video-container.playing::before {
+            opacity: 0;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 72px;
+            height: 72px;
+            background: var(--signal);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            pointer-events: auto;
+        }
+
+        .video-play-btn svg {
+            margin-left: 4px;
+        }
+
+        .video-play-btn:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 8px 32px rgba(255, 77, 0, 0.5);
+        }
+
+        .video-container.playing .video-play-btn {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            padding: 24px;
+            padding-top: 60%;
+            background: linear-gradient(transparent 50%, rgba(0,0,0,0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 4px;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .video-container.playing .video-overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .video-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: white;
+        }
+
+        .video-hint {
+            font-size: 12px;
+            color: var(--gray-400);
+        }
+
+        .video-caption {
+            font-size: 13px;
+            color: var(--gray-500);
+            text-align: center;
+        }
+
+        .video-container video::-webkit-media-controls {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .video-container.playing video::-webkit-media-controls {
+            opacity: 1;
+        }
+
+        /* Flow Diagram */
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin: 80px 0;
+            padding: 60px 40px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+        }
+
+        .flow-step {
+            flex: 1;
+            max-width: 280px;
+            text-align: center;
+            padding: 32px 24px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .flow-diagram.active .flow-step {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .flow-diagram.active .flow-step[data-step="1"] { transition-delay: 0.1s; }
+        .flow-diagram.active .flow-step[data-step="2"] { transition-delay: 0.4s; }
+        .flow-diagram.active .flow-step[data-step="3"] { transition-delay: 0.7s; }
+
+        .flow-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: var(--gray-100);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            transition: all 0.4s ease;
+        }
+
+        .flow-step:hover .flow-icon {
+            background: var(--signal);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(255, 77, 0, 0.25);
+        }
+
+        .flow-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .flow-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .flow-content p {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+
+        .flow-number {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 12px;
+            color: var(--gray-300);
+            font-weight: 500;
+        }
+
+        .flow-connector {
+            width: 80px;
+            flex-shrink: 0;
+            color: var(--gray-300);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .flow-diagram.active .flow-connector {
+            opacity: 1;
+        }
+
+        .flow-diagram.active .flow-step[data-step="1"] ~ .flow-connector:first-of-type {
+            transition-delay: 0.25s;
+        }
+
+        .flow-diagram.active .flow-step[data-step="2"] ~ .flow-connector {
+            transition-delay: 0.55s;
+        }
+
+        .connector-line {
+            stroke-dashoffset: 100;
+            animation: none;
+        }
+
+        .flow-diagram.active .connector-line {
+            animation: drawLine 0.6s ease forwards;
+        }
+
+        .flow-diagram.active .flow-step[data-step="1"] ~ .flow-connector .connector-line {
+            animation-delay: 0.25s;
+        }
+
+        .flow-diagram.active .flow-step[data-step="2"] ~ .flow-connector .connector-line {
+            animation-delay: 0.55s;
+        }
+
+        @keyframes drawLine {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .connector-arrow {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .flow-diagram.active .connector-arrow {
+            opacity: 1;
+            transition-delay: 0.4s;
+        }
+
+        /* Flow Diagram Responsive */
+        @media (max-width: 900px) {
+            .flow-diagram {
+                flex-direction: column;
+                gap: 20px;
+                padding: 40px 24px;
+            }
+
+            .flow-step {
+                max-width: 100%;
+            }
+
+            .flow-connector {
+                width: 40px;
+                height: 40px;
+                transform: rotate(90deg);
+            }
+        }
+
+        /* Solutions */
+        .solutions-section {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-top: 80px;
+        }
+
+        .solution-card {
+            padding: 48px;
+            border: 1px solid var(--gray-800);
+            margin: -1px 0 0 -1px;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .solution-card:hover {
+            background: var(--gray-900);
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 48px;
+            height: 3px;
+            background: var(--signal);
+            transition: width 0.4s ease;
+        }
+
+        .solution-card:hover::before {
+            width: 100%;
+        }
+
+        .solution-card .industry {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            margin-bottom: 20px;
+        }
+
+        .solution-card h3 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .solution-card .challenge,
+        .solution-card .answer {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .solution-card .challenge {
+            color: var(--gray-500);
+        }
+
+        .solution-card .answer {
+            color: var(--gray-300);
+        }
+
+        /* Partners */
+        .partners-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: start;
+        }
+
+        .partners-sticky {
+            position: sticky;
+            top: 120px;
+        }
+
+        .partner-block {
+            padding: 48px 0;
+            border-top: 1px solid var(--gray-200);
+            transition: transform 0.3s ease;
+        }
+
+        .partner-block:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .partner-block:hover {
+            transform: translateX(8px);
+        }
+
+        .partner-block h3 {
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .partner-block p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        /* Investors */
+        .investors-section {
+            background: var(--gray-100);
+        }
+
+        .investors-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin: 80px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .value {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(48px, 6vw, 80px);
+            font-style: italic;
+            line-height: 1;
+            margin-bottom: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .stat-item .value .counter-prefix,
+        .stat-item .value .counter-suffix {
+            font-size: 0.6em;
+        }
+
+        .stat-item:hover .value {
+            color: var(--signal);
+        }
+
+        .stat-item .label {
+            font-size: 14px;
+            color: var(--gray-600);
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        .roadmap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .roadmap-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -8px rgba(0,0,0,0.08);
+        }
+
+        .roadmap-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--signal), var(--signal) 33%, var(--gray-200) 33%);
+        }
+
+        .roadmap-card:nth-child(2)::before {
+            background: linear-gradient(90deg, var(--signal), var(--signal) 66%, var(--gray-200) 66%);
+        }
+
+        .roadmap-card:nth-child(3)::before {
+            background: var(--signal);
+        }
+
+        .roadmap-card .year {
+            font-family: 'Geist Mono', monospace;
+            font-size: 13px;
+            color: var(--signal);
+            margin-bottom: 8px;
+        }
+
+        .roadmap-card h4 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .roadmap-card ul {
+            list-style: none;
+        }
+
+        .roadmap-card ul li {
+            font-size: 14px;
+            color: var(--gray-600);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .roadmap-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            border: 1px solid var(--gray-800);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--gray-600);
+            background: var(--gray-900);
+        }
+
+        .contact-card h4 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            font-size: 14px;
+            color: var(--gray-400);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .contact-card .btn {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 48px 0;
+            border-top: 1px solid var(--gray-800);
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-links a {
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            background: var(--signal);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 77, 0, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(255, 77, 0, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .why-grid,
+            .solutions-grid,
+            .investors-stats,
+            .roadmap,
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .tech-item {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .tech-header,
+            .partners-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .partners-sticky {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 24px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+
+            .nav-links.active {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links a {
+                font-size: 24px;
+            }
+
+            .why-grid,
+            .solutions-grid,
+            .investors-stats,
+            .roadmap,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            footer .container {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+            .marquee {
+                animation: none;
+            }
+            .hero h1, .hero-sub, .hero-cta, .hero-eyebrow {
+                opacity: 1;
+                transform: none;
+                animation: none;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="/" class="logo" aria-label="Home">
-        <img src="./assets/logo.png" alt="Codebat Logo" class="logo-img">
-        <!-- <span>Codebat</span> -->
-      </a>
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#values">Core Values</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="/product">Product</a></li>
-        <li><a href="/contact" class="btn btn-primary" style="padding: 8px 20px;">Contact Us</a></li>
-      </ul>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <img src="./assets/logo.png" alt="Codebat" class="loader-logo">
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
     </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="container reveal-on-scroll">
-      <h1>Keep Sensitive Data in Your Infrastructure,<br>Bring Security Proof Back to Your Pocket.</h1>
-      <h2>
-        Our trusted computing platform makes encrypted upload, isolated execution, and verifiable evidence packages the standard for every task—<strong>zero hardware changes, zero data leakage, zero excuses</strong>.
-      </h2>
-      <div class="cta-buttons">
-        <a href="/contact" class="btn btn-primary">Request PoC</a>
-        <a href="/contact" class="btn btn-ghost">Request Whitepaper</a>
-      </div>
-      <p class="trust-note">
-        End-to-End Encryption ｜ Secure Isolation ｜ Immutable Audit Records ｜ On-Premises Support
-      </p>
+    <nav id="nav">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="./assets/logo.png" alt="Codebat">
+                <span>codebat</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#why">Why Us</a>
+                <a href="#tech">Technology</a>
+                <a href="/product">Products</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#investors">Investors</a>
+                <a href="/contact" class="btn btn-dark">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <video class="hero-video-bg" autoplay muted loop playsinline>
+            <source src="./assets/Hero_video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+        <div class="hero-visual">
+            <img src="./assets/logo.png" alt="">
+        </div>
+        <div class="container">
+            <div class="hero-eyebrow">Software-Defined Trust</div>
+            <h1>The New Standard for<br><em>Trusted AI</em></h1>
+            <p class="hero-sub">Protect your data during computation—the critical moment traditional security misses. Post-quantum security starts now.</p>
+            <div class="hero-cta">
+                <a href="/contact" class="btn btn-dark">Schedule Evaluation</a>
+                <a href="#tech" class="btn btn-outline">Explore Technology</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-section">
+        <div class="marquee">
+            <div class="marquee-item">FIPS 140-3 Level 2 Certification</div>
+            <div class="marquee-item">35 Patent Families</div>
+            <div class="marquee-item">288 Bytes Ultra-Lean Evidence</div>
+            <div class="marquee-item">k≤32 Threshold Signatures</div>
+            <div class="marquee-item">Zero-TEE Architecture</div>
+            <div class="marquee-item">NIST PQC Standard Support</div>
+            <div class="marquee-item">FIPS 140-3 Level 2 Certification</div>
+            <div class="marquee-item">35 Patent Families</div>
+            <div class="marquee-item">288 Bytes Ultra-Lean Evidence</div>
+            <div class="marquee-item">k≤32 Threshold Signatures</div>
+            <div class="marquee-item">Zero-TEE Architecture</div>
+            <div class="marquee-item">NIST PQC Standard Support</div>
+        </div>
     </div>
-  </section>
 
-  <!-- Three Core Values -->
-  <section class="section section-tight" id="values">
-    <div class="container">
-      <h2 class="text-center mb-5">Three Core Values</h2>
-      <div class="grid-3">
-        <div class="card reveal-on-scroll">
-          <h3>🔒 Never See Your Data, Yet Verify Everything</h3>
-          <p>
-            Every task automatically generates tamper-proof <strong>cryptographic verification records</strong> with digital signatures and timestamps. <strong>Who did what, when</strong>—independently verifiable proof you can audit without trusting us.
-          </p>
+    <section class="why-section" id="why">
+        <div class="container">
+            <div class="section-label reveal">Why Now</div>
+            <h2 class="section-title reveal">Why <em>Now</em> is the Time for Codebat</h2>
+            <div class="why-grid">
+                <div class="why-item reveal">
+                    <div class="number">1</div>
+                    <h3>The Invisible Security Gap</h3>
+                    <p>Firewalls protect data at rest. TLS protects data in transit. But data being processed in CPU and memory is completely exposed. We provide runtime encryption to eliminate this last attack surface.</p>
+                </div>
+                <div class="why-item reveal reveal-delay-1">
+                    <div class="number">2</div>
+                    <h3>Quantum Countdown</h3>
+                    <p>Quantum computers will break RSA/ECC encryption within years. NIST has already initiated post-quantum cryptography migration. We enable seamless transition with crypto-agility.</p>
+                </div>
+                <div class="why-item reveal reveal-delay-2">
+                    <div class="number">3</div>
+                    <h3>Compliance Wave</h3>
+                    <p>From FDA to SEC, regulators worldwide are mandating higher data integrity and audit standards. We help you automatically meet HIPAA, 21 CFR Part 11, and EU DORA requirements.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card reveal-on-scroll">
-          <h3>⚙️ No Hardware Changes, No System Modifications</h3>
-          <p>
-            Deploy directly on existing infrastructure. Advanced isolation technology prevents unauthorized access and surveillance, supports both CPU and GPU workloads, seamlessly integrates with your on-premises storage.
-          </p>
+    <section class="tech-section" id="tech">
+        <div class="container">
+            <div class="tech-header">
+                <div class="reveal">
+                    <div class="section-label">Technology</div>
+                    <h2 class="section-title">Not Just Defense—<br>A Computing <em>Revolution</em></h2>
+                </div>
+                <p class="reveal reveal-delay-1">Backed by 35 patent families, we've built a 3-5 year technology moat. Our vendor-agnostic "software-defined trust" architecture supports x86, ARM, and RISC-V.</p>
+            </div>
+
+            <!-- Flow Diagram -->
+            <div class="flow-diagram reveal" id="flowDiagram">
+                <div class="flow-step" data-step="1">
+                    <div class="flow-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="8" y="6" width="32" height="36" rx="2"/>
+                            <path d="M16 6V4a4 4 0 018 0v2"/>
+                            <path d="M24 6V4a4 4 0 018 0v2"/>
+                            <circle cx="24" cy="24" r="6"/>
+                            <path d="M24 21v6M21 24h6"/>
+                        </svg>
+                    </div>
+                    <div class="flow-content">
+                        <h4>Encrypted Upload</h4>
+                        <p>Data encrypted before leaving your environment</p>
+                    </div>
+                    <div class="flow-number">01</div>
+                </div>
+
+                <div class="flow-connector">
+                    <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+                        <path class="connector-line" d="M0 10 L100 10" stroke="currentColor" stroke-width="2" stroke-dasharray="6 4"/>
+                        <polygon class="connector-arrow" points="95,5 100,10 95,15" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <div class="flow-step" data-step="2">
+                    <div class="flow-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M24 4L6 12v12c0 11 8 18 18 22 10-4 18-11 18-22V12L24 4z"/>
+                            <rect x="16" y="18" width="16" height="14" rx="2"/>
+                            <circle cx="24" cy="23" r="2"/>
+                            <path d="M24 25v4"/>
+                        </svg>
+                    </div>
+                    <div class="flow-content">
+                        <h4>Isolated Execution</h4>
+                        <p>Processing in chip-level physical isolation</p>
+                    </div>
+                    <div class="flow-number">02</div>
+                </div>
+
+                <div class="flow-connector">
+                    <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+                        <path class="connector-line" d="M0 10 L100 10" stroke="currentColor" stroke-width="2" stroke-dasharray="6 4"/>
+                        <polygon class="connector-arrow" points="95,5 100,10 95,15" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <div class="flow-step" data-step="3">
+                    <div class="flow-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="6" y="8" width="36" height="32" rx="2"/>
+                            <path d="M6 16h36"/>
+                            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                            <circle cx="17" cy="12" r="1.5" fill="currentColor"/>
+                            <circle cx="22" cy="12" r="1.5" fill="currentColor"/>
+                            <path d="M16 28l6 6 10-12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="flow-content">
+                        <h4>Verifiable Evidence</h4>
+                        <p>288-byte cryptographic proof generated</p>
+                    </div>
+                    <div class="flow-number">03</div>
+                </div>
+            </div>
+
+            <div class="tech-list">
+                <div class="tech-item reveal">
+                    <div class="label">Ultra-Lean Evidence</div>
+                    <div>
+                        <h3>288-Byte Proof</h3>
+                        <p class="desc">We compress proofs to just 288 bytes—35,000x smaller. This enables ultra-low latency for high-frequency trading and real-time AI inference.</p>
+                        <div class="tech-stat">
+                            <span class="value">8.7%</span>
+                            <span class="unit">Total Performance Overhead</span>
+                        </div>
+                    </div>
+                    <div class="problem">Competitors' proof files reach 10MB+, causing severe network latency and performance bottlenecks.</div>
+                </div>
+                <div class="tech-item tech-item-video reveal">
+                    <div class="label">Threshold Signatures</div>
+                    <div>
+                        <h3>Arbitrary Threshold PQC Signatures</h3>
+                        <p class="desc">Proprietary protocol enables arbitrary k-of-n threshold signatures producing standard FIPS 204 ML-DSA signatures. No signature size inflation, full verifier compatibility.</p>
+                        <div class="tech-stat">
+                            <span class="value">k≤32</span>
+                            <span class="unit">Production-Grade Threshold</span>
+                        </div>
+                    </div>
+                    <div class="tech-video">
+                        <div class="video-container">
+                            <video id="thresholdVideo" poster="./assets/video-poster.jpg" preload="metadata">
+                                <source src="./assets/The_Magic_Masking_Trick.mp4" type="video/mp4">
+                            </video>
+                            <button class="video-play-btn" id="videoPlayBtn" aria-label="Play video">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                            <div class="video-overlay" id="videoOverlay">
+                                <span class="video-label">The Magic Masking Trick</span>
+                                <span class="video-hint">Click to play</span>
+                            </div>
+                        </div>
+                        <p class="video-caption">How we solved the k>8 mathematical barrier</p>
+                    </div>
+                </div>
+                <div class="tech-item reveal">
+                    <div class="label">Physical Isolation</div>
+                    <div>
+                        <h3>Chip-Level Physical Isolation</h3>
+                        <p class="desc">Our proprietary BRAM/SRAM buffer architecture creates physical isolation within the chip. Immune to Rowhammer, Spectre, and other attacks—keys never leave the secure boundary.</p>
+                        <div class="tech-stat">
+                            <span class="value">Zero-TEE</span>
+                            <span class="unit">Vendor Agnostic</span>
+                        </div>
+                    </div>
+                    <div class="problem">Intel SGX/AMD SEV dependencies have shared resource vulnerabilities, susceptible to side-channel attacks.</div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card reveal-on-scroll">
-          <h3>📦 Complete Audit Trail, Worry-Free Compliance</h3>
-          <p>
-            Every operation is cryptographically signed and recorded in tamper-proof verification logs. Approvals, executions, and deliveries are all tracked—giving you bulletproof audit trails for compliance and governance.
-          </p>
+    <section class="solutions-section" id="solutions">
+        <div class="container">
+            <div class="section-label reveal">Solutions</div>
+            <h2 class="section-title reveal">Protect Your Core <em>Digital Assets</em></h2>
+            <div class="solutions-grid">
+                <div class="solution-card reveal">
+                    <div class="industry">Semiconductor</div>
+                    <h3>Chip Design Protection</h3>
+                    <p class="challenge">EDA tools and chip design IP worth billions, often under ITAR export controls. Leakage causes catastrophic losses.</p>
+                    <p class="answer">Chip-level isolation ensures IP remains encrypted throughout computation, preventing insider theft and espionage.</p>
+                </div>
+                <div class="solution-card reveal reveal-delay-1">
+                    <div class="industry">Finance</div>
+                    <h3>Trading Algorithm Security</h3>
+                    <p class="challenge">HFT algorithms are core secrets. SEC requires immutable records of every trading decision.</p>
+                    <p class="answer">Ultra-low latency evidence protection for algorithms. Chain evidence provides undeniable audit trails.</p>
+                </div>
+                <div class="solution-card reveal reveal-delay-2">
+                    <div class="industry">Healthcare</div>
+                    <h3>Patient Data Privacy</h3>
+                    <p class="challenge">Highly sensitive PHI data faces strict HIPAA requirements and ransomware threats.</p>
+                    <p class="answer">Ensure medical data privacy in AI analytics models. Auto-generate compliance reports, reduce legal risk.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Trust Band -->
-  <div class="trust-band">
-    <div class="container">
-      <div class="trust-items">
-        <div class="trust-item">
-          <div class="trust-icon">🔐</div>
-          <p>End-to-End Encryption</p>
+    <section id="partners">
+        <div class="container">
+            <div class="partners-layout">
+                <div class="partners-sticky reveal">
+                    <div class="section-label">Partners</div>
+                    <h2 class="section-title">Building the Post-Quantum <em>Trust Ecosystem</em></h2>
+                    <p style="color: var(--gray-600); margin-top: 24px; line-height: 1.7;">We don't just sell products—we're building global security infrastructure.</p>
+                </div>
+                <div>
+                    <div class="partner-block reveal">
+                        <h3>National AI Sovereignty Platforms</h3>
+                        <p>We're partnering with governments and enterprises in Southeast Asia and the Middle East to establish "National AI Sovereign Cloud" pilots. Codebat ensures national data is processed securely within borders, maintaining digital sovereignty.</p>
+                        <a href="/contact" class="btn btn-outline">Become a Partner</a>
+                    </div>
+                    <div class="partner-block reveal">
+                        <h3>RISC-V Edge Security</h3>
+                        <p>We're extending trusted computing capabilities to the edge. Through partnerships with RISC-V chip makers, we provide native post-quantum security for IoT devices.</p>
+                        <a href="/contact" class="btn btn-outline">Explore Tech Partnership</a>
+                    </div>
+                    <div class="partner-block reveal">
+                        <h3>CI/CD Security Integration</h3>
+                        <p>We invite DevSecOps partners to integrate Codebat's signing and verification capabilities into mainstream CI/CD toolchains, enabling "Security as Code."</p>
+                        <a href="/contact" class="btn btn-outline">Join the Ecosystem</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">🛡️</div>
-          <p>Immutable Evidence</p>
+    </section>
+
+    <section class="investors-section" id="investors">
+        <div class="container">
+            <div class="section-label reveal">Investors</div>
+            <h2 class="section-title reveal">Capture the <em>Explosive Growth</em> of Confidential Computing</h2>
+            <div class="investors-stats">
+                <div class="stat-item reveal">
+                    <div class="value"><span class="counter-prefix">$</span><span class="counter" data-target="78">0</span><span class="counter-suffix">B</span></div>
+                    <div class="label">Total Addressable Market in Data Security & Privacy Computing</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-1">
+                    <div class="value"><span class="counter" data-target="62.1" data-decimal="1">0</span><span class="counter-suffix">%</span></div>
+                    <div class="label">Confidential Computing CAGR Through 2028</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-2">
+                    <div class="value"><span class="counter" data-target="86">0</span><span class="counter-suffix">%+</span></div>
+                    <div class="label">Projected Gross Margin (HaaS Model)</div>
+                </div>
+            </div>
+            <div class="roadmap">
+                <div class="roadmap-card reveal">
+                    <div class="year">2026</div>
+                    <h4>Commercial Validation</h4>
+                    <ul>
+                        <li>FIPS 140-3 L2 certification</li>
+                        <li>SKU-A/B global launch</li>
+                        <li>Series A completion</li>
+                    </ul>
+                </div>
+                <div class="roadmap-card reveal reveal-delay-1">
+                    <div class="year">2027</div>
+                    <h4>Ecosystem Expansion</h4>
+                    <ul>
+                        <li>Full NIST ML-DSA quantum migration</li>
+                        <li>RISC-V edge solution launch</li>
+                        <li>Series B initiation</li>
+                    </ul>
+                </div>
+                <div class="roadmap-card reveal reveal-delay-2">
+                    <div class="year">2028+</div>
+                    <h4>Market Leadership</h4>
+                    <ul>
+                        <li>De facto standard for confidential computing</li>
+                        <li>Post-quantum security market leader</li>
+                        <li>Continued product matrix expansion</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">🔬</div>
-          <p>Secure Isolation</p>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-label reveal">Contact</div>
+            <h2 class="section-title reveal">Transition Your Systems Before Quantum Threats <em>Arrive</em></h2>
+            <div class="contact-grid">
+                <div class="contact-card reveal">
+                    <h4>Customer Deployment</h4>
+                    <p>We can complete a "Software-Defined Trust" cloud POC deployment in two weeks.</p>
+                    <a href="/contact" class="btn btn-signal">Schedule Evaluation</a>
+                </div>
+                <div class="contact-card reveal reveal-delay-1">
+                    <h4>Investment & Strategy</h4>
+                    <p>Learn about our latest fundraising plans and financial projections.</p>
+                    <a href="/contact" class="btn btn-signal">Contact IR Team</a>
+                </div>
+                <div class="contact-card reveal reveal-delay-2">
+                    <h4>Partnership</h4>
+                    <p>If you're a system integrator or planning national AI infrastructure.</p>
+                    <a href="/contact" class="btn btn-signal">Explore Opportunities</a>
+                </div>
+            </div>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">🏢</div>
-          <p>On-Premises Storage</p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/product">Products</a>
+                <a href="/contact">Contact</a>
+                <a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <div class="copyright">&copy; 2025 Codebat Technology Inc. All Rights Reserved.</div>
         </div>
-      </div>
-    </div>
-  </div>
+    </footer>
 
-  <!-- How It Works (4 Steps) -->
-  <section class="section" id="how-it-works">
-    <div class="container">
-      <h2 class="text-center mb-5">How It Works in Four Steps</h2>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
 
-      <div class="timeline">
-        <div class="timeline-item reveal-on-scroll">
-          <div class="timeline-icon">1</div>
-          <div class="timeline-content">
-            <h3>Encrypted Upload, Plaintext Stays Inside</h3>
-            <p>
-              Data is encrypted using military-grade encryption on your premises before transmission. The platform only handles encrypted data and cannot access your sensitive information.
-            </p>
-          </div>
-        </div>
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
+        });
 
-        <div class="timeline-item reveal-on-scroll">
-          <div class="timeline-icon">2</div>
-          <div class="timeline-content">
-            <h3>Isolated Execution, Protected Environment</h3>
-            <p>
-              Each task runs in a completely isolated environment with advanced security controls that prevent unauthorized access, data extraction, or external communications during processing.
-            </p>
-          </div>
-        </div>
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
 
-        <div class="timeline-item reveal-on-scroll">
-          <div class="timeline-icon">3</div>
-          <div class="timeline-content">
-            <h3>Automatic Verification Record Creation</h3>
-            <p>
-              Every operation automatically creates cryptographically sealed verification records with timestamps and digital signatures. Once created, these records are permanently locked and cannot be modified by anyone—giving you indisputable proof of what happened.
-            </p>
-          </div>
-        </div>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
 
-        <div class="timeline-item reveal-on-scroll">
-          <div class="timeline-icon">4</div>
-          <div class="timeline-content">
-            <h3>Secure Delivery with Verifiable Proof</h3>
-            <p>
-              Results are encrypted and delivered only to authorized parties. Every verification record can be independently verified by auditors, regulators, or third parties—no need to trust our word, the cryptographic proof speaks for itself.
-            </p>
-          </div>
-        </div>
-      </div>
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
 
-      <div class="text-center mt-5">
-        <a href="/contact" class="btn btn-primary">Contact Us to Learn More</a>
-      </div>
-    </div>
-  </section>
+        // Reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (top < windowHeight - 80) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', () => {
+            setTimeout(revealOnScroll, 100);
+        });
 
-  <!-- Why More Secure (Brief) -->
-  <section class="section" style="background: var(--paper);">
-    <div class="container">
-      <h2 class="text-center mb-5">Why More Secure</h2>
-      <div class="grid-2x2">
-        <div class="card reveal-on-scroll">
-          <h3>🏠 Data Stays On-Premises</h3>
-          <p>Works with your existing on-premises storage infrastructure. Your sensitive data never leaves your control—all processing uses encrypted data, keeping plaintext safely within your environment.</p>
-        </div>
+        // Smooth anchor scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 
-        <div class="card reveal-on-scroll">
-          <h3>👁️ Execution Cannot Be Compromised</h3>
-          <p>Advanced isolation technology creates a secure execution environment that blocks unauthorized monitoring, data extraction attempts, and ensures your computations remain private and protected.</p>
-        </div>
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-        <div class="card reveal-on-scroll">
-          <h3>📜 Cryptographic Proof, Not Claims</h3>
-          <p>Every operation creates tamper-proof verification records with cryptographic signatures and timestamps. <strong>Not marketing promises, but independently verifiable proof</strong> that satisfies auditors and regulators.</p>
-        </div>
+        // Video player
+        const video = document.getElementById('thresholdVideo');
+        const playBtn = document.getElementById('videoPlayBtn');
+        const videoOverlay = document.getElementById('videoOverlay');
+        const videoContainer = document.querySelector('.video-container');
 
-        <div class="card reveal-on-scroll">
-          <h3>🔧 Works with Your Existing Infrastructure</h3>
-          <p>No expensive hardware upgrades or system overhauls required. Deploy on your current servers with both CPU and GPU support. Ready to integrate seamlessly with your existing operations.</p>
-        </div>
-      </div>
+        if (video && playBtn && videoContainer) {
+            const playVideo = () => {
+                video.play().then(() => {
+                    videoContainer.classList.add('playing');
+                }).catch(err => {
+                    console.log('Video play failed:', err);
+                });
+            };
 
-      <div class="text-center mt-5">
-        <a href="/product" class="btn btn-primary">Learn Complete Product Features</a>
-      </div>
-    </div>
-  </section>
+            const pauseVideo = () => {
+                video.pause();
+                videoContainer.classList.remove('playing');
+            };
 
-  <!-- FAQ Section -->
-  <section class="section" id="faq">
-    <div class="container" style="max-width: 860px;">
-      <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+            const togglePlay = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (video.paused) {
+                    playVideo();
+                } else {
+                    pauseVideo();
+                }
+            };
 
-      <div class="faq-item reveal-on-scroll">
-        <div class="faq-question" role="button" tabindex="0" aria-expanded="true">
-          ❓ What is the performance impact?
-        </div>
-        <div class="faq-answer">
-          Our platform is designed for minimal performance impact while maintaining maximum security. Most workloads experience negligible overhead, and we continuously optimize to ensure your operations run smoothly without compromise.
-        </div>
-      </div>
+            // Play button click
+            playBtn.addEventListener('click', togglePlay);
 
-      <div class="faq-item reveal-on-scroll">
-        <div class="faq-question" role="button" tabindex="0" aria-expanded="true">
-          ❓ Do I need new hardware?
-        </div>
-        <div class="faq-answer">
-          <strong>No.</strong> Deploy directly on your existing infrastructure—servers, storage, and network. Our platform works with standard enterprise hardware with no special requirements or system modifications.
-        </div>
-      </div>
+            // Overlay click
+            if (videoOverlay) {
+                videoOverlay.addEventListener('click', togglePlay);
+            }
 
-      <div class="faq-item reveal-on-scroll">
-        <div class="faq-question" role="button" tabindex="0" aria-expanded="true">
-          ❓ Can you access my data?
-        </div>
-        <div class="faq-answer">
-          <strong>Absolutely not.</strong> Your data is encrypted before it ever reaches our platform. We only process encrypted information and have zero ability to decrypt or view your sensitive data. You maintain complete control.
-        </div>
-      </div>
+            // Video click (for pause when playing)
+            video.addEventListener('click', (e) => {
+                if (!video.paused) {
+                    togglePlay(e);
+                }
+            });
 
-      <div class="faq-item reveal-on-scroll">
-        <div class="faq-question" role="button" tabindex="0" aria-expanded="true">
-          ❓ Can verification records be tampered with?
-        </div>
-        <div class="faq-answer">
-          <strong>Impossible.</strong> Verification records are cryptographically sealed and permanently locked the moment they're created. Not even system administrators can modify them. Auditors and regulators can independently verify their authenticity—providing bulletproof audit trails.
-        </div>
-      </div>
-    </div>
-  </section>
+            // Reset when video ends
+            video.addEventListener('ended', () => {
+                videoContainer.classList.remove('playing');
+                video.currentTime = 0;
+            });
 
-  <!-- CTA Section -->
-  <section class="cta-bar">
-    <div class="container">
-      <h2>Ready to Experience Trusted Computing?</h2>
-      <p>Request a PoC or contact us to learn more about technical details.</p>
-      <div class="cta-buttons">
-        <a href="/contact" class="btn btn-primary">Request PoC</a>
-        <a href="/contact" class="btn btn-ghost" style="border-color: rgba(255,255,255,0.3); color: white;">
-          Contact Us
-        </a>
-      </div>
-    </div>
-  </section>
+            // Show controls on hover when playing
+            videoContainer.addEventListener('mouseenter', () => {
+                if (!video.paused) {
+                    video.controls = true;
+                }
+            });
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>Codebat Technology</h4>
-          <p style="font-size: 14px; line-height: 1.6;">
-            Trusted Computing Platform Provider<br>
-            Encrypted Upload・Isolated Execution・Verifiable Evidence
-          </p>
-        </div>
+            videoContainer.addEventListener('mouseleave', () => {
+                video.controls = false;
+            });
+        }
 
-        <div class="footer-section">
-          <h4>Product</h4>
-          <ul class="footer-links">
-            <li><a href="/product">Product Overview</a></li>
-            <li><a href="/#faq">FAQ</a></li>
-            <li><a href="/contact">Request Information</a></li>
-          </ul>
-        </div>
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    animateCounter(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
 
-        <div class="footer-section">
-          <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="/contact">Contact Us</a></li>
-            <li><a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a></li>
-          </ul>
-        </div>
+        counters.forEach(counter => counterObserver.observe(counter));
 
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <ul class="footer-links">
-            <li><a href="mailto:support@codebat.ai">support@codebat.ai</a></li>
-            <li><a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="/contact">Contact Form</a></li>
-          </ul>
-        </div>
-      </div>
+        function animateCounter(el) {
+            const target = parseFloat(el.dataset.target);
+            const decimal = parseInt(el.dataset.decimal) || 0;
+            const duration = 1500;
+            const start = performance.now();
 
-      <div class="footer-bottom">
-        <p>&copy; 2025 Codebat Technology Inc. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Back to Top Button -->
-  <button class="back-to-top" aria-label="Back to top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 15l-6-6-6 6"/>
-    </svg>
-  </button>
-
-  <!-- JavaScript -->
-  <script src="./js/app.js"></script>
+            function update(currentTime) {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = target * easeOut;
+                el.textContent = decimal > 0 ? current.toFixed(decimal) : Math.floor(current);
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        }
+    </script>
 </body>
-
 </html>
