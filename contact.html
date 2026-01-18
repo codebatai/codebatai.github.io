@@ -28,6 +28,12 @@
 
     <style>
         @font-face {
+            font-family: 'Mokoto';
+            src: url('./assets/font/mokoto/Mokoto Demo.ttf') format('truetype');
+            font-weight: 400;
+        }
+
+        @font-face {
             font-family: 'Geist';
             src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
             font-weight: 400;
@@ -146,7 +152,7 @@
         }
 
         .logo img {
-            height: 28px;
+            height: 36px;
             width: auto;
             transition: transform 0.3s ease;
         }
@@ -156,9 +162,11 @@
         }
 
         .logo span {
-            font-weight: 500;
-            font-size: 18px;
-            letter-spacing: -0.03em;
+            font-family: 'Mokoto', sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
 
         .nav-links {
