@@ -1,282 +1,1334 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Overview | Trusted Computing Platform - Codebat Technology</title>
-  <meta name="description" content="Discover why organizations trust our platform for data security and compliance. Enterprise-grade protection with verifiable cryptographic proof for audit trails.">
-  <link rel="icon" type="image/png" href="./assets/favicon.png">
-  <link rel="stylesheet" href="./css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <title>Products | Trust Engines for Critical Scenarios - Codebat Technology</title>
+    <meta name="description" content="Codebat Trust Engines: Key Governance & Code Signing, PQC Crypto Offload Accelerator, and Compliance Evidence Engine. Post-quantum security for enterprise.">
+    <meta name="keywords" content="post-quantum cryptography, key management, code signing, crypto accelerator, compliance engine, FIPS 140-3, threshold signatures">
+    <meta name="author" content="Codebat Technology Inc.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codebat.ai/product">
+    <meta property="og:title" content="Products | Trust Engines for Critical Scenarios">
+    <meta property="og:description" content="Post-quantum security products: Key Governance, Crypto Accelerator, and Compliance Evidence Engine.">
+    <meta property="og:image" content="https://codebat.ai/assets/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: 'Geist Mono';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --white: #fafafa;
+            --gray-50: #f9f9f9;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --signal: #ff4d00;
+            --signal-light: rgba(255, 77, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--signal);
+            color: var(--white);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Geist', 'DM Sans', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(24px, 5vw, 80px);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            background: rgba(250, 250, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 14px 0;
+            box-shadow: 0 1px 0 var(--gray-200);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo span {
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--black);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        .nav-links a.active {
+            color: var(--signal);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-dark {
+            background: var(--black);
+            color: var(--white) !important;
+        }
+
+        .btn-dark:hover {
+            background: var(--gray-800);
+            color: var(--white) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-links .btn-dark {
+            color: var(--white) !important;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--black);
+            border: 1px solid var(--gray-300);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--black);
+        }
+
+        .btn-signal {
+            background: var(--signal);
+            color: var(--white);
+        }
+
+        .btn-signal:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 101;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--black);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--gray-100) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 77, 0, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--signal);
+            margin-bottom: 24px;
+            font-family: 'Geist Mono', monospace;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-sub {
+            font-size: clamp(18px, 2vw, 20px);
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* Section */
+        section {
+            padding: clamp(80px, 12vw, 140px) 0;
+        }
+
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .section-title em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.25em;
+            letter-spacing: -0.03em;
+        }
+
+        /* Products Section */
+        .products-section {
+            background: var(--white);
+        }
+
+        .products-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .product-card {
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 48px 40px;
+            background: var(--white);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--signal);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-card:hover {
+            border-color: var(--gray-300);
+            box-shadow: 0 24px 48px -12px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+        }
+
+        .product-card .sku {
+            font-family: 'Geist Mono', monospace;
+            font-size: 12px;
+            color: var(--signal);
+            background: var(--signal-light);
+            padding: 8px 12px;
+            border-radius: 6px;
+            width: fit-content;
+            margin-bottom: 28px;
+            letter-spacing: 0.05em;
+        }
+
+        .product-card h3 {
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .product-card .target {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        .product-card .features {
+            flex: 1;
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .product-card .features li {
+            font-size: 15px;
+            color: var(--gray-600);
+            padding: 14px 0;
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            line-height: 1.5;
+        }
+
+        .product-card .features li:last-child {
+            border-bottom: none;
+        }
+
+        .product-card .features li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--signal);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .product-card:hover .features li::before {
+            transform: scale(1.2);
+        }
+
+        .product-card .use-case {
+            font-size: 14px;
+            color: var(--gray-500);
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-200);
+            font-style: italic;
+        }
+
+        /* Product Details Section */
+        .product-detail {
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .product-detail:nth-child(even) {
+            background: var(--gray-100);
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .detail-layout.reverse {
+            direction: rtl;
+        }
+
+        .detail-layout.reverse > * {
+            direction: ltr;
+        }
+
+        .detail-content .sku-badge {
+            font-family: 'Geist Mono', monospace;
+            font-size: 13px;
+            color: var(--signal);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .detail-content h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .detail-content p {
+            font-size: 17px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .detail-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .stat-box {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            border-color: var(--signal);
+        }
+
+        .stat-box .value {
+            font-family: 'Geist Mono', monospace;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--signal);
+            margin-bottom: 8px;
+        }
+
+        .stat-box .label {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        .detail-visual {
+            background: var(--gray-900);
+            border-radius: 16px;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .detail-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 77, 0, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .code-block {
+            font-family: 'Geist Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--gray-400);
+            position: relative;
+            z-index: 1;
+        }
+
+        .code-block .comment {
+            color: var(--gray-600);
+        }
+
+        .code-block .keyword {
+            color: var(--signal);
+        }
+
+        .code-block .string {
+            color: #22c55e;
+        }
+
+        .code-block .function {
+            color: #60a5fa;
+        }
+
+        /* Typewriter Effect */
+        .code-block.typewriter .code-line {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .code-block.typewriter.active .code-line {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .code-block.typewriter .code-line .char {
+            opacity: 0;
+            transition: opacity 0.02s ease;
+        }
+
+        .code-block.typewriter.active .code-line .char {
+            opacity: 1;
+        }
+
+        .code-block .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: var(--signal);
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        .code-block .cursor.hidden {
+            display: none;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .code-block .code-line {
+            display: block;
+            min-height: 1.8em;
+        }
+
+        .code-block .code-line.empty {
+            min-height: 1em;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .comparison-section .section-label {
+            color: var(--gray-500);
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .comparison-header p {
+            font-size: 18px;
+            color: var(--gray-400);
+            line-height: 1.7;
+        }
+
+        .comparison-table {
+            border: 1px solid var(--gray-800);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-row.header {
+            background: var(--gray-900);
+        }
+
+        .comparison-cell {
+            padding: 20px 28px;
+            font-size: 15px;
+        }
+
+        .comparison-row.header .comparison-cell {
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-400);
+        }
+
+        .comparison-cell.feature {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .comparison-cell.traditional {
+            color: var(--gray-500);
+            text-align: center;
+        }
+
+        .comparison-cell.codebat {
+            color: var(--signal);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gray-100);
+            text-align: center;
+        }
+
+        .cta-section .section-title {
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 48px 0;
+            border-top: 1px solid var(--gray-800);
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .footer-links a {
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            background: var(--signal);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 77, 0, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(255, 77, 0, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .detail-layout,
+            .comparison-header {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .detail-layout.reverse {
+                direction: ltr;
+            }
+
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-row.header {
+                display: none;
+            }
+
+            .comparison-cell {
+                padding: 16px 20px;
+            }
+
+            .comparison-cell.traditional,
+            .comparison-cell.codebat {
+                text-align: left;
+            }
+
+            .comparison-cell.traditional::before {
+                content: 'Traditional: ';
+                color: var(--gray-600);
+            }
+
+            .comparison-cell.codebat::before {
+                content: 'Codebat: ';
+                color: var(--gray-400);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 24px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+
+            .nav-links.active {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links a {
+                font-size: 24px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-stats {
+                grid-template-columns: 1fr;
+            }
+
+            footer .container {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="/" class="logo" aria-label="Home">
-        <img src="./assets/logo.png" alt="Codebat Logo" class="logo-img">
-        <!-- <span>Codebat</span> -->
-      </a>
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/#values">Core Values</a></li>
-        <li><a href="/#faq">FAQ</a></li>
-        <li><a href="/product" style="color: var(--teal);">Product</a></li>
-        <li><a href="/contact" class="btn btn-primary" style="padding: 8px 20px;">Contact Us</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero" style="padding: 140px 0 80px;">
-    <div class="container" style="max-width: 860px;">
-      <h1 class="text-center">Why More Secure</h1>
-      <p class="text-center text-muted" style="font-size: 18px; margin-top: 20px;">
-        Not just technical specifications, but a commitment to data privacy and security
-      </p>
-    </div>
-  </section>
-
-  <!-- Why More Secure (Detailed) -->
-  <section class="section">
-    <div class="container">
-      <div class="grid-2x2">
-        <div class="card reveal-on-scroll">
-          <h3>🏠 Data Stays On-Premises</h3>
-          <p>
-            <strong>Works with your existing on-premises storage</strong>. All data storage and processing occurs within your infrastructure; sensitive data never leaves your control, all processing uses encrypted data.
-          </p>
-          <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
-            <li>Compatible with industry-standard storage systems</li>
-            <li>Supports write-once, tamper-proof storage</li>
-            <li>Integrates with existing backup and disaster recovery processes</li>
-          </ul>
+    <nav id="nav">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="./assets/logo.png" alt="Codebat">
+                <span>codebat</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="/#why">Why Us</a>
+                <a href="/#tech">Technology</a>
+                <a href="/product" class="active">Products</a>
+                <a href="/#solutions">Solutions</a>
+                <a href="/#investors">Investors</a>
+                <a href="/contact" class="btn btn-dark">Contact Us</a>
+            </div>
         </div>
+    </nav>
 
-        <div class="card reveal-on-scroll">
-          <h3>👁️ Execution Cannot Be Compromised</h3>
-          <p>
-            <strong>Advanced isolation with anti-surveillance controls</strong> prevent unauthorized monitoring and data extraction attempts. Each task runs in a completely isolated, secure execution environment.
-          </p>
-          <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
-            <li>Enterprise-grade virtualization technology</li>
-            <li>Zero external network access during processing</li>
-            <li>Fully auditable security policies</li>
-          </ul>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="section-label reveal">PRODUCTS</div>
+            <h1 class="reveal">Trust Engines for <em>Critical Scenarios</em></h1>
+            <p class="hero-sub reveal">Three product lines built on post-quantum cryptography. From key management to compliance automation, secure your most critical digital assets.</p>
+            <div class="reveal">
+                <a href="#products" class="btn btn-dark">Explore Products</a>
+            </div>
         </div>
+    </section>
 
-        <div class="card reveal-on-scroll">
-          <h3>📜 Cryptographic Proof, Not Claims</h3>
-          <p>
-            Every operation creates cryptographically sealed verification records with timestamps and digital signatures. <strong>Not marketing promises, but independently verifiable proof</strong>. Auditors can verify authenticity without needing to trust us.
-          </p>
-          <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
-            <li>Cryptographic proof of every operation</li>
-            <li>Tamper-proof storage (cannot be modified after creation)</li>
-            <li>Independent verification tools for auditors and regulators</li>
-          </ul>
+    <!-- Products Overview -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="products-header reveal">
+                <div class="section-label">Product Portfolio</div>
+                <h2 class="section-title">Enterprise-Grade <em>Security Solutions</em></h2>
+            </div>
+            <div class="products-grid">
+                <div class="product-card reveal">
+                    <div class="sku">SKU-A</div>
+                    <h3>Key Governance & Code Signing</h3>
+                    <p class="target">SaaS Providers / Financial Institutions / Software Developers</p>
+                    <ul class="features">
+                        <li>Enterprise Root CA protection with HSM-grade security</li>
+                        <li>Automated code signing workflow to prevent supply chain attacks</li>
+                        <li>Arbitrary threshold signatures with FIPS 204 native output</li>
+                    </ul>
+                    <p class="use-case">Protect CI/CD pipelines and ensure software integrity</p>
+                </div>
+                <div class="product-card reveal reveal-delay-1">
+                    <div class="sku">SKU-B</div>
+                    <h3>PQC Crypto Offload Accelerator</h3>
+                    <p class="target">Telecom Carriers / ISPs / Large Data Centers</p>
+                    <ul class="features">
+                        <li>Hardware acceleration designed for post-quantum cryptography</li>
+                        <li>50K-200K TPS ultra-high throughput encryption</li>
+                        <li>Offload CPU encryption burden by 90%+</li>
+                    </ul>
+                    <p class="use-case">5G network security, large-scale VPN gateways</p>
+                </div>
+                <div class="product-card reveal reveal-delay-2">
+                    <div class="sku">CEE</div>
+                    <h3>Compliance Evidence Engine</h3>
+                    <p class="target">Pharmaceuticals / Banks / Government Agencies</p>
+                    <ul class="features">
+                        <li>Auto-generate tamper-proof digital audit reports</li>
+                        <li>FDA 21 CFR Part 11, SEC, HIPAA compliant</li>
+                        <li>Traceable decision and data operation chains</li>
+                    </ul>
+                    <p class="use-case">Clinical trial data submission, financial compliance review</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card reveal-on-scroll">
-          <h3>🔧 Works with Your Existing Infrastructure</h3>
-          <p>
-            <strong>No expensive hardware upgrades or system modifications required</strong>. Supports both CPU and GPU workloads. Seamless integration with your current infrastructure, no vendor lock-in.
-          </p>
-          <ul style="margin-top: 12px; padding-left: 20px; color: var(--muted); line-height: 1.8;">
-            <li>Standard enterprise hardware compatibility</li>
-            <li>Flexible compute options for all workload types</li>
-            <li>Modern deployment architecture, simple maintenance</li>
-          </ul>
+    <!-- Product Detail: SKU-A -->
+    <section class="product-detail" id="sku-a">
+        <div class="container">
+            <div class="detail-layout">
+                <div class="detail-content reveal">
+                    <span class="sku-badge">SKU-A</span>
+                    <h2>Key Governance & Code Signing</h2>
+                    <p>Protect your most critical cryptographic assets with post-quantum resistant algorithms. Our proprietary threshold protocol produces standard ML-DSA signatures—no size inflation, full verifier compatibility.</p>
+                    <div class="detail-stats">
+                        <div class="stat-box">
+                            <div class="value">k≤32</div>
+                            <div class="label">Arbitrary Threshold</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value">FIPS 204</div>
+                            <div class="label">Standard Output</div>
+                        </div>
+                    </div>
+                    <a href="/contact" class="btn btn-signal">Request Demo</a>
+                </div>
+                <div class="detail-visual reveal reveal-delay-1">
+                    <div class="code-block typewriter" data-speed="30">
+                        <div class="code-line"><span class="comment"># Codebat Key Signing API</span></div>
+                        <div class="code-line empty"></div>
+                        <div class="code-line"><span class="keyword">from</span> codebat <span class="keyword">import</span> KeyVault</div>
+                        <div class="code-line empty"></div>
+                        <div class="code-line"><span class="comment"># Initialize with threshold policy</span></div>
+                        <div class="code-line">vault = KeyVault(</div>
+                        <div class="code-line">  threshold=<span class="string">"3-of-5"</span>,</div>
+                        <div class="code-line">  algorithm=<span class="string">"ML-DSA-65"</span></div>
+                        <div class="code-line">)</div>
+                        <div class="code-line empty"></div>
+                        <div class="code-line"><span class="comment"># Sign with distributed approval</span></div>
+                        <div class="code-line">signature = vault.<span class="function">sign</span>(</div>
+                        <div class="code-line">  artifact=binary_hash,</div>
+                        <div class="code-line">  approvers=[<span class="string">"alice"</span>, <span class="string">"bob"</span>, <span class="string">"charlie"</span>]</div>
+                        <div class="code-line">)</div>
+                        <div class="code-line empty"></div>
+                        <div class="code-line"><span class="comment"># Quantum-resistant signature: 2420 bytes</span></div>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Our Promise -->
-  <section class="section" style="background: var(--paper);">
-    <div class="container" style="max-width: 960px;">
-      <h2 class="text-center mb-5">Our Promise</h2>
-
-      <div class="grid-3">
-        <div class="card reveal-on-scroll">
-          <h3>🔒 Privacy</h3>
-          <p>
-            Zero external network access during processing; results are delivered only to authorized parties with encryption keys. We have zero ability to access your sensitive data—by design, not by policy.
-          </p>
+    <!-- Product Detail: SKU-B -->
+    <section class="product-detail" id="sku-b">
+        <div class="container">
+            <div class="detail-layout reverse">
+                <div class="detail-content reveal">
+                    <span class="sku-badge">SKU-B</span>
+                    <h2>PQC Crypto Offload Accelerator</h2>
+                    <p>Purpose-built hardware acceleration for post-quantum cryptographic operations. Seamlessly integrate into existing infrastructure while preparing for the quantum computing era.</p>
+                    <div class="detail-stats">
+                        <div class="stat-box">
+                            <div class="value">200K</div>
+                            <div class="label">TPS Peak Throughput</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value">90%</div>
+                            <div class="label">CPU Offload Reduction</div>
+                        </div>
+                    </div>
+                    <a href="/contact" class="btn btn-signal">Request Benchmark</a>
+                </div>
+                <div class="detail-visual reveal reveal-delay-1">
+                    <div class="code-block typewriter" data-speed="25">
+                        <div class="code-line"><span class="comment"># Performance Benchmark Results</span></div>
+                        <div class="code-line empty"></div>
+                        <div class="code-line"><span class="keyword">Algorithm:</span> ML-KEM-768</div>
+                        <div class="code-line"><span class="keyword">Mode:</span> Hardware Accelerated</div>
+                        <div class="code-line empty"></div>
+                        <div class="code-line"><span class="function">Encapsulation:</span></div>
+                        <div class="code-line">  Latency: <span class="string">0.12ms</span></div>
+                        <div class="code-line">  Throughput: <span class="string">185,000 ops/sec</span></div>
+                        <div class="code-line empty"></div>
+                        <div class="code-line"><span class="function">Decapsulation:</span></div>
+                        <div class="code-line">  Latency: <span class="string">0.15ms</span></div>
+                        <div class="code-line">  Throughput: <span class="string">168,000 ops/sec</span></div>
+                        <div class="code-line empty"></div>
+                        <div class="code-line"><span class="comment"># CPU utilization: 8% (vs 92% software)</span></div>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card reveal-on-scroll">
-          <h3>🌐 Transparency</h3>
-          <p>
-            Every approval, execution, and delivery is cryptographically signed and recorded in verification records. Every step is traceable, every decision backed by verifiable proof.
-          </p>
+    <!-- Product Detail: CEE -->
+    <section class="product-detail" id="cee">
+        <div class="container">
+            <div class="detail-layout">
+                <div class="detail-content reveal">
+                    <span class="sku-badge">CEE</span>
+                    <h2>Compliance Evidence Engine</h2>
+                    <p>Automatically generate cryptographically sealed audit trails that satisfy the strictest regulatory requirements. From FDA submissions to financial audits, prove compliance with mathematical certainty.</p>
+                    <div class="detail-stats">
+                        <div class="stat-box">
+                            <div class="value">288B</div>
+                            <div class="label">Ultra-Lean Evidence Size</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value">100%</div>
+                            <div class="label">Tamper-Proof Guarantee</div>
+                        </div>
+                    </div>
+                    <a href="/contact" class="btn btn-signal">Request Whitepaper</a>
+                </div>
+                <div class="detail-visual reveal reveal-delay-1">
+                    <div class="code-block typewriter" data-speed="20">
+                        <div class="code-line"><span class="comment"># Evidence Package Structure</span></div>
+                        <div class="code-line empty"></div>
+                        <div class="code-line">{</div>
+                        <div class="code-line">  <span class="string">"evidence_id"</span>: <span class="string">"evd_2026..."</span>,</div>
+                        <div class="code-line">  <span class="string">"timestamp"</span>: <span class="string">"2026-01-18T..."</span>,</div>
+                        <div class="code-line">  <span class="string">"operation"</span>: {</div>
+                        <div class="code-line">    <span class="string">"type"</span>: <span class="string">"data_processing"</span>,</div>
+                        <div class="code-line">    <span class="string">"hash"</span>: <span class="string">"sha3-256:..."</span></div>
+                        <div class="code-line">  },</div>
+                        <div class="code-line">  <span class="string">"signature"</span>: {</div>
+                        <div class="code-line">    <span class="string">"algorithm"</span>: <span class="string">"ML-DSA-65"</span>,</div>
+                        <div class="code-line">    <span class="string">"value"</span>: <span class="string">"base64:..."</span></div>
+                        <div class="code-line">  },</div>
+                        <div class="code-line">  <span class="string">"compliance"</span>: [<span class="string">"21CFR11"</span>, <span class="string">"HIPAA"</span>]</div>
+                        <div class="code-line">}</div>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card reveal-on-scroll">
-          <h3>✅ Auditable</h3>
-          <p>
-            Verification records can be independently verified by auditors and regulators using our verification tools. Security isn't a black box—it's mathematically provable, independently verifiable facts.
-          </p>
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="comparison-header">
+                <div class="reveal">
+                    <div class="section-label">Why Codebat</div>
+                    <h2 class="section-title">Traditional vs. <em>Codebat</em></h2>
+                </div>
+                <p class="reveal reveal-delay-1">See how our post-quantum architecture compares to legacy security solutions. Future-proof your infrastructure today.</p>
+            </div>
+            <div class="comparison-table reveal">
+                <div class="comparison-row header">
+                    <div class="comparison-cell">Feature</div>
+                    <div class="comparison-cell">Traditional</div>
+                    <div class="comparison-cell">Codebat</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">Quantum Resistance</div>
+                    <div class="comparison-cell traditional">Vulnerable (RSA/ECC)</div>
+                    <div class="comparison-cell codebat">NIST PQC Standard</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">Evidence Size</div>
+                    <div class="comparison-cell traditional">10MB+ proof files</div>
+                    <div class="comparison-cell codebat">288 bytes</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">Threshold Signatures</div>
+                    <div class="comparison-cell traditional">k ≤ 8 or non-standard signatures</div>
+                    <div class="comparison-cell codebat">Arbitrary k, FIPS 204 native</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">Hardware Dependency</div>
+                    <div class="comparison-cell traditional">Intel SGX / AMD SEV required</div>
+                    <div class="comparison-cell codebat">Zero-TEE (vendor agnostic)</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell feature">Side-Channel Protection</div>
+                    <div class="comparison-cell traditional">Shared resource vulnerabilities</div>
+                    <div class="comparison-cell codebat">Chip-level physical isolation</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Trust Band -->
-  <div class="trust-band">
-    <div class="container">
-      <h3 class="text-center mb-4" style="color: var(--ink);">Core Security Features</h3>
-      <div class="trust-items" style="max-width: 960px; margin: 0 auto;">
-        <div class="trust-item">
-          <div class="trust-icon">🔐</div>
-          <p>End-to-End Encryption<br><small style="color: var(--muted); font-size: 12px;">Military-Grade</small></p>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="section-label reveal">Get Started</div>
+            <h2 class="section-title reveal">Ready to Secure Your <em>Critical Infrastructure</em>?</h2>
+            <div class="cta-buttons reveal">
+                <a href="/contact" class="btn btn-dark">Schedule Evaluation</a>
+                <a href="/contact" class="btn btn-outline">Request Whitepaper</a>
+            </div>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">🛡️</div>
-          <p>Immutable Evidence<br><small style="color: var(--muted); font-size: 12px;">Tamper-Proof</small></p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/product">Products</a>
+                <a href="/contact">Contact</a>
+                <a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <div class="copyright">&copy; 2025 Codebat Technology Inc. All Rights Reserved.</div>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">🔬</div>
-          <p>Secure Isolation<br><small style="color: var(--muted); font-size: 12px;">Zero Trust Architecture</small></p>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">🏢</div>
-          <p>On-Premises Support<br><small style="color: var(--muted); font-size: 12px;">Your Infrastructure</small></p>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">⚡</div>
-          <p>Flexible Computing<br><small style="color: var(--muted); font-size: 12px;">CPU & GPU</small></p>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">🔍</div>
-          <p>Independently Verifiable<br><small style="color: var(--muted); font-size: 12px;">Auditor Tools</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
+    </footer>
 
-  <!-- Feature Comparison -->
-  <section class="section">
-    <div class="container" style="max-width: 960px;">
-      <h2 class="text-center mb-5">Comparison with Traditional Solutions</h2>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
 
-      <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md);">
-          <thead>
-            <tr style="background: var(--bg); color: white;">
-              <th style="padding: 16px; text-align: left; font-weight: 600;">Feature</th>
-              <th style="padding: 16px; text-align: center; font-weight: 600;">Traditional Cloud</th>
-              <th style="padding: 16px; text-align: center; font-weight: 600; background: var(--teal);">Trusted Computing Platform</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid #eef2f7;">
-              <td style="padding: 16px; font-weight: 500;">Data Upload</td>
-              <td style="padding: 16px; text-align: center; color: var(--muted);">Plaintext or simple encryption</td>
-              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">End-to-end encryption</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #eef2f7;">
-              <td style="padding: 16px; font-weight: 500;">Execution Isolation</td>
-              <td style="padding: 16px; text-align: center; color: var(--muted);">Basic isolation</td>
-              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">Advanced isolation + Anti-surveillance</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #eef2f7;">
-              <td style="padding: 16px; font-weight: 500;">Audit Trail</td>
-              <td style="padding: 16px; text-align: center; color: var(--muted);">Logs (can be modified)</td>
-              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">Tamper-Proof Verification Records</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #eef2f7;">
-              <td style="padding: 16px; font-weight: 500;">Third-Party Verification</td>
-              <td style="padding: 16px; text-align: center; color: var(--muted);">❌ Not supported</td>
-              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">✅ Independent verification</td>
-            </tr>
-            <tr>
-              <td style="padding: 16px; font-weight: 500;">On-Premises Deployment</td>
-              <td style="padding: 16px; text-align: center; color: var(--muted);">⚠️ Limited support</td>
-              <td style="padding: 16px; text-align: center; color: var(--teal); font-weight: 600;">✅ Full support</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+    <script>
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
 
-  <!-- CTA -->
-  <section class="cta-bar">
-    <div class="container">
-      <h2>Want to Learn Technical Details?</h2>
-      <p>Request our whitepaper or schedule a technical consultation</p>
-      <div class="cta-buttons">
-        <a href="/contact" class="btn btn-ghost" style="border-color: rgba(255,255,255,0.3); color: white;">
-          Request Whitepaper
-        </a>
-        <a href="/contact" class="btn btn-primary">
-          Schedule Consultation
-        </a>
-      </div>
-    </div>
-  </section>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>Codebat Technology</h4>
-          <p style="font-size: 14px; line-height: 1.6;">
-            Trusted Computing Platform Provider<br>
-            Encrypted Upload・Isolated Execution・Verifiable Evidence
-          </p>
-        </div>
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
 
-        <div class="footer-section">
-          <h4>Product</h4>
-          <ul class="footer-links">
-            <li><a href="/product">Product Overview</a></li>
-            <li><a href="/#faq">FAQ</a></li>
-            <li><a href="/contact">Request Information</a></li>
-          </ul>
-        </div>
+        // Reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (top < windowHeight - 80) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
 
-        <div class="footer-section">
-          <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="/contact">Contact Us</a></li>
-            <li><a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a></li>
-          </ul>
-        </div>
+        // Smooth anchor scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <ul class="footer-links">
-            <li><a href="mailto:support@codebat.ai">support@codebat.ai</a></li>
-            <li><a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="/contact">Contact Form</a></li>
-          </ul>
-        </div>
-      </div>
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-      <div class="footer-bottom">
-        <p>&copy; 2025 Codebat Technology Inc. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+        // Typewriter effect for code blocks
+        const typewriterBlocks = document.querySelectorAll('.code-block.typewriter');
 
-  <!-- Back to Top -->
-  <button class="back-to-top" aria-label="Back to top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 15l-6-6-6 6"/>
-    </svg>
-  </button>
+        const typewriterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('active')) {
+                    startTypewriter(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
 
-  <script src="./js/app.js"></script>
+        typewriterBlocks.forEach(block => {
+            typewriterObserver.observe(block);
+        });
+
+        function startTypewriter(block) {
+            const lines = block.querySelectorAll('.code-line');
+            const cursor = block.querySelector('.cursor');
+            const speed = parseInt(block.dataset.speed) || 30;
+            let lineIndex = 0;
+            let delay = 0;
+
+            // Initially hide all lines
+            lines.forEach(line => {
+                line.style.opacity = '0';
+                line.style.transform = 'translateX(-10px)';
+            });
+
+            // Animate each line
+            lines.forEach((line, i) => {
+                const lineDelay = delay;
+                const isEmptyLine = line.classList.contains('empty');
+
+                setTimeout(() => {
+                    line.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    line.style.opacity = '1';
+                    line.style.transform = 'translateX(0)';
+
+                    // Move cursor after line
+                    if (cursor && i === lines.length - 1) {
+                        setTimeout(() => {
+                            block.classList.add('active');
+                        }, 300);
+                    }
+                }, lineDelay);
+
+                // Calculate delay for next line
+                if (isEmptyLine) {
+                    delay += 100; // Short pause for empty lines
+                } else {
+                    const textLength = line.textContent.length;
+                    delay += Math.min(textLength * speed, 800) + 150; // Cap max delay per line
+                }
+            });
+        }
+    </script>
 </body>
-
 </html>
