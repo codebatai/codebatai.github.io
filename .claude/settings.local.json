@@ -4,7 +4,9 @@
       "Bash(find:*)",
       "Bash(git add:*)",
       "WebFetch(domain:www.anjuna.io)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
