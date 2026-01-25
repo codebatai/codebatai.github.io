@@ -873,22 +873,64 @@
             border: 1px solid var(--gray-100);
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+            cursor: pointer;
+            overflow: hidden;
         }
 
         .flow-steps.active .flow-card {
             opacity: 1;
             transform: translateY(0);
+            animation: flowCardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .flow-steps.active .flow-card:nth-child(1) { transition-delay: 0.1s; }
-        .flow-steps.active .flow-card:nth-child(2) { transition-delay: 0.25s; }
-        .flow-steps.active .flow-card:nth-child(3) { transition-delay: 0.4s; }
+        .flow-steps.active .flow-card:nth-child(1) { animation-delay: 0.1s; }
+        .flow-steps.active .flow-card:nth-child(2) { animation-delay: 0.25s; }
+        .flow-steps.active .flow-card:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes flowCardIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .flow-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.12);
             border-color: var(--signal);
+        }
+
+        .flow-card:active {
+            transform: translateY(-2px) scale(0.98);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+
+        /* Ripple effect */
+        .flow-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 77, 0, 0.15);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .flow-card.clicked::after {
+            width: 300px;
+            height: 300px;
+            opacity: 1;
         }
 
         .flow-card::before {
@@ -907,6 +949,17 @@
             font-size: 14px;
             font-weight: 600;
             box-shadow: 0 4px 12px rgba(255, 77, 0, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            z-index: 1;
+        }
+
+        .flow-card:hover::before {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 77, 0, 0.4);
+        }
+
+        .flow-card:active::before {
+            transform: scale(0.95);
         }
 
         .flow-card-icon {
@@ -919,12 +972,19 @@
             justify-content: center;
             color: var(--gray-700);
             margin-bottom: 20px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .flow-card:hover .flow-card-icon {
             background: linear-gradient(135deg, #fff5f0, #ffe8de);
             color: var(--signal);
+            transform: scale(1.05);
+        }
+
+        .flow-card:active .flow-card-icon {
+            transform: scale(0.95);
         }
 
         .flow-card-icon svg {
@@ -937,6 +997,8 @@
             font-weight: 600;
             margin-bottom: 8px;
             letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
         }
 
         .flow-card p {
@@ -944,6 +1006,8 @@
             color: var(--gray-500);
             line-height: 1.6;
             margin: 0;
+            position: relative;
+            z-index: 1;
         }
 
         @media (max-width: 900px) {
@@ -1864,6 +1928,16 @@
             }
             requestAnimationFrame(update);
         }
+
+        // Flow card click ripple effect
+        document.querySelectorAll('.flow-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                this.classList.add('clicked');
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 400);
+            });
+        });
     </script>
 </body>
 </html>
