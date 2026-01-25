@@ -868,13 +868,13 @@
             position: relative;
             background: var(--white);
             border-radius: 16px;
-            padding: 40px 32px;
+            padding: 48px 32px 40px;
+            margin-top: 16px;
             box-shadow: 0 2px 20px rgba(0,0,0,0.04);
             border: 1px solid var(--gray-100);
             opacity: 0;
             transform: translateY(30px);
             transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.1s ease;
-            overflow: hidden;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
@@ -917,7 +917,7 @@
         .flow-card::before {
             content: attr(data-step);
             position: absolute;
-            top: -12px;
+            top: -16px;
             left: 32px;
             width: 32px;
             height: 32px;
@@ -930,6 +930,7 @@
             font-size: 14px;
             font-weight: 600;
             box-shadow: 0 4px 12px rgba(255, 77, 0, 0.3);
+            z-index: 1;
         }
 
         .flow-card-icon {
