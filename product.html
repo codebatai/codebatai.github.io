@@ -8,7 +8,7 @@
     <!-- SEO Meta Tags -->
     <title>Products | Trust Engines for Critical Scenarios - Codebat Technology</title>
     <meta name="description" content="Codebat Trust Engines: Key Governance & Code Signing, PQC Crypto Offload Accelerator, and Compliance Evidence Engine. Post-quantum security for enterprise.">
-    <meta name="keywords" content="post-quantum cryptography, key management, code signing, crypto accelerator, compliance engine, FIPS 140-3, threshold signatures">
+    <meta name="keywords" content="post-quantum cryptography, key management, code signing, crypto accelerator, compliance engine, FIPS 140-3">
     <meta name="author" content="Codebat Technology Inc.">
 
     <!-- Open Graph / Facebook -->
@@ -996,7 +996,7 @@
                     <ul class="features">
                         <li>Enterprise Root CA protection with HSM-grade security</li>
                         <li>Automated code signing workflow to prevent supply chain attacks</li>
-                        <li>Arbitrary threshold signatures with FIPS 204 native output</li>
+                        <li>Post-quantum cryptographic key protection</li>
                     </ul>
                     <p class="use-case">Protect CI/CD pipelines and ensure software integrity</p>
                 </div>
@@ -1033,15 +1033,15 @@
                 <div class="detail-content reveal">
                     <span class="sku-badge">SKU-A</span>
                     <h2>Key Governance & Code Signing</h2>
-                    <p>Protect your most critical cryptographic assets with post-quantum resistant algorithms. Our proprietary threshold protocol produces standard ML-DSA signatures—no size inflation, full verifier compatibility.</p>
+                    <p>Protect your most critical cryptographic assets with post-quantum resistant security. Enterprise-grade key management with HSM-level protection and automated code signing workflows.</p>
                     <div class="detail-stats">
                         <div class="stat-box">
-                            <div class="value">k≤32</div>
-                            <div class="label">Arbitrary Threshold</div>
+                            <div class="value">FIPS 140-3</div>
+                            <div class="label">Level 2 Certified</div>
                         </div>
                         <div class="stat-box">
-                            <div class="value">FIPS 204</div>
-                            <div class="label">Standard Output</div>
+                            <div class="value">Zero-TEE</div>
+                            <div class="label">Vendor Agnostic</div>
                         </div>
                     </div>
                     <a href="/contact" class="btn btn-signal">Request Demo</a>
@@ -1052,19 +1052,19 @@
                         <div class="code-line empty"></div>
                         <div class="code-line"><span class="keyword">from</span> codebat <span class="keyword">import</span> KeyVault</div>
                         <div class="code-line empty"></div>
-                        <div class="code-line"><span class="comment"># Initialize with threshold policy</span></div>
+                        <div class="code-line"><span class="comment"># Initialize secure vault</span></div>
                         <div class="code-line">vault = KeyVault(</div>
-                        <div class="code-line">  threshold=<span class="string">"3-of-5"</span>,</div>
-                        <div class="code-line">  algorithm=<span class="string">"ML-DSA-65"</span></div>
+                        <div class="code-line">  security_level=<span class="string">"fips-140-3"</span>,</div>
+                        <div class="code-line">  isolation=<span class="string">"hardware"</span></div>
                         <div class="code-line">)</div>
                         <div class="code-line empty"></div>
-                        <div class="code-line"><span class="comment"># Sign with distributed approval</span></div>
+                        <div class="code-line"><span class="comment"># Sign with secure approval workflow</span></div>
                         <div class="code-line">signature = vault.<span class="function">sign</span>(</div>
                         <div class="code-line">  artifact=binary_hash,</div>
                         <div class="code-line">  approvers=[<span class="string">"alice"</span>, <span class="string">"bob"</span>, <span class="string">"charlie"</span>]</div>
                         <div class="code-line">)</div>
                         <div class="code-line empty"></div>
-                        <div class="code-line"><span class="comment"># Quantum-resistant signature: 2420 bytes</span></div>
+                        <div class="code-line"><span class="comment"># Post-quantum secure signature generated</span></div>
                         <span class="cursor"></span>
                     </div>
                 </div>
@@ -1147,7 +1147,7 @@
                         <div class="code-line">    <span class="string">"hash"</span>: <span class="string">"sha3-256:..."</span></div>
                         <div class="code-line">  },</div>
                         <div class="code-line">  <span class="string">"signature"</span>: {</div>
-                        <div class="code-line">    <span class="string">"algorithm"</span>: <span class="string">"ML-DSA-65"</span>,</div>
+                        <div class="code-line">    <span class="string">"type"</span>: <span class="string">"post-quantum"</span>,</div>
                         <div class="code-line">    <span class="string">"value"</span>: <span class="string">"base64:..."</span></div>
                         <div class="code-line">  },</div>
                         <div class="code-line">  <span class="string">"compliance"</span>: [<span class="string">"21CFR11"</span>, <span class="string">"HIPAA"</span>]</div>
@@ -1184,11 +1184,6 @@
                     <div class="comparison-cell feature">Evidence Size</div>
                     <div class="comparison-cell traditional">10MB+ proof files</div>
                     <div class="comparison-cell codebat">288 bytes</div>
-                </div>
-                <div class="comparison-row">
-                    <div class="comparison-cell feature">Threshold Signatures</div>
-                    <div class="comparison-cell traditional">k ≤ 8 or non-standard signatures</div>
-                    <div class="comparison-cell codebat">Arbitrary k, FIPS 204 native</div>
                 </div>
                 <div class="comparison-row">
                     <div class="comparison-cell feature">Hardware Dependency</div>
