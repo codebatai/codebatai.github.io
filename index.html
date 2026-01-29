@@ -634,6 +634,129 @@
             }
         }
 
+        /* Stats Counter */
+        .stats-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--gray-900) 0%, var(--black) 100%);
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+        }
+
+        .stat-block {
+            text-align: center;
+        }
+
+        .stat-block .stat-value {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(48px, 6vw, 72px);
+            font-style: italic;
+            line-height: 1;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+
+        .stat-block .stat-value .stat-suffix {
+            font-size: 0.5em;
+            color: var(--signal);
+        }
+
+        .stat-block .stat-label {
+            font-size: 14px;
+            color: var(--gray-400);
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: clamp(80px, 12vw, 140px) 0;
+            background: var(--gray-50);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-header .section-title {
+            margin-bottom: 16px;
+        }
+
+        .faq-header p {
+            color: var(--gray-600);
+            font-size: 18px;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: inherit;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--black);
+            transition: color 0.2s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--signal);
+        }
+
+        .faq-question .faq-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-left: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 24px;
+        }
+
+        .faq-answer p {
+            color: var(--gray-600);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
         /* Section */
         section {
             padding: clamp(80px, 12vw, 160px) 0;
@@ -1661,6 +1784,30 @@
         </div>
     </section>
 
+    <!-- Stats Counter -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-block reveal">
+                    <div class="stat-value"><span class="counter" data-target="35">0</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-label">Patent Families</div>
+                </div>
+                <div class="stat-block reveal reveal-delay-1">
+                    <div class="stat-value"><span class="counter" data-target="288">0</span><span class="stat-suffix"> bytes</span></div>
+                    <div class="stat-label">Ultra-Lean Evidence</div>
+                </div>
+                <div class="stat-block reveal reveal-delay-2">
+                    <div class="stat-value"><span class="counter" data-target="8.7" data-decimal="1">0</span><span class="stat-suffix">%</span></div>
+                    <div class="stat-label">Performance Overhead</div>
+                </div>
+                <div class="stat-block reveal reveal-delay-3">
+                    <div class="stat-value"><span class="counter" data-target="35000">0</span><span class="stat-suffix">x</span></div>
+                    <div class="stat-label">Smaller Than Competitors</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="why-section" id="why">
         <div class="container">
             <div class="section-label reveal">Why Now</div>
@@ -1812,6 +1959,79 @@
                         <h3>CI/CD Security Integration</h3>
                         <p>We invite DevSecOps partners to integrate Codebat's signing and verification capabilities into mainstream CI/CD toolchains, enabling "Security as Code."</p>
                         <a href="/contact" class="btn btn-outline">Join the Ecosystem</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="faq-header reveal">
+                <div class="section-label">FAQ</div>
+                <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+                <p>Everything you need to know about our platform</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is post-quantum cryptography?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Post-quantum cryptography (PQC) refers to cryptographic algorithms designed to be secure against attacks from quantum computers. As quantum computing advances, traditional encryption methods like RSA and ECC will become vulnerable. Our platform implements NIST-standardized PQC algorithms to future-proof your security.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How does Codebat protect data during computation?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Unlike traditional security that protects data at rest and in transit, Codebat provides chip-level physical isolation that protects data while it's being processed. Our Zero-TEE architecture creates secure enclaves without relying on vendor-specific trusted execution environments, keeping your sensitive data encrypted even during computation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is 288-byte evidence and why does it matter?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our ultra-lean evidence format compresses cryptographic proofs to just 288 bytes—35,000x smaller than competitor solutions that generate 10MB+ files. This dramatic reduction enables real-time verification for high-frequency trading, AI inference, and other latency-sensitive applications without compromising security.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Which compliance standards does Codebat support?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Codebat is FIPS 140-3 Level 2 certified and helps organizations meet HIPAA, FDA 21 CFR Part 11, SEC regulations, and EU DORA requirements. Our Compliance Evidence Engine automatically generates tamper-proof audit trails that satisfy regulatory scrutiny across healthcare, finance, and government sectors.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How long does deployment take?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We can complete a full "Software-Defined Trust" cloud POC deployment in two weeks. Our vendor-agnostic architecture supports x86, ARM, and RISC-V platforms, enabling seamless integration with your existing infrastructure without requiring specialized hardware.</p>
                     </div>
                 </div>
             </div>
@@ -2018,6 +2238,24 @@
             }
             requestAnimationFrame(update);
         }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>
