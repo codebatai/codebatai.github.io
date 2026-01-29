@@ -1488,13 +1488,11 @@
             <div class="marquee-item">FIPS 140-3 Level 2 Certification</div>
             <div class="marquee-item">35 Patent Families</div>
             <div class="marquee-item">288 Bytes Ultra-Lean Evidence</div>
-            <div class="marquee-item">k≤32 Threshold Signatures</div>
             <div class="marquee-item">Zero-TEE Architecture</div>
             <div class="marquee-item">NIST PQC Standard Support</div>
             <div class="marquee-item">FIPS 140-3 Level 2 Certification</div>
             <div class="marquee-item">35 Patent Families</div>
             <div class="marquee-item">288 Bytes Ultra-Lean Evidence</div>
-            <div class="marquee-item">k≤32 Threshold Signatures</div>
             <div class="marquee-item">Zero-TEE Architecture</div>
             <div class="marquee-item">NIST PQC Standard Support</div>
         </div>
@@ -1584,34 +1582,6 @@
                         </div>
                     </div>
                     <div class="problem">Competitors' proof files reach 10MB+, causing severe network latency and performance bottlenecks.</div>
-                </div>
-                <div class="tech-item tech-item-video reveal">
-                    <div class="label">Threshold Signatures</div>
-                    <div>
-                        <h3>Arbitrary Threshold PQC Signatures</h3>
-                        <p class="desc">Proprietary protocol enables arbitrary k-of-n threshold signatures producing standard FIPS 204 ML-DSA signatures. No signature size inflation, full verifier compatibility.</p>
-                        <div class="tech-stat">
-                            <span class="value">k≤32</span>
-                            <span class="unit">Production-Grade Threshold</span>
-                        </div>
-                    </div>
-                    <div class="tech-video">
-                        <div class="video-container">
-                            <video id="thresholdVideo" preload="metadata">
-                                <source src="./assets/The_Magic_Masking.mp4" type="video/mp4">
-                            </video>
-                            <button class="video-play-btn" id="videoPlayBtn" aria-label="Play video">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M8 5v14l11-7z"/>
-                                </svg>
-                            </button>
-                            <div class="video-overlay" id="videoOverlay">
-                                <span class="video-label">The Magic Masking Trick</span>
-                                <span class="video-hint">Click to play</span>
-                            </div>
-                        </div>
-                        <p class="video-caption">How we solved the k>8 mathematical barrier</p>
-                    </div>
                 </div>
                 <div class="tech-item reveal">
                     <div class="label">Physical Isolation</div>
@@ -1799,7 +1769,7 @@
         });
 
         // Video player
-        const video = document.getElementById('thresholdVideo');
+        const video = document.getElementById('techVideo');
         const playBtn = document.getElementById('videoPlayBtn');
         const videoOverlay = document.getElementById('videoOverlay');
         const videoContainer = document.querySelector('.video-container');
@@ -1828,28 +1798,23 @@
                 }
             };
 
-            // Play button click
             playBtn.addEventListener('click', togglePlay);
 
-            // Overlay click
             if (videoOverlay) {
                 videoOverlay.addEventListener('click', togglePlay);
             }
 
-            // Video click (for pause when playing)
             video.addEventListener('click', (e) => {
                 if (!video.paused) {
                     togglePlay(e);
                 }
             });
 
-            // Reset when video ends
             video.addEventListener('ended', () => {
                 videoContainer.classList.remove('playing');
                 video.currentTime = 0;
             });
 
-            // Show controls on hover when playing
             videoContainer.addEventListener('mouseenter', () => {
                 if (!video.paused) {
                     video.controls = true;
