@@ -10,138 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.2.0/dist/fonts/geist-sans/style.min.css">
+  <link rel="stylesheet" href="./css/common.css">
   <style>
-    @font-face {
-      font-family: 'Mokoto';
-      src: url('./assets/font/mokoto/Mokoto.ttf') format('truetype');
-      font-weight: 400;
-    }
-
-    :root {
-      --signal: #ff4d00;
-      --black: #0a0a0a;
-      --white: #ffffff;
-      --gray-50: #fafafa;
-      --gray-100: #f5f5f5;
-      --gray-200: #e5e5e5;
-      --gray-300: #d4d4d4;
-      --gray-400: #a3a3a3;
-      --gray-500: #737373;
-      --gray-600: #525252;
-      --gray-700: #404040;
-      --gray-800: #262626;
-      --gray-900: #171717;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--white);
-      color: var(--black);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Navigation */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--gray-200);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--black);
-    }
-
-    .nav-logo img {
-      height: 44px;
-      width: auto;
-      transition: transform 0.3s ease;
-    }
-
-    .nav-logo:hover img {
-      transform: scale(1.05);
-    }
-
-    .nav-logo span {
-      font-family: 'Mokoto', sans-serif;
-      font-weight: 400;
-      font-size: 24px;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--gray-600);
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--black);
-    }
-
-    .nav-cta {
-      background: var(--black);
-      color: var(--white) !important;
-      padding: 10px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .nav-cta:hover {
-      background: var(--gray-800);
-      color: var(--white) !important;
-    }
-
-    /* Mobile Menu */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 5px;
-    }
-
-    .menu-toggle span {
-      width: 24px;
-      height: 2px;
-      background: var(--black);
-      transition: all 0.3s;
-    }
-
     /* Thank You Section */
     .thank-you-section {
       min-height: 100vh;
@@ -292,157 +162,8 @@
       color: var(--signal);
     }
 
-    /* Footer */
-    .footer {
-      padding: 60px 40px 40px;
-      background: var(--gray-50);
-      border-top: 1px solid var(--gray-200);
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 60px;
-    }
-
-    .footer-brand p {
-      font-size: 14px;
-      color: var(--gray-500);
-      line-height: 1.7;
-      max-width: 300px;
-    }
-
-    .footer-column h4 {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: var(--black);
-    }
-
-    .footer-column ul {
-      list-style: none;
-    }
-
-    .footer-column li {
-      margin-bottom: 12px;
-    }
-
-    .footer-column a {
-      font-size: 14px;
-      color: var(--gray-500);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-column a:hover {
-      color: var(--black);
-    }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 40px auto 0;
-      padding-top: 30px;
-      border-top: 1px solid var(--gray-200);
-      text-align: center;
-    }
-
-    .footer-bottom p {
-      font-size: 13px;
-      color: var(--gray-400);
-    }
-
-    /* Back to Top */
-    .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 48px;
-      height: 48px;
-      background: var(--black);
-      color: var(--white);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .back-to-top:hover {
-      transform: translateY(-3px);
-      background: var(--gray-800);
-    }
-
     /* Mobile Responsive */
     @media (max-width: 900px) {
-      .nav {
-        padding: 16px 24px;
-        z-index: 1000;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: #ffffff;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 32px;
-        transform: translateY(-100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1001;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .nav-links.active {
-        transform: translateY(0);
-      }
-
-      .nav-links li {
-        padding: 0;
-        border-bottom: none;
-      }
-
-      .nav-links li:last-child {
-        padding-top: 16px;
-      }
-
-      .nav-links a {
-        font-size: 28px;
-        font-weight: 500;
-        color: var(--black);
-      }
-
-      .nav-links a:hover {
-        color: var(--signal);
-      }
-
-      .nav-links .nav-cta {
-        color: var(--white) !important;
-      }
-
-      .menu-toggle {
-        display: flex;
-        position: relative;
-        z-index: 1002;
-      }
-
       .thank-you-section {
         padding: 120px 24px 60px;
       }
@@ -464,23 +185,9 @@
         width: 100%;
         text-align: center;
       }
-
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-      }
-
-      .footer-brand {
-        grid-column: 1 / -1;
-      }
     }
 
     @media (max-width: 600px) {
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
       .helpful-links-list {
         flex-direction: column;
         gap: 12px;
@@ -492,23 +199,25 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="nav">
-    <a href="/" class="nav-logo">
-      <img src="./assets/logo.png" alt="Codebat">
-      <span>codebat</span>
-    </a>
-    <button class="menu-toggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/#tech">Technology</a></li>
-      <li><a href="/product">Products</a></li>
-      <li><a href="/solutions">Solutions</a></li>
-      <li><a href="/contact" class="nav-cta">Contact Us</a></li>
-    </ul>
+  <nav id="nav">
+    <div class="container">
+      <a href="/" class="logo">
+        <img src="./assets/logo.png" alt="Codebat">
+        <span>codebat</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/#tech">Technology</a>
+        <a href="/product">Products</a>
+        <a href="/solutions">Solutions</a>
+        <a href="/contact" class="btn btn-dark">Contact Us</a>
+      </div>
+    </div>
   </nav>
 
   <!-- Thank You Content -->
@@ -554,81 +263,26 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <p>
-          Codebat Technology — Trusted Computing Platform Provider. Building verifiable trust for AI-driven workflows through encrypted upload, isolated execution, and cryptographic evidence.
-        </p>
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/product">Products</a>
+        <a href="/contact">Contact</a>
+        <a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a>
       </div>
-
-      <div class="footer-column">
-        <h4>Product</h4>
-        <ul>
-          <li><a href="/product">Product Overview</a></li>
-          <li><a href="/product#sku-a">SKU-A Key Governance</a></li>
-          <li><a href="/product#sku-b">SKU-B PQC Accelerator</a></li>
-          <li><a href="/product#cee">CEE Evidence Engine</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-column">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/#why-now">Why Now</a></li>
-          <li><a href="/#technology">Technology</a></li>
-          <li><a href="/#partners">Partners</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-column">
-        <h4>Connect</h4>
-        <ul>
-          <li><a href="/contact">Contact Us</a></li>
-          <li><a href="mailto:support@codebat.ai">support@codebat.ai</a></li>
-          <li><a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2026 Codebat Technology Inc. All rights reserved.</p>
+      <div class="copyright">&copy; 2026 Codebat Technology Inc. All Rights Reserved.</div>
     </div>
   </footer>
 
   <!-- Back to Top -->
-  <button class="back-to-top" aria-label="Back to top">
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M18 15l-6-6-6 6"/>
     </svg>
   </button>
 
-  <script>
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      const isOpen = navLinks.classList.contains('active');
-      menuToggle.setAttribute('aria-expanded', isOpen);
-    });
-
-    // Back to top button
-    const backToTop = document.querySelector('.back-to-top');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    });
-
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
+  <script src="./js/common.js"></script>
 
 </body>
 
