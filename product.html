@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- SEO Meta Tags -->
-    <title>Technology | PQC Silicon IP Portfolio - Codebat Technology</title>
+    <title>Technology | PQC Silicon IP Portfolio | Codebat Technology</title>
     <meta name="description" content="PQC silicon IP portfolio: threshold signing engine, distributed key custody engine, and cryptographic evidence engine for critical infrastructure.">
     <meta name="keywords" content="post-quantum cryptography, threshold signing, key management, ML-DSA, ML-KEM, compliance evidence, FIPS 203, FIPS 204">
     <meta name="author" content="Codebat Technology Inc.">
@@ -15,7 +15,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://codebat.ai/product">
     <meta property="og:title" content="Technology | PQC Silicon IP Portfolio">
-    <meta property="og:description" content="PQC silicon IP portfolio — threshold signing, distributed key custody, and cryptographic evidence engines for critical infrastructure.">
+    <meta property="og:description" content="PQC silicon IP portfolio with threshold signing, distributed key custody, and cryptographic evidence engines for critical infrastructure.">
     <meta property="og:image" content="https://codebat.ai/assets/og-image.png">
 
     <!-- Favicon -->
@@ -589,7 +589,7 @@
                     <ul class="features">
                         <li>Asynchronous threshold decryption with hardware-isolated key shares</li>
                         <li>FIPS 203 ML-KEM post-quantum encryption</li>
-                        <li>No single breach compromises your data — keys split across custodians</li>
+                        <li>No single breach compromises your data, keys split across custodians</li>
                     </ul>
                     <p class="use-case">Protect sensitive data without trusting any single person or system</p>
                 </div>
@@ -600,7 +600,7 @@
                     <ul class="features">
                         <li>Dedicated NTT core for lattice polynomial arithmetic</li>
                         <li>Keccak hardware engine for SHA-3 and SHAKE operations</li>
-                        <li>Constant-time silicon execution — side-channel resistant by design</li>
+                        <li>Constant-time silicon execution, side-channel resistant by design</li>
                     </ul>
                     <p class="use-case">Cryptography at wire speed, off the critical path</p>
                 </div>
@@ -630,7 +630,7 @@
                 </div>
                 <div class="detail-visual reveal reveal-delay-1">
                     <div class="code-block typewriter" data-speed="30">
-                        <div class="code-line"><span class="comment"># Codebat Sign — Threshold Signing</span></div>
+                        <div class="code-line"><span class="comment"># Codebat Sign: Threshold Signing</span></div>
                         <div class="code-line empty"></div>
                         <div class="code-line">$ codebat sign init --threshold 3 --parties 5</div>
                         <div class="code-line"><span class="string">✓ DKG ceremony complete</span></div>
@@ -659,7 +659,7 @@
                 <div class="detail-content reveal">
                     <span class="sku-badge">VAULT</span>
                     <h2>Codebat Vault</h2>
-                    <p>No single breach compromises your data. Powered by hardware-accelerated Keccak cores, the distributed key custody engine splits encryption keys across multiple custodians with fully async decryption — your team stays productive while your data stays protected. Optimized probability distribution improves threshold success rates over standard implementations. Built on FIPS 203 ML-KEM.</p>
+                    <p>No single breach compromises your data. Powered by hardware-accelerated Keccak cores, the distributed key custody engine splits encryption keys across multiple custodians with fully async decryption, so your team stays productive while your data stays protected. Optimized probability distribution improves threshold success rates over standard implementations. Built on FIPS 203 ML-KEM.</p>
                     <div class="detail-stats">
                         <div class="stat-box">
                             <div class="value">FIPS 203</div>
@@ -674,7 +674,7 @@
                 </div>
                 <div class="detail-visual reveal reveal-delay-1">
                     <div class="code-block typewriter" data-speed="25">
-                        <div class="code-line"><span class="comment"># Codebat Vault — Threshold Decryption</span></div>
+                        <div class="code-line"><span class="comment"># Codebat Vault: Threshold Decryption</span></div>
                         <div class="code-line empty"></div>
                         <div class="code-line"><span class="keyword">POST</span> /api/v1/vault/decrypt</div>
                         <div class="code-line"><span class="function">Authorization:</span> Bearer &lt;token&gt;</div>
@@ -705,7 +705,7 @@
                 <div class="detail-content reveal">
                     <span class="sku-badge">ACCELERATOR</span>
                     <h2>PQC Hardware Acceleration</h2>
-                    <p>The foundation beneath Sign and Vault. Dedicated NTT and Keccak hardware cores handle the computationally intensive polynomial arithmetic and hash operations that lattice-based cryptography demands — off the main processor, at wire speed. Constant-time execution in silicon eliminates timing side-channels by design.</p>
+                    <p>The foundation beneath Sign and Vault. Dedicated NTT and Keccak hardware cores handle the computationally intensive polynomial arithmetic and hash operations that lattice-based cryptography demands. Off the main processor, at wire speed. Constant-time execution in silicon eliminates timing side-channels by design.</p>
                     <div class="detail-stats">
                         <div class="stat-box">
                             <div class="value">NTT</div>
@@ -720,20 +720,20 @@
                 </div>
                 <div class="detail-visual reveal reveal-delay-1">
                     <div class="code-block typewriter" data-speed="25">
-                        <div class="code-line"><span class="comment"># PQC Silicon IP — Core Architecture</span></div>
+                        <div class="code-line"><span class="comment"># PQC Silicon IP: Core Architecture</span></div>
                         <div class="code-line empty"></div>
                         <div class="code-line"><span class="keyword">module</span> <span class="function">pqc_accelerator</span> (</div>
                         <div class="code-line">  <span class="string">clk</span>, <span class="string">rst_n</span>, <span class="string">op_select</span>,</div>
                         <div class="code-line">  <span class="string">data_in</span>, <span class="string">data_out</span>, <span class="string">done</span></div>
                         <div class="code-line">);</div>
                         <div class="code-line empty"></div>
-                        <div class="code-line">  <span class="comment">// NTT core — polynomial multiply</span></div>
+                        <div class="code-line">  <span class="comment">// NTT core: polynomial multiply</span></div>
                         <div class="code-line">  <span class="function">ntt_core</span> u_ntt (.poly_in, .poly_out);</div>
                         <div class="code-line empty"></div>
-                        <div class="code-line">  <span class="comment">// Keccak core — SHA-3 / SHAKE</span></div>
+                        <div class="code-line">  <span class="comment">// Keccak core: SHA-3 / SHAKE</span></div>
                         <div class="code-line">  <span class="function">keccak_core</span> u_keccak (.msg, .digest);</div>
                         <div class="code-line empty"></div>
-                        <div class="code-line">  <span class="comment">// Threshold engine — T-of-N</span></div>
+                        <div class="code-line">  <span class="comment">// Threshold engine: T-of-N</span></div>
                         <div class="code-line">  <span class="function">threshold_engine</span> u_thresh (.shares, .sig);</div>
                         <div class="code-line empty"></div>
                         <div class="code-line"><span class="keyword">endmodule</span></div>
