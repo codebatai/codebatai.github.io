@@ -437,6 +437,56 @@
             }
         }
 
+        /* Participation Callout: standards work stats */
+        .participation-callout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin: 40px 0;
+            max-width: 720px;
+            border-top: 1px solid var(--gray-300);
+            border-bottom: 1px solid var(--gray-300);
+        }
+
+        .participation-stat {
+            padding: 28px 24px;
+            border-right: 1px solid var(--gray-200);
+        }
+
+        .participation-stat:last-child {
+            border-right: none;
+        }
+
+        .participation-stat-num {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 32px;
+            font-style: italic;
+            color: var(--black);
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .participation-stat-label {
+            font-family: 'Geist Mono', ui-monospace, monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--gray-500);
+        }
+
+        @media (max-width: 768px) {
+            .participation-callout {
+                grid-template-columns: 1fr;
+            }
+            .participation-stat {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+            }
+            .participation-stat:last-child {
+                border-bottom: none;
+            }
+        }
+
         /* Attack Grid: side-channel categories */
         .attack-grid {
             display: grid;
@@ -447,9 +497,17 @@
         }
 
         .attack-item {
-            padding: 24px 20px;
+            padding: 28px 24px;
             background: var(--gray-50);
             border-left: 2px solid var(--signal);
+        }
+
+        .attack-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--signal);
+            margin-bottom: 16px;
+            display: block;
         }
 
         .attack-name {
@@ -459,13 +517,13 @@
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--black);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .attack-desc {
             font-size: 13px;
             color: var(--gray-600);
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
         @media (max-width: 768px) {
@@ -587,14 +645,26 @@
             <p class="reveal">Real-world cryptographic systems face physical attacks that go beyond algorithmic security:</p>
             <div class="attack-grid reveal">
                 <div class="attack-item">
+                    <svg class="attack-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"/>
+                        <polyline points="12 7 12 12 15 14"/>
+                    </svg>
                     <div class="attack-name">Timing Analysis</div>
                     <div class="attack-desc">Inferring secrets from operation duration patterns</div>
                 </div>
                 <div class="attack-item">
+                    <svg class="attack-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="13 3 4 14 11 14 10 21 19 10 13 10 13 3"/>
+                    </svg>
                     <div class="attack-name">Power Monitoring</div>
                     <div class="attack-desc">Extracting keys from hardware power consumption</div>
                 </div>
                 <div class="attack-item">
+                    <svg class="attack-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12 a7 7 0 0 1 14 0"/>
+                        <path d="M8 12 a4 4 0 0 1 8 0"/>
+                        <circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+                    </svg>
                     <div class="attack-name">Electromagnetic</div>
                     <div class="attack-desc">Capturing signals through emitted radiation</div>
                 </div>
@@ -610,6 +680,20 @@
             <div class="section-label reveal">Standards Participation</div>
             <h2 class="section-title reveal">At the <em>Forefront</em> of Post-Quantum Cryptography</h2>
             <p class="reveal">Codebat is an active contributor to the international standardization of post-quantum threshold cryptography, advancing the cryptographic infrastructure that will protect data against future threats.</p>
+            <div class="participation-callout reveal">
+                <div class="participation-stat">
+                    <div class="participation-stat-num">Active</div>
+                    <div class="participation-stat-label">Standards Contribution</div>
+                </div>
+                <div class="participation-stat">
+                    <div class="participation-stat-num">Multiple</div>
+                    <div class="participation-stat-label">Approaches Under Development</div>
+                </div>
+                <div class="participation-stat">
+                    <div class="participation-stat-num">Hardware</div>
+                    <div class="participation-stat-label">Acceleration Focus</div>
+                </div>
+            </div>
             <p class="reveal">Specifics are available to qualified partners under NDA.</p>
         </div>
     </section>
