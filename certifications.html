@@ -304,51 +304,174 @@
             letter-spacing: 0.04em;
         }
 
-        /* Cert Callout */
-        .cert-callout {
-            max-width: 480px;
+        /* Cert Showcase: centerpiece document */
+        .cert-showcase {
+            max-width: 560px;
             margin: 0 auto;
             text-align: center;
-            padding: 48px 32px;
+            padding: 64px 56px;
             background: var(--white);
-            border-top: 1px solid var(--black);
-            border-bottom: 1px solid var(--black);
+            border: 1px solid var(--gray-200);
+            position: relative;
         }
 
-        .cert-callout-label {
+        .cert-showcase-eyebrow {
             font-family: 'Geist Mono', ui-monospace, monospace;
             font-size: 11px;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.24em;
             color: var(--gray-500);
-            margin-bottom: 20px;
+            margin-bottom: 36px;
         }
 
-        .cert-callout-link {
+        .cert-showcase-program {
             font-family: 'Geist Mono', ui-monospace, monospace;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--black);
+            margin-bottom: 6px;
+        }
+
+        .cert-showcase-program-full {
+            font-size: 13px;
+            color: var(--gray-500);
+            margin-bottom: 36px;
+        }
+
+        .cert-showcase-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--gray-300);
+            margin: 0 auto 36px;
+        }
+
+        .cert-showcase-number {
+            font-family: 'Geist Mono', ui-monospace, monospace;
+            font-size: 56px;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            color: var(--black);
+            line-height: 1;
+            margin-bottom: 28px;
+        }
+
+        .cert-showcase-implementation {
+            font-size: 15px;
+            color: var(--gray-700);
+            margin-bottom: 44px;
+            line-height: 1.5;
+        }
+
+        .cert-showcase-link {
+            font-family: 'Geist Mono', ui-monospace, monospace;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
             color: var(--black);
             text-decoration: none;
             border-bottom: 1px solid var(--black);
             padding-bottom: 4px;
-            letter-spacing: -0.01em;
             transition: color 0.2s ease, border-color 0.2s ease;
             display: inline-block;
         }
 
-        .cert-callout-link:hover {
+        .cert-showcase-link:hover {
             color: var(--signal);
             border-color: var(--signal);
         }
 
         @media (max-width: 640px) {
-            .cert-callout {
-                padding: 36px 24px;
+            .cert-showcase {
+                padding: 44px 28px;
             }
-            .cert-callout-link {
-                font-size: 20px;
+            .cert-showcase-number {
+                font-size: 44px;
+            }
+        }
+
+        /* Trust Grid: what NIST validation means */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 64px;
+        }
+
+        .trust-item {
+            text-align: left;
+        }
+
+        .trust-item-num {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 36px;
+            font-style: italic;
+            color: var(--signal);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .trust-item h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--black);
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .trust-item p {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--gray-600);
+            max-width: none;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                margin-top: 40px;
+            }
+        }
+
+        /* Attack Grid: side-channel categories */
+        .attack-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 32px 0 40px;
+            max-width: 720px;
+        }
+
+        .attack-item {
+            padding: 24px 20px;
+            background: var(--gray-50);
+            border-left: 2px solid var(--signal);
+        }
+
+        .attack-name {
+            font-family: 'Geist Mono', ui-monospace, monospace;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--black);
+            margin-bottom: 10px;
+        }
+
+        .attack-desc {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .attack-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
         }
 
@@ -411,27 +534,47 @@
         <div class="container">
             <div class="section-label reveal">CERTIFICATIONS</div>
             <h1 class="reveal">Independent <em>Validation</em><br>of Codebat's Silicon IP</h1>
-            <p class="hero-sub reveal">Independent NIST validation of Codebat's hardware cryptographic implementations.</p>
+            <p class="hero-sub reveal">Carrying NIST CAVP validation, the U.S. federal benchmark for cryptographic trust.</p>
         </div>
     </section>
 
-    <!-- U.S. Federal Validation -->
+    <!-- Cert Showcase: featured -->
     <section class="content-section">
         <div class="container">
-            <div class="section-label reveal">U.S. Federal Validation</div>
-            <h2 class="section-title reveal">The <em>Gold Standard</em> for Cryptographic Trust</h2>
-            <p class="reveal">NIST is the U.S. federal authority that defines the cryptographic standards used by federal agencies, regulated industries, and security-sensitive deployments worldwide.</p>
-            <p class="reveal">Independent NIST validation is the benchmark cited by procurement teams, regulators, and risk assessors when evaluating cryptographic infrastructure.</p>
-            <p class="reveal">Codebat's hardware cryptographic technology is independently validated by NIST.</p>
+            <div class="cert-showcase reveal">
+                <div class="cert-showcase-eyebrow">Validated By</div>
+                <div class="cert-showcase-program">NIST CAVP</div>
+                <div class="cert-showcase-program-full">Cryptographic Algorithm Validation Program</div>
+                <div class="cert-showcase-divider"></div>
+                <div class="cert-showcase-number">A8288</div>
+                <div class="cert-showcase-implementation">Hardware ML-DSA Cryptographic Engine</div>
+                <a href="https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/details?validation=40898" target="_blank" rel="noopener" class="cert-showcase-link">Verify at NIST →</a>
+            </div>
         </div>
     </section>
 
-    <!-- CAVP Certificate Callout -->
+    <!-- Why This Matters -->
     <section class="content-section gray">
         <div class="container">
-            <div class="cert-callout reveal">
-                <div class="cert-callout-label">NIST CAVP-Validated</div>
-                <a href="https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/details?validation=40898" target="_blank" rel="noopener" class="cert-callout-link">Certificate A8288 →</a>
+            <div class="section-label reveal">Why This Matters</div>
+            <h2 class="section-title reveal">The <em>Gold Standard</em> for Cryptographic Trust</h2>
+            <p class="reveal">NIST is the U.S. federal authority that defines the cryptographic standards adopted by federal agencies, regulated industries, and security-sensitive deployments worldwide.</p>
+            <div class="trust-grid reveal">
+                <div class="trust-item">
+                    <div class="trust-item-num">01</div>
+                    <h3>U.S. Federal Authority</h3>
+                    <p>NIST cryptographic standards are recognized by federal agencies, defense, and regulated industries as the benchmark for cryptographic trust.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-num">02</div>
+                    <h3>International Adoption</h3>
+                    <p>NIST validation is cited by procurement teams, regulators, and risk assessors worldwide when evaluating cryptographic infrastructure.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-num">03</div>
+                    <h3>Independent Verification</h3>
+                    <p>Validated implementations are publicly registered with NIST and verifiable by any third party at any time.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -441,7 +584,21 @@
         <div class="container">
             <div class="section-label reveal">Side-Channel Resistance</div>
             <h2 class="section-title reveal">Engineered for <em>High-Assurance</em> Deployments</h2>
-            <p class="reveal">Real-world cryptographic systems face physical attacks that go beyond algorithmic security.</p>
+            <p class="reveal">Real-world cryptographic systems face physical attacks that go beyond algorithmic security:</p>
+            <div class="attack-grid reveal">
+                <div class="attack-item">
+                    <div class="attack-name">Timing Analysis</div>
+                    <div class="attack-desc">Inferring secrets from operation duration patterns</div>
+                </div>
+                <div class="attack-item">
+                    <div class="attack-name">Power Monitoring</div>
+                    <div class="attack-desc">Extracting keys from hardware power consumption</div>
+                </div>
+                <div class="attack-item">
+                    <div class="attack-name">Electromagnetic</div>
+                    <div class="attack-desc">Capturing signals through emitted radiation</div>
+                </div>
+            </div>
             <p class="reveal">Codebat's cryptographic implementations include hardware countermeasures designed to defend against these attacks, validated as part of our NIST CAVP submission.</p>
             <p class="reveal">Detailed evaluation results are available to qualified partners under NDA.</p>
         </div>
