@@ -291,7 +291,95 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Compliance Badges */
+        /* Standards Section — NIST CAVP / CMVP Introduction */
+        .standards-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .standards-section .section-intro {
+            text-align: center;
+            max-width: 640px;
+            margin: 24px auto 0;
+            color: var(--gray-600);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .standard-card {
+            padding: 48px 40px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            transition: border-color 0.3s ease;
+        }
+
+        .standard-card:hover {
+            border-color: var(--black);
+        }
+
+        .standard-acronym {
+            font-family: 'Geist Mono', ui-monospace, monospace;
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: var(--signal);
+            margin-bottom: 24px;
+        }
+
+        .standard-card h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--black);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .standard-card p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .standards-cta {
+            text-align: center;
+            margin-top: 56px;
+        }
+
+        .standards-link {
+            font-family: 'Geist Mono', ui-monospace, monospace;
+            font-size: 12px;
+            color: var(--black);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            border-bottom: 1px solid var(--black);
+            padding-bottom: 4px;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .standards-link:hover {
+            color: var(--signal);
+            border-color: var(--signal);
+        }
+
+        @media (max-width: 768px) {
+            .standards-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .standard-card {
+                padding: 32px 24px;
+            }
+        }
+
+        /* Compliance Badges → Capability Grid (Tier 2) */
         .compliance-section {
             padding: 80px 0;
             background: var(--white);
@@ -312,7 +400,7 @@
 
         .compliance-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 24px;
         }
 
@@ -1222,6 +1310,7 @@
                 <a href="#tech">Technology</a>
                 <a href="/product">Products</a>
                 <a href="/solutions">Solutions</a>
+                <a href="/certifications">Certifications</a>
                 <a href="/contact" class="btn btn-dark">Contact Us</a>
             </div>
         </div>
@@ -1248,24 +1337,48 @@
 
     <div class="marquee-section">
         <div class="marquee">
+            <div class="marquee-item">NIST CAVP-Validated · A8288</div>
             <div class="marquee-item">NTT Hardware Accelerator</div>
             <div class="marquee-item">Keccak Cryptographic Core</div>
             <div class="marquee-item">Threshold ML-DSA</div>
             <div class="marquee-item">FIPS 204 / FIPS 203 Algorithms</div>
-            <div class="marquee-item">Patent-Protected Architecture</div>
+            <div class="marquee-item">NIST CAVP-Validated · A8288</div>
             <div class="marquee-item">NTT Hardware Accelerator</div>
             <div class="marquee-item">Keccak Cryptographic Core</div>
             <div class="marquee-item">Threshold ML-DSA</div>
             <div class="marquee-item">FIPS 204 / FIPS 203 Algorithms</div>
-            <div class="marquee-item">Patent-Protected Architecture</div>
         </div>
     </div>
 
-    <!-- Compliance Badges -->
+    <!-- Standards Section — NIST CAVP / CMVP Introduction -->
+    <section class="standards-section">
+        <div class="container">
+            <div class="section-label reveal">Standards</div>
+            <h2 class="section-title reveal">Built on <em>NIST Standards</em></h2>
+            <p class="section-intro reveal">Trustworthy cryptography rests on two layers of independent validation by the U.S. National Institute of Standards and Technology.</p>
+            <div class="standards-grid">
+                <div class="standard-card reveal">
+                    <div class="standard-acronym">CAVP</div>
+                    <h3>Cryptographic Algorithm Validation Program</h3>
+                    <p>NIST's program that independently verifies cryptographic algorithm implementations conform to FIPS specifications. CAVP attests to algorithm-level correctness, the foundation any compliant cryptographic system must rest on.</p>
+                </div>
+                <div class="standard-card reveal reveal-delay-1">
+                    <div class="standard-acronym">CMVP</div>
+                    <h3>Cryptographic Module Validation Program</h3>
+                    <p>NIST's higher-tier program for validating complete cryptographic modules against FIPS 140-3, covering module boundary, key management, self-tests, and physical security. CAVP algorithm validation is a prerequisite for CMVP submission.</p>
+                </div>
+            </div>
+            <div class="standards-cta reveal">
+                <a href="/certifications" class="standards-link">View Codebat's Certifications →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capability Grid — Tier 2 Technical Features -->
     <section class="compliance-section">
         <div class="container">
             <div class="compliance-header reveal">
-                <h3>Core Silicon IP</h3>
+                <h3>Capability</h3>
             </div>
             <div class="compliance-grid">
                 <div class="compliance-badge reveal">
@@ -1305,17 +1418,6 @@
                 <div class="compliance-badge reveal">
                     <div class="badge-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <path d="M9 15l2 2 4-4"/>
-                        </svg>
-                    </div>
-                    <div class="badge-name">FIPS 204 / 203</div>
-                    <div class="badge-desc">ML-DSA & ML-KEM Algorithms</div>
-                </div>
-                <div class="compliance-badge reveal reveal-delay-1">
-                    <div class="badge-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
                             <line x1="8" y1="21" x2="16" y2="21"/>
                             <line x1="12" y1="17" x2="12" y2="21"/>
@@ -1324,7 +1426,7 @@
                     <div class="badge-name">Multi-Platform</div>
                     <div class="badge-desc">x86, ARM, RISC-V</div>
                 </div>
-                <div class="compliance-badge reveal reveal-delay-2">
+                <div class="compliance-badge reveal reveal-delay-1">
                     <div class="badge-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
@@ -1596,6 +1698,7 @@
         <div class="container">
             <div class="footer-links">
                 <a href="/product">Products</a>
+                <a href="/certifications">Certifications</a>
                 <a href="/contact">Contact</a>
                 <a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a>
             </div>

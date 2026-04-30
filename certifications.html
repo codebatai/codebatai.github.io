@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <title>Certifications | NIST CAVP A8288 - Codebat Technology</title>
+    <meta name="description" content="Codebat's post-quantum silicon IP certifications: NIST CAVP A8288 hardware ML-DSA validation, CMVP submission preparation, and threshold cryptography standardization participation.">
+    <meta name="keywords" content="NIST CAVP, FIPS 140-3, FIPS 204, ML-DSA, CMVP, post-quantum cryptography, threshold cryptography, side-channel resistance, silicon IP certification">
+    <meta name="author" content="Codebat Technology Inc.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://codebat.ai/certifications">
+    <meta property="og:title" content="Certifications | NIST CAVP A8288">
+    <meta property="og:description" content="Independent NIST validation of Codebat's hardware ML-DSA cryptographic engine.">
+    <meta property="og:image" content="https://codebat.ai/assets/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/common.css">
+
+    <style>
+        /* Hero */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--gray-100) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 77, 0, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--signal);
+            margin-bottom: 24px;
+            font-family: 'Geist Mono', monospace;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-sub {
+            font-size: clamp(18px, 2vw, 20px);
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 96px 0;
+        }
+
+        .content-section.gray {
+            background: var(--gray-50);
+        }
+
+        .content-section .section-label {
+            font-family: 'Geist Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+        }
+
+        .content-section .section-title {
+            font-size: clamp(32px, 5vw, 44px);
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--black);
+            margin-bottom: 40px;
+            max-width: 720px;
+        }
+
+        .content-section .section-title em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .content-section p {
+            font-size: 16px;
+            color: var(--gray-700);
+            line-height: 1.7;
+            max-width: 720px;
+            margin-bottom: 20px;
+        }
+
+        .content-section p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* Cert Table */
+        .cert-table {
+            border-top: 1px solid var(--gray-300);
+            border-bottom: 1px solid var(--gray-300);
+            margin-top: 40px;
+        }
+
+        .cert-table-row {
+            display: grid;
+            grid-template-columns: 2.4fr 0.8fr 0.8fr 1.4fr;
+            align-items: center;
+            padding: 24px 16px;
+            border-bottom: 1px solid var(--gray-200);
+            transition: background 0.2s ease;
+        }
+
+        .cert-table-row:last-child {
+            border-bottom: none;
+        }
+
+        .cert-table-row.header {
+            font-family: 'Geist Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--gray-500);
+            border-bottom: 1px solid var(--gray-300);
+        }
+
+        .cert-table-row:not(.header):hover {
+            background: var(--white);
+        }
+
+        .cert-table-cell {
+            font-size: 14px;
+            color: var(--black);
+        }
+
+        .cert-table-cell.product {
+            font-weight: 500;
+        }
+
+        .cert-table-cell .profiles {
+            display: block;
+            font-family: 'Geist Mono', monospace;
+            font-size: 12px;
+            color: var(--gray-500);
+            margin-top: 6px;
+            letter-spacing: 0.04em;
+        }
+
+        .cert-table-cell.mono {
+            font-family: 'Geist Mono', monospace;
+            font-size: 13px;
+        }
+
+        .cert-table-cell .cert-link {
+            color: var(--black);
+            text-decoration: none;
+            border-bottom: 1px solid var(--black);
+            padding-bottom: 2px;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .cert-table-cell .cert-link:hover {
+            color: var(--signal);
+            border-color: var(--signal);
+        }
+
+        .cert-status {
+            color: var(--gray-500);
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .cert-table-row.header {
+                display: none;
+            }
+            .cert-table-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 20px 16px;
+            }
+            .cert-table-cell::before {
+                content: attr(data-label);
+                display: block;
+                font-family: 'Geist Mono', monospace;
+                font-size: 10px;
+                text-transform: uppercase;
+                letter-spacing: 0.16em;
+                color: var(--gray-500);
+                margin-bottom: 4px;
+            }
+        }
+
+        /* Profile Cards (Signum-F / Signum-X) */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            max-width: 720px;
+        }
+
+        .profile-card {
+            padding: 32px 28px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            transition: border-color 0.3s ease;
+        }
+
+        .profile-card:hover {
+            border-color: var(--black);
+        }
+
+        .profile-name {
+            font-family: 'Geist Mono', monospace;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--signal);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .profile-tagline {
+            font-family: 'Geist Mono', monospace;
+            font-size: 11px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            margin-bottom: 20px;
+        }
+
+        .profile-card p {
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: var(--gray-700);
+            margin-bottom: 0;
+            max-width: none;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        /* TALUS Highlight */
+        .talus-highlight {
+            margin: 32px 0;
+            padding: 28px 32px;
+            background: var(--white);
+            border-left: 3px solid var(--signal);
+            max-width: 720px;
+        }
+
+        .talus-name {
+            font-family: 'Geist Mono', monospace;
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--black);
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+
+        .talus-expansion {
+            font-size: 13px;
+            color: var(--gray-500);
+            font-family: 'Geist Mono', monospace;
+            letter-spacing: 0.04em;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        .cta-section h2 em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: var(--gray-400);
+            max-width: 540px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="./assets/logo.png" alt="Codebat">
+                <span>codebat</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="/#why">Why Us</a>
+                <a href="/#tech">Technology</a>
+                <a href="/product">Products</a>
+                <a href="/solutions">Solutions</a>
+                <a href="/certifications" class="active">Certifications</a>
+                <a href="/contact" class="btn btn-dark">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="section-label reveal">CERTIFICATIONS</div>
+            <h1 class="reveal">Independent <em>Validation</em><br>of Codebat's Silicon IP</h1>
+            <p class="hero-sub reveal">NIST CAVP A8288 for hardware ML-DSA, FIPS 140-3 CMVP submission in active preparation, and ongoing participation in post-quantum threshold cryptography standardization.</p>
+        </div>
+    </section>
+
+    <!-- FIPS 140-3 Background -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label reveal">FIPS 140-3</div>
+            <h2 class="section-title reveal">Built on <em>NIST Standards</em></h2>
+            <p class="reveal">The U.S. National Institute of Standards and Technology (NIST) establishes Federal Information Processing Standards (FIPS), used voluntarily by public and private organizations worldwide to address legal mandates and security expectations. The current benchmark is FIPS 140-3, aligned with ISO/IEC 19790, which imposes rigorous security and testing protocols for cryptographic modules.</p>
+            <p class="reveal">Two NIST programs provide formal assurance under this framework. The Cryptographic Algorithm Validation Program (CAVP) verifies that cryptographic algorithm implementations conform to FIPS specifications. The Cryptographic Module Validation Program (CMVP) validates complete cryptographic modules against FIPS 140-3 requirements. CAVP algorithm validation is a prerequisite for CMVP submission.</p>
+            <p class="reveal">Codebat's silicon IP is engineered to meet these benchmarks across multiple cryptographic primitives. Our hardware ML-DSA cryptographic engine is independently validated under NIST CAVP, with FIPS 140-3 CMVP submission in active preparation. Additional algorithm and module validations are in development.</p>
+        </div>
+    </section>
+
+    <!-- CAVP & CMVP Overview Table -->
+    <section class="content-section gray">
+        <div class="container">
+            <div class="section-label reveal">Validation Overview</div>
+            <h2 class="section-title reveal">CAVP &amp; CMVP <em>Certifications</em></h2>
+            <div class="cert-table reveal">
+                <div class="cert-table-row header">
+                    <div class="cert-table-cell">Product</div>
+                    <div class="cert-table-cell">Version</div>
+                    <div class="cert-table-cell">Type</div>
+                    <div class="cert-table-cell">Certificate</div>
+                </div>
+                <div class="cert-table-row">
+                    <div class="cert-table-cell product" data-label="Product">
+                        Codebat ML-DSA Cryptographic Engine
+                    </div>
+                    <div class="cert-table-cell mono" data-label="Version">v1.0</div>
+                    <div class="cert-table-cell mono" data-label="Type">CAVP</div>
+                    <div class="cert-table-cell mono" data-label="Certificate">
+                        <a class="cert-link" href="https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program/details?validation=40898" target="_blank" rel="noopener">A8288 →</a>
+                    </div>
+                </div>
+                <div class="cert-table-row">
+                    <div class="cert-table-cell product" data-label="Product">
+                        Codebat ML-DSA Cryptographic Engine
+                    </div>
+                    <div class="cert-table-cell mono" data-label="Version">v1.0</div>
+                    <div class="cert-table-cell mono" data-label="Type">CMVP</div>
+                    <div class="cert-table-cell" data-label="Certificate">
+                        <span class="cert-status">In preparation</span>
+                    </div>
+                </div>
+                <div class="cert-table-row">
+                    <div class="cert-table-cell product" data-label="Product">
+                        Additional algorithm validations
+                    </div>
+                    <div class="cert-table-cell mono" data-label="Version">—</div>
+                    <div class="cert-table-cell mono" data-label="Type">CAVP</div>
+                    <div class="cert-table-cell" data-label="Certificate">
+                        <span class="cert-status">In preparation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Side-Channel Resistance -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label reveal">Side-Channel Resistance</div>
+            <h2 class="section-title reveal">Hardening Beyond <em>Algorithmic Correctness</em></h2>
+            <p class="reveal">Hardware cryptographic implementations face a class of attacks that extract secrets through physical observation rather than algorithmic flaws, including timing analysis, power consumption monitoring, and electromagnetic emissions.</p>
+            <p class="reveal">Codebat's hardware ML-DSA implementation includes first-order side-channel countermeasures, validated as part of CAVP A8288. Higher-order countermeasures and broader protections across the full ML-DSA datapath are under continuous development as part of our path to FIPS 140-3 CMVP submission.</p>
+            <p class="reveal">Implementation details, evaluation methodology, and third-party assessment results are available to qualified partners under NDA.</p>
+        </div>
+    </section>
+
+    <!-- Threshold Cryptography & Standards Participation -->
+    <section class="content-section gray">
+        <div class="container">
+            <div class="section-label reveal">Threshold Cryptography</div>
+            <h2 class="section-title reveal">Standards <em>Participation</em></h2>
+            <p class="reveal">Threshold cryptography distributes cryptographic operations across multiple parties so that no single entity ever holds a complete key. As post-quantum primitives like ML-DSA and ML-KEM mature, integrating threshold protocols at the hardware level is becoming the next critical frontier for high-assurance systems.</p>
+            <p class="reveal">Codebat is an active participant in the ongoing standardization of post-quantum threshold cryptographic schemes, with multiple proposed approaches under development. Our work spans threshold signature generation, distributed key custody, and asynchronous decryption, all designed for hardware acceleration and real-world deployment constraints.</p>
+            <p class="reveal">Specific schemes, performance characteristics, and reference architectures are available to qualified partners under NDA.</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Discuss Integration <em>Under NDA</em></h2>
+            <p>Datasheet, technical brief, side-channel evaluation reports, and roadmap are available to qualified partners.</p>
+            <a href="/contact" class="btn btn-light">Get in Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/product">Products</a>
+                <a href="/certifications">Certifications</a>
+                <a href="/contact">Contact</a>
+                <a href="https://github.com/codebatai" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <div class="copyright">&copy; 2026 Codebat Technology Inc. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script src="./js/common.js"></script>
+</body>
+</html>
