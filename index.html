@@ -1448,7 +1448,7 @@
                 <div class="why-item reveal">
                     <div class="number">1</div>
                     <h3>The Invisible Security Gap</h3>
-                    <p>Firewalls protect data at rest. TLS protects data in transit. But data being processed in CPU and memory is completely exposed. We provide runtime encryption to eliminate this last attack surface.</p>
+                    <p>Cryptography is invisible by design. The algorithms behind TLS, code signing, identity certificates, and secure boot all rely on RSA and ECC mathematics that quantum computers will break. The vulnerability is not in your firewall or your TLS configuration. It lives in the silicon doing the math.</p>
                 </div>
                 <div class="why-item reveal reveal-delay-1">
                     <div class="number">2</div>
@@ -1474,41 +1474,37 @@
                 <p class="reveal reveal-delay-1">Our patent-protected PQC silicon IP features dedicated NTT and Keccak hardware cores, delivering lattice-based cryptography at wire speed. Platform-agnostic: x86, ARM, RISC-V.</p>
             </div>
 
-            <!-- Flow Steps -->
+            <!-- Pillars -->
             <div class="flow-steps reveal" id="flowSteps">
                 <div class="flow-card" data-step="1">
                     <div class="flow-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                            <path d="M12 8v8"/>
-                            <path d="M8 12h8"/>
+                            <path d="M9 11l3 3L22 4"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
                         </svg>
                     </div>
-                    <h4>Encrypted Upload</h4>
-                    <p>Data encrypted before leaving your environment using post-quantum algorithms</p>
+                    <h4>Algorithm Correctness</h4>
+                    <p>Cryptographic implementations independently validated against NIST standards</p>
                 </div>
 
                 <div class="flow-card" data-step="2">
                     <div class="flow-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <path d="M9 12l2 2 4-4"/>
                         </svg>
                     </div>
-                    <h4>Isolated Execution</h4>
-                    <p>Processing in chip-level physical isolation with zero shared resources</p>
+                    <h4>Side-Channel Resistance</h4>
+                    <p>Countermeasures designed into the silicon, not bolted on afterwards</p>
                 </div>
 
                 <div class="flow-card" data-step="3">
                     <div class="flow-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <path d="M9 15l2 2 4-4"/>
+                            <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                         </svg>
                     </div>
-                    <h4>Verifiable Evidence</h4>
-                    <p>Fixed-length cryptographic proof generated for complete audit trail</p>
+                    <h4>Hardware Acceleration</h4>
+                    <p>Purpose-built cryptographic cores running off the main processor at wire speed</p>
                 </div>
             </div>
 
